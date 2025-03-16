@@ -1,0 +1,6 @@
+@WeddingAppAPI_HostAddress = http://localhost:5022
+
+GET {{WeddingAppAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

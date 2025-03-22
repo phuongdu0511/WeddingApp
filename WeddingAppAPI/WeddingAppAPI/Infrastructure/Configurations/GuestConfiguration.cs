@@ -1,0 +1,32 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using WeddingAppAPI.Domain;
+
+namespace WeddingAppAPI.Infrastructure.Configurations
+{
+    public class GuestConfiguration : IEntityTypeConfiguration<Guest>
+    {
+        public void Configure(EntityTypeBuilder<Guest> builder)
+        {
+            builder.ToTable("Guest");
+            builder.Property(g => g.Id)
+            .HasColumnName("GuestId")
+            .ValueGeneratedOnAdd();
+
+            builder.Property(g => g.GuestName)
+            .IsRequired()
+            .HasMaxLength(40);
+
+            builder.Property(g => g.Comment)
+            .HasColumnType("nvarchar(max)");
+
+            builder.Property(g => g.CreatedAt)
+            .HasDefaultValueSql("GETDATE()")
+            .ValueGeneratedOnAdd();
+
+            builder.Property(g => g.UpdatedAt)
+            .HasDefaultValueSql("GETDATE()")
+            .ValueGeneratedOnAddOrUpdate();
+        }
+    }
+}

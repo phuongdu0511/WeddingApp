@@ -1,12 +1,156 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Project\\WeddingApp\\WeddingAppAPI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\domain\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\domain\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\dependencyinjection\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\dependencyinjection\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\controllers\\guestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\controllers\\guestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\applications\\implements\\guestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\applications\\implements\\guestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\applications\\interfaces\\iguestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\applications\\interfaces\\iguestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|d:\\project\\weddingapp\\weddingappapi\\weddingappapi\\abstractions\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE4480A1-7203-4915-86BC-EB49460495EF}|WeddingAppAPI\\WeddingAppAPI.csproj|solutionrelative:weddingappapi\\abstractions\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Program.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Program.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T17:36:10.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\DependencyInjection\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\DependencyInjection\\Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\DependencyInjection\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "WeddingAppAPI\\DependencyInjection\\Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T17:35:54.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GuestController.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Controllers\\GuestController.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Controllers\\GuestController.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Controllers\\GuestController.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Controllers\\GuestController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T17:13:43.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IRepositoryBase.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Abstractions\\IRepositoryBase.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Abstractions\\IRepositoryBase.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Abstractions\\IRepositoryBase.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Abstractions\\IRepositoryBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T17:04:21.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GuestService.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Applications\\Implements\\GuestService.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Applications\\Implements\\GuestService.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Applications\\Implements\\GuestService.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Applications\\Implements\\GuestService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBMAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T16:17:11.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IGuestService.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Applications\\Interfaces\\IGuestService.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Applications\\Interfaces\\IGuestService.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Applications\\Interfaces\\IGuestService.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Applications\\Interfaces\\IGuestService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T16:14:12.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Infrastructure\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Infrastructure\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Infrastructure\\ApplicationDbContext.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Infrastructure\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T11:47:14.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Message.cs",
+              "DocumentMoniker": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Domain\\Message.cs",
+              "RelativeDocumentMoniker": "WeddingAppAPI\\Domain\\Message.cs",
+              "ToolTip": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\Domain\\Message.cs",
+              "RelativeToolTip": "WeddingAppAPI\\Domain\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T11:42:00.826Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

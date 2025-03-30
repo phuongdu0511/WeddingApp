@@ -23,6 +23,13 @@ namespace WeddingAppAPI.DependencyInjection.Extensions
             services.AddTransient(typeof(IRepositoryBase<,>), typeof(RepositoryBase<,>));
 
             services.AddTransient<IGuestService, GuestService>();
+            services.AddTransient<IMessageService, MessageService>();
+
+            // Configuration Telegram
+            var botToken = "8096236457:AAFGjf4QjwYlm_scCyxuKqsz173r3iLGIu0";
+            var chatId = "-4601427799";
+            services.AddSingleton(new TelegramService(botToken, chatId));
+            services.AddScoped<MessageService>();
         }
     }
 }

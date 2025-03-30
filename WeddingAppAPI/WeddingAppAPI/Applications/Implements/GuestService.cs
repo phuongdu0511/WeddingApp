@@ -42,16 +42,20 @@ namespace WeddingAppAPI.Applications.Implements
         public void AddGuest(Guest guest)
         {
             _guestRepository.Add(guest);
+            _unitOfWork.Commit();
         }
 
         public void RemoveGuest(Guest guest)
         {
             _guestRepository.Remove(guest);
+            _unitOfWork.Commit();
         }
 
         public void UpdateGuest(Guest guest)
         {
+            guest.UpdatedAt = DateTime.Now;
             _guestRepository.Update(guest);
+            _unitOfWork.Commit();
         }
     }
 }

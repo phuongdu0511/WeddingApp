@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj": {}
+    "D:\\Project\\test\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj": {}
   },
   "projects": {
-    "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj": {
+    "D:\\Project\\test\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj",
+        "projectUniqueName": "D:\\Project\\test\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj",
         "projectName": "WeddingAppAPI",
-        "projectPath": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj",
+        "projectPath": "D:\\Project\\test\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\WeddingAppAPI.csproj",
         "packagesPath": "C:\\Users\\Duy\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\obj\\",
+        "outputPath": "D:\\Project\\test\\WeddingApp\\WeddingAppAPI\\WeddingAppAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -77,6 +77,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
+            },
+            "Telegram.Bot": {
+              "target": "Package",
+              "version": "[22.4.4, )"
             }
           },
           "imports": [

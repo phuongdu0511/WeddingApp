@@ -1,4 +1,5 @@
 ﻿using WeddingAppAPI.Domain;
+using WeddingAppAPI.ViewModel;
 
 namespace WeddingAppAPI.Applications.Interfaces
 {
@@ -7,9 +8,9 @@ namespace WeddingAppAPI.Applications.Interfaces
         List<Guest> GetGuests(string name);
         Task<Guest> FindByIdAsync(Guid Id, CancellationToken cancellationToken = default);
         Task<Guest> FindByConditionAsync(Guid Id, CancellationToken cancellationToken = default);
-        void AddGuest(Guest guest);
+        Task AddGuest(AddGuestViewModel model);
 
         void RemoveGuest(Guest guest);
-        void UpdateGuest(Guest guest);
+        Task UpdateGuest(UpdateGuestViewModel guest);
     }
 }

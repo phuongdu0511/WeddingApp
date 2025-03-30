@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeddingAppAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+786e940fe5a23cc414f3875174cfe3917de64ada")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dd196bf1754f7445d721156bce9b5420ba00d8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("WeddingAppAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeddingAppAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

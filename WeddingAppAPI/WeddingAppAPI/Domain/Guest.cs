@@ -12,8 +12,12 @@ namespace WeddingAppAPI.Domain
 
         [Required]
         public string GuestName { get; set; }
+        [Required]
+        public int Type { get; set; }
 
         public string Comment { get; set; }
+
+        public bool Status { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

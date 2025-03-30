@@ -21,9 +21,13 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             builder.Property(m => m.GuestId)
             .IsRequired();
 
+            builder.Property(m => m.GuestName)
+            .HasColumnType("nvarchar(40)");
+
             builder.Property(m => m.CreatedAt)
             .HasDefaultValueSql("GETDATE()")
             .ValueGeneratedOnAdd();
+
         }
     }
 }

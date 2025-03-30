@@ -27,6 +27,15 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             builder.Property(g => g.UpdatedAt)
             .HasDefaultValueSql("GETDATE()")
             .ValueGeneratedOnAddOrUpdate();
+
+            builder.Property(g => g.Type)
+            .IsRequired()
+            .HasColumnType("int");
+
+            builder.Property(g => g.Status)
+            .IsRequired()
+            .HasColumnType("bit")
+            .HasDefaultValueSql("0");
         }
     }
 }

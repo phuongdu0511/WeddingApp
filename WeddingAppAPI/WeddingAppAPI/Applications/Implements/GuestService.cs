@@ -1,6 +1,9 @@
-﻿using WeddingAppAPI.Abstractions;
+﻿using Telegram.Bot.Types;
+using WeddingAppAPI.Abstractions;
 using WeddingAppAPI.Applications.Interfaces;
+using WeddingAppAPI.Common;
 using WeddingAppAPI.Domain;
+using WeddingAppAPI.ViewModel;
 
 namespace WeddingAppAPI.Applications.Implements
 {
@@ -8,12 +11,15 @@ namespace WeddingAppAPI.Applications.Implements
     {
         private readonly IRepositoryBase<Guest, Guid> _guestRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly TelegramService _telegramService;
 
         public GuestService(IRepositoryBase<Guest, Guid> guestRepository,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            TelegramService telegramService)
         {
             _guestRepository = guestRepository;
             _unitOfWork = unitOfWork;
+            _telegramService = telegramService;
         }
         public List<Guest> GetGuests(string name)
         {
@@ -39,8 +45,13 @@ namespace WeddingAppAPI.Applications.Implements
         }
 
 
-        public void AddGuest(Guest guest)
+        public async Task AddGuest(AddGuestViewModel model)
         {
+            Guest guest = new Guest();
+            guest.Id = new Guid();
+            guest.Comment = model.Comment;
+            guest.GuestName = model.GuestName;
+            guest.Type = model.Type;
             _guestRepository.Add(guest);
             _unitOfWork.Commit();
         }
@@ -51,11 +62,38 @@ namespace WeddingAppAPI.Applications.Implements
             _unitOfWork.Commit();
         }
 
-        public void UpdateGuest(Guest guest)
+        public async Task UpdateGuest(UpdateGuestViewModel model)
         {
-            guest.UpdatedAt = DateTime.Now;
-            _guestRepository.Update(guest);
-            _unitOfWork.Commit();
+            try
+            {
+                var guest = FindByIdAsync(Guid.Parse(model.Id)).Result;
+                if (guest != null)
+                {
+                    var type = CodeConst.FriendTypes.FirstOrDefault(x => x.Key == guest.Type).Value;
+                    var acceptStatus = CodeConst.AcceptStatus.FirstOrDefault(x => x.Key == model.Status).Value;
+                    guest.Status = model.Status;
+                    guest.UpdatedAt = DateTime.Now;
+                    if (!model.UpdateStatusFlag)
+                    {
+                        guest.GuestName = model.GuestName;
+                        guest.Comment = model.Comment;
+                        guest.Type = model.Type;
+                    }
+
+                    _guestRepository.Update(guest);
+                    _unitOfWork.Commit();
+
+                    if (model.UpdateStatusFlag)
+                    {
+                        await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} ");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await _telegramService.SendMessageAsync($"Lỗi ở UpdateGuest: {ex.Message}, {DateTime.Now}");
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

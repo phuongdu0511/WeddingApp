@@ -35,12 +35,8 @@ namespace WeddingAppAPI.Controllers
 
         [HttpPost("add")]
         public IActionResult AddGuest(AddGuestViewModel model) {
-            Guest guest = new Guest();
-            guest.Id = new Guid();
-            guest.Comment = model.Comment;
-            guest.GuestName = model.GuestName;
-            _guestService.AddGuest(guest);
-            return Ok(guest);
+            var result = _guestService.AddGuest(model);
+            return Ok(result);
         }
 
         [HttpPost("delete")]
@@ -54,13 +50,8 @@ namespace WeddingAppAPI.Controllers
 
         [HttpPost("update")]
         public IActionResult UpdateGuest(UpdateGuestViewModel model) {
-            var guestUpdate = _guestService.FindByIdAsync(Guid.Parse(model.Id)).Result;
-            if (guestUpdate == null)
-                return NotFound();
-            guestUpdate.GuestName = model.GuestName;
-            guestUpdate.Comment = model.Comment;
-            _guestService.UpdateGuest(guestUpdate);
-            return Ok(guestUpdate);
+            _guestService.UpdateGuest(model);
+            return Ok();
         }
     }
 }

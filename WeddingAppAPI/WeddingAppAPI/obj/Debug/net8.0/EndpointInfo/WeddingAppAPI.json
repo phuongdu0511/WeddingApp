@@ -181,7 +181,8 @@
     "schemas": {
       "AddGuestViewModel": {
         "required": [
-          "guestName"
+          "guestName",
+          "type"
         ],
         "type": "object",
         "properties": {
@@ -192,6 +193,10 @@
           "comment": {
             "type": "string",
             "nullable": true
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -200,10 +205,6 @@
         "type": "object",
         "properties": {
           "guestId": {
-            "type": "string",
-            "nullable": true
-          },
-          "guestName": {
             "type": "string",
             "nullable": true
           },
@@ -216,7 +217,8 @@
       },
       "UpdateGuestViewModel": {
         "required": [
-          "guestName"
+          "guestName",
+          "type"
         ],
         "type": "object",
         "properties": {
@@ -228,9 +230,19 @@
             "minLength": 1,
             "type": "string"
           },
+          "status": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32"
+          },
           "comment": {
             "type": "string",
             "nullable": true
+          },
+          "updateStatusFlag": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

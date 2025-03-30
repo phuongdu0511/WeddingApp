@@ -295,7 +295,6 @@ D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\staticwe
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WeddingAppAPI.props
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WeddingAppAPI.props
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\WeddingA.88269CA0.Up2Date
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\WeddingAppAPI.dll
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\refint\WeddingAppAPI.dll
@@ -303,3 +302,4 @@ D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\WeddingA
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\WeddingAppAPI.genruntimeconfig.cache
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\ref\WeddingAppAPI.dll
 D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\bin\Debug\net8.0\Telegram.Bot.dll
+D:\Project\test\WeddingApp\WeddingAppAPI\WeddingAppAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

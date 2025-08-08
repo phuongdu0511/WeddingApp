@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lora: ['"Lora"', 'serif'],
+        vibes: ['"Great Vibes"'],
+        highSpirited: ['"High Spirited"', 'cursive'],
+        cursive: ['cursive'],
+        math: ['math'],
+      },
+      colors: {
+          textDefault: 'rgb(146, 131, 98)'
+      },
+    }
   },
   plugins: [],
 }

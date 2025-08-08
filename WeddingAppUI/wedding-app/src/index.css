@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply text-textDefault;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  color: rgb(146, 131, 98);
+}
+
+@font-face {
+  font-family: 'High Spirited';
+  src: url('/src/assets/fonts/High\ Spirited.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

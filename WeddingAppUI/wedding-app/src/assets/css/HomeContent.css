@@ -1,0 +1,219 @@
+.mt-title {
+    margin-top: 30rem;
+}
+
+.h-40 {
+    height: 40rem;
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Zoom In */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes rollInLeft {
+  0% {
+    transform-origin: left bottom;
+    transform: translateX(-200%) rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: left bottom;
+    transform: translateX(0) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Common hidden state */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+/* When visible + animation name => play */
+.animate-on-scroll.visible.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-on-scroll.visible.zoomIn {
+  animation: zoomIn 1s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeft {
+  animation: fadeInLeft 1s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInRight {
+  animation: fadeInRight 1s ease-out forwards;
+}
+
+.animate-on-scroll.visible.rollInLeft {
+  animation: rollInLeft 1s ease-out forwards;
+}
+
+.line-1{
+    height: 90px;
+    top: 0px;
+    left: 176px;
+    border-bottom: 2px solid rgb(146, 131, 98);
+    border-left: 2px solid rgb(146, 131, 98);
+}
+
+.mt-8 {
+    margin-top: 8rem;
+}
+
+.mt-22 {
+    margin-top: 22rem;
+}
+
+.mt-24 {
+    margin-top: 24rem;
+}
+
+.mt-30 {
+    margin-top: 30rem;
+}
+
+.mt-33 {
+    margin-top: 33rem;
+}
+
+.line-2{
+    width: 263px;
+    border-right: 2px solid rgb(146, 131, 98);
+    border-bottom: 2px solid rgb(146, 131, 98);
+    border-left: 0px;
+}
+
+.mt-36 {
+    margin-top: 36rem;
+}
+
+.mt-37 {
+    margin-top: 37rem;
+}
+
+.mt-42 {
+    margin-top: 42rem;
+}
+
+.mt-43 {
+    margin-top: 43rem;
+}
+
+.mt-45 {
+    margin-top: 45rem;
+}
+
+.mt-47 {
+    margin-top: 48rem
+}
+
+.mt-50 {
+    margin-top: 50rem;
+}
+
+.mt-73 {
+    margin-top: 19rem;
+}
+
+.nav-image {
+    width: 6%;
+}
+
+.pt-14 {
+    padding-top: 14rem;
+}
+
+.dip {
+    margin-left: 16rem;
+    margin-top: 6rem;
+}
+
+.dip-img {
+    background-size: cover;
+    top: 71.2px;
+    width: 202px;
+    height: 202px;
+}
+
+.duy {
+    margin-left: 2rem;
+    margin-top: 21rem;
+}
+
+#GROUP1 {
+    width: 420px;
+    height: 525.84px;
+    top: 210px;
+    overflow: hidden;
+}
+
+#BOX1 > .ladi-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/wedding/BONN0785.JPG);
+    background-size: cover;
+    background-origin: content-box;
+    background-position: 50% 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    transform: rotate(-11deg);
+}
+
+#BOX1 > .ladi-transition {
+    transition: all 150ms linear 0s;
+}
+
+#BOX1 {
+    width: 202px;
+    height: 202px;
+    top: 71.2px;
+    left: 0px;
+}
+
+#BOX1 > .ladi-box:hover {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+
+#BOX2 {
+    width: 213px;
+    height: 213px;
+    top: 256.2px;
+    left: 201px;
+}
+
+#BOX2 > .ladi-box {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/wedding/BONN1068.JPG);
+    background-size: cover;
+    background-origin: content-box;
+    background-position: 50% 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    transform: rotate(10deg);
+}

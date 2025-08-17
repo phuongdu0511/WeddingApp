@@ -10,6 +10,7 @@ import home7 from '../assets/images/cover/home_7.png';
 import home8 from '../assets/images/cover/home_8.jpg';
 import home9 from '../assets/images/cover/home_9.png';
 import home10 from '../assets/images/cover/home_10.png';
+import home11 from '../assets/images/cover/home_11.png';
 import logo from '../assets/images/cover/logoBA.png';
 import navigation from '../assets/images/cover/navigation.png';
 import BONN0977 from '../assets/images/wedding/BONN0977.jpg';
@@ -22,30 +23,41 @@ import BONN0785 from '../assets/images/wedding/BONN0785.jpg';
 import { useAutoScrollAnimation } from '../hooks/useAutoScrollAnimation';
 import WeddingCountdown from "../components/WeddingCountdown";
 import { Link } from 'react-router-dom';
+import bgVideo from "../assets/video/v1.mp4";
 
 const HomeContent: React.FC = () => {
     useAutoScrollAnimation();
     return (
         <div className="relative min-h-screen items-center main-wr">
             <div className="relative">
-                <img
+                {/* <img
                     src={BONN0977}
                     alt="Ảnh BONN0977"
                     className="w-full h-40"
-                />
-                <div className="absolute top-9 -translate-x-1/2 w-full zoom-in-animate">
+                /> */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full"
+                >
+                    <source src={bgVideo} type="video/mp4" />
+                    Trình duyệt của bạn không hỗ trợ video.
+                </video>
+                <div className="absolute top-9 -translate-x-1/2 w-full h-full animate-on-scroll" data-animate="zoomIn">
                     <p className="font-highSpirited text-7xl text-center text-white">
                         We get married
                     </p>
                 </div>
-                <div className="absolute top-9 -translate-x-1/2 w-full mt-title zoom-in-animate">
+                {/* <div className="absolute top-9 -translate-x-1/2 w-full mt-title animate-on-scroll" data-animate="zoomIn">
                     <p className="font-lora text-2xl text-center text-white">
                         PHƯƠNG DUY & NGỌC DIỆP
                     </p>
                     <p className="font-lora text-2xl text-center text-white">
                         29.11.2025
                     </p>
-                </div>
+                </div> */}
             </div>
             <div className="min-h-screen">
                 <div className="relative">
@@ -246,6 +258,18 @@ const HomeContent: React.FC = () => {
                              <div id="BOX2" className="absolute">
                                 <div className="ladi-box ladi-transition z-20"></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative">
+                    <img
+                        src={home2}
+                        alt="Ảnh home2"
+                        className="absolute mt-54"
+                    />
+                    <div id="IMAGE7" className="absolute mt-54">
+                        <div className="ladi-image">
+                            <div className="ladi-image-background"></div>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/great-vibes": "^5.2.6",
     "@fontsource/lora": "^5.2.6",
+    "lucide-react": "^0.539.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.1"

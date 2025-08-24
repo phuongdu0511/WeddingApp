@@ -451,8 +451,8 @@
   background-color: rgb(255, 255, 255);
 }
 .SECTION5 {
-  width: 420px;
-  height: 2270px;
+  width: 100%;
+  height: 2790px;
   overflow: hidden;
 }
 #GROUP19 {
@@ -579,7 +579,17 @@
 }
 
 #GALLERY1 {
-  width: 420px;
+  width: 100%;
   height: 666px;
   top: 695.885px;
+}
+
+#CHATBOX {
+  width: 100%;
+  height: 666px;
+  top: 695.885px;
+}
+
+.mt-98 {
+  margin-top: 98rem;
 }

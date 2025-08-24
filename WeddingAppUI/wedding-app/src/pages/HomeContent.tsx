@@ -23,6 +23,7 @@ import BONN0785 from "../assets/images/wedding/BONN0785.jpg";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
+import ChatBox from "./ChatBox";
 import { Link } from "react-router-dom";
 import bgVideo from "../assets/video/v1.mp4";
 
@@ -321,7 +322,10 @@ const HomeContent: React.FC = () => {
               <p className="ladi-headline font-lora">OF LOVE</p>
             </div>
             <div id="GALLERY1" className="absolute mt-54">
-              <Gallery></Gallery>
+              <Gallery/>
+            </div>
+            <div id="CHATBOX" className="absolute mt-98">
+              <ChatBox />
             </div>
           </div>
         </div>

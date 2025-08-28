@@ -33,6 +33,34 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
       const img = new Image();
       img.src = mod.default;
     });
+
+    // Preload nhạc
+    const musicFiles = import.meta.glob("../assets/music/*.mp3", {
+      eager: true,
+      import: "default",
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Object.values(musicFiles).forEach((src: any) => {
+      const audio = new Audio();
+      audio.src = src;
+      // gọi load() để browser tải metadata và cache
+      audio.load();
+    });
+
+    // --- Preload video ---
+    const videoFiles = import.meta.glob("../assets/video/*.mp4", {
+      eager: true,
+      import: "default",
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Object.values(videoFiles).forEach((src: any) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.preload = "auto"; // yêu cầu preload
+      video.load();
+    });
   }, []);
 
   return (
@@ -56,7 +84,10 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
           src={cursor}
           alt="cursor"
           className="pointer-animate"
-          onClick={onClick}
+          onClick={(e) => {
+            e.stopPropagation(); // chặn click lan xuống HomeContent
+            onClick(); // đóng Welcome, mở HomeContent
+          }}
         />
       </div>
     </div>

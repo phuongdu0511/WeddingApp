@@ -1,0 +1,7 @@
+.bg-icon-menu {
+    background-color:rgb(146, 131, 98);;
+}
+
+.mg-right {
+    margin-right: calc(50% - 210px);
+}

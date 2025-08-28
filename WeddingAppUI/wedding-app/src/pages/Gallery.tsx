@@ -73,10 +73,7 @@ export default function Gallery() {
   };
 
   return (
-    <div
-      className="flex flex-col gap-4"
-      onClick={() => setAutoPlay(false)}
-    >
+    <div className="flex flex-col gap-4" onClick={() => setAutoPlay(false)}>
       {/* Ảnh chính */}
       <div
         className="relative h-[666px] overflow-hidden shadow-lg"
@@ -127,7 +124,7 @@ export default function Gallery() {
               }}
               className={`w-20 h-14 object-cover rounded-lg cursor-pointer transition-all duration-300 ${
                 idx === current
-                  ? "ring-4 ring-indigo-500 scale-110"
+                  ? "scale-110"
                   : "opacity-70 hover:opacity-100"
               }`}
             />

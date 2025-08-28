@@ -93,6 +93,130 @@
   }
 }
 
+/* Fade In Left DressCode*/
+@keyframes fadeInLeftBlack {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftBrown {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftRed {
+  from {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftWhite {
+  from {
+    opacity: 0;
+    transform: translateX(-110px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftCamera {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftRing {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftEat {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeftDisco {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-on-scroll.visible.fadeInLeftCamera {
+  animation: fadeInLeftCamera 0.7s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeftRing {
+  animation: fadeInLeftRing 1.2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.animate-on-scroll.visible.fadeInLeftEat {
+  animation: fadeInLeftEat 0.7s ease-out forwards;
+  animation-delay: 1;
+}
+
+.animate-on-scroll.visible.fadeInLeftDisco {
+  animation: fadeInLeftDisco 0.7s ease-out forwards;
+  animation-delay: 1.5;
+}
+
+.animate-on-scroll.visible.fadeInLeftBlack {
+  animation: fadeInLeftBlack 0.7s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeftBrown {
+  animation: fadeInLeftBrown 1.2s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeftRed {
+  animation: fadeInLeftRed 1.7s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeftWhite {
+  animation: fadeInLeftWhite 2.2s ease-out forwards;
+}
+
 /* Common hidden state */
 .animate-on-scroll {
   opacity: 0;
@@ -150,6 +274,10 @@
   margin-top: 30rem;
 }
 
+.mt-31 {
+  margin-top: 31rem;
+}
+
 .mt-33 {
   margin-top: 33rem;
 }
@@ -190,7 +318,7 @@
 }
 
 .mt-54 {
-  margin-top: 51rem;
+  margin-top: 93rem;
 }
 
 .mt-73 {
@@ -452,7 +580,7 @@
 }
 .SECTION5 {
   width: 100%;
-  height: 2790px;
+  height: 3900px;
   overflow: hidden;
 }
 #GROUP19 {
@@ -590,6 +718,647 @@
   top: 695.885px;
 }
 
-.mt-98 {
-  margin-top: 98rem;
+.mt-99 {
+  margin-top: 99rem;
+}
+
+.mt-135 {
+  margin-top: 135rem;
+}
+
+.mt-74 {
+  margin-top: 74rem;
+}
+
+.mt-81 {
+  margin-top: 86rem;
+}
+
+.mt-89 {
+  margin-top: 89rem;
+}
+
+.mt-209 {
+  margin-top: 209rem;
+}
+
+#HEADLINE63 {
+  width: 320px;
+  top: 555px;
+  left: 50px;
+}
+
+.mt-181 {
+  margin-top: 181rem;
+}
+
+.mt-190 {
+  margin-top: 190rem;
+}
+
+.mt-172 {
+  margin-top: 172rem;
+}
+
+.mt-186 {
+  margin-top: 186rem;
+}
+
+.bg-home2 {
+  background-image: url(../images/cover/home_2.jpg);
+}
+
+#GROUP38 {
+  width: 100%;
+  height: 767.868px;
+  top: 643.332px;
+  left: 0px;
+}
+
+#LINE4 {
+  height: 639px;
+  top: 75.468px;
+  left: 17.19px;
+}
+
+#LINE1 > .ladi-line > .ladi-line-container,
+#LINE4 > .ladi-line > .ladi-line-container {
+  height: 100%;
+  border-top: 0px !important;
+  border-left: 2px solid rgb(146, 131, 98);
+}
+
+#LINE1 > .ladi-line,
+#LINE4 > .ladi-line {
+  height: 100%;
+  padding: 0px 8px;
+}
+
+#BOX10,
+#BOX11,
+#BOX12 {
+  width: 10px;
+  height: 10px;
+}
+
+#BOX10 {
+  top: 68.768px;
+  left: 20.69px;
+}
+
+#BOX10 > .ladi-box,
+#BOX11 > .ladi-box,
+#BOX12 > .ladi-box,
+#BOX32 > .ladi-box,
+#BOX29 > .ladi-box,
+#BOX30 > .ladi-box,
+#BOX31 > .ladi-box,
+#BOX35 > .ladi-box {
+  border-radius: 100px;
+}
+
+#BOX10 > .ladi-box,
+#BOX11 > .ladi-box,
+#BOX12 > .ladi-box,
+#BOX35 > .ladi-box,
+#BUTTON3 > .ladi-button > .ladi-button-background,
+#BOX42 > .ladi-box {
+  background-color: rgb(146, 131, 98);
+}
+
+#BOX11 {
+  top: 270.768px;
+  left: 20.69px;
+}
+
+#BOX12 {
+  top: 534.768px;
+  left: 20.69px;
+}
+
+#HEADLINE37,
+#HEADLINE39,
+#HEADLINE41 {
+  width: 330px;
+}
+
+#HEADLINE37 {
+  top: 57.268px;
+  left: 44.69px;
+}
+
+#HEADLINE37 > .ladi-headline,
+#HEADLINE39 > .ladi-headline,
+#HEADLINE41 > .ladi-headline {
+  font-size: 20px;
+  line-height: 1.6;
+  color: rgb(146, 131, 98);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+#HEADLINE38,
+#HEADLINE40,
+#HEADLINE42 {
+  width: 87%;
+}
+
+#HEADLINE38 {
+  top: 94.168px;
+  left: 44.69px;
+}
+
+#HEADLINE38 > .ladi-headline,
+#HEADLINE40 > .ladi-headline,
+#HEADLINE42 > .ladi-headline {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgb(146, 131, 98);
+  text-align: left;
+}
+
+#HEADLINE39 {
+  top: 259.268px;
+  left: 44.69px;
+}
+
+#HEADLINE40 {
+  top: 295.268px;
+  left: 44.69px;
+}
+
+#HEADLINE41 {
+  top: 524.268px;
+  left: 44.69px;
+}
+
+#HEADLINE42 {
+  top: 560.268px;
+  left: 44.69px;
+}
+
+#SECTION6 {
+  height: 500px;
+  width: 100%;
+}
+
+#IMAGE53 {
+  width: 419.434px;
+  height: 186.111px;
+  top: -0.11px;
+  left: 0.783px;
+}
+
+#IMAGE53 > .ladi-image > .ladi-image-background {
+  width: 419.434px;
+  height: 421.111px;
+}
+
+#GROUP13,
+#BOX27,
+#BOX28 {
+  width: 420px;
+  height: 327px;
+}
+
+#GROUP13 {
+  top: 173px;
+  left: 0px;
+}
+
+#BOX27 > .ladi-box {
+  background-image: url(../images/wedding/BONN0255.JPG);
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+
+#BOX28 > .ladi-box {
+  background-color: rgba(2, 2, 2, 0.4);
+}
+
+#HEADLINE46,
+#HEADLINE47 {
+  width: 243px;
+}
+
+#HEADLINE46 {
+  top: 38.2px;
+  left: 88.5px;
+}
+
+#HEADLINE46 > .ladi-headline {
+  font-size: 30px;
+  line-height: 1.1;
+  color: rgb(146, 131, 98);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+#HEADLINE47 {
+  top: 241.2px;
+  left: 88.5px;
+}
+
+#HEADLINE47 > .ladi-headline {
+  font-size: 40px;
+  line-height: 1.1;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+#LINE5 {
+  width: 370px;
+  top: 353.5px;
+  left: 25px;
+}
+
+#LINE5 > .ladi-line > .ladi-line-container {
+  border-top: 2px solid rgb(255, 255, 255);
+}
+
+#LINE2 > .ladi-line,
+#LINE3 > .ladi-line,
+#LINE5 > .ladi-line,
+#LINE6 > .ladi-line {
+  width: 100%;
+  padding: 8px 0px;
+}
+
+.time-line {
+  width: 370px;
+  border-top: 2px solid rgb(255, 255, 255);
+}
+
+.time-line-1 {
+  padding: 8px 0px;
+  top: 353.5px;
+}
+
+#GROUP39,
+#GROUP23 {
+  width: 85px;
+  height: 113.7px;
+}
+
+#GROUP39 {
+  top: 316.5px;
+  left: 311px;
+}
+
+#BOX32,
+#BOX29,
+#BOX30,
+#BOX31 {
+  width: 9px;
+  height: 9px;
+}
+
+#BOX32 {
+  top: 41.5px;
+  left: 37px;
+}
+
+#IMAGE11,
+#IMAGE11 > .ladi-image > .ladi-image-background,
+#IMAGE10,
+#IMAGE10 > .ladi-image > .ladi-image-background {
+  width: 34px;
+  height: 34px;
+}
+
+#IMAGE11 {
+  top: 0px;
+  left: 24px;
+}
+
+#IMAGE11 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/disco.png);
+  background-size: contain;
+}
+
+#HEADLINE51 {
+  width: 56px;
+  top: 61.7px;
+  left: 14.5px;
+}
+
+#HEADLINE51 > .ladi-headline,
+#HEADLINE50 > .ladi-headline,
+#HEADLINE49 > .ladi-headline,
+#HEADLINE48 > .ladi-headline {
+  font-size: 17.27px;
+  line-height: 1.1;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+#SECTION7 {
+  height: 825.6px;
+  width: 100%;
+}
+
+#GROUP44 {
+  width: 131.2px;
+  height: 39.7px;
+  top: -411.33px;
+  left: 130px;
+}
+
+#BOX41,
+#BOX42,
+#BOX43,
+#BOX44 {
+  width: 39.7px;
+  height: 39.7px;
+}
+
+#BOX41 > .ladi-box,
+#BOX42 > .ladi-box,
+#BOX43 > .ladi-box,
+#BOX44 > .ladi-box {
+  border-radius: 1000px;
+  box-shadow: rgb(0, 0, 0) 0px 15px 20px -15px;
+}
+
+#BOX41 > .ladi-box {
+  background-color: rgb(45, 48, 33);
+}
+
+#BOX41.ladi-animation > .ladi-box {
+  animation-name: fadeInLeft;
+  animation-delay: 0.5s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+#BOX42 {
+  top: 0px;
+  left: 28.9px;
+}
+
+#BOX42.ladi-animation > .ladi-box {
+  animation-name: fadeInLeft;
+  animation-delay: 0.7s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+#BOX43 {
+  top: 0px;
+  left: 60.5px;
+}
+
+#BOX43 > .ladi-box {
+  background-color: rgb(128, 0, 32);
+}
+
+#BOX44 {
+  top: 0px;
+  left: 91.5px;
+}
+
+#BOX44 > .ladi-box {
+  background-color: white;
+}
+
+#BOX44.ladi-animation > .ladi-box {
+  animation-name: fadeInLeft;
+  animation-delay: 1.3s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+#GROUP49 {
+  width: 134.5px;
+  height: 42px;
+  top: 312.5px;
+  left: 47.5004px;
+}
+
+#IMAGE9,
+#IMAGE9 > .ladi-image > .ladi-image-background {
+  width: 42px;
+  height: 42px;
+}
+
+#IMAGE9 {
+  top: 0px;
+  left: 92.4996px;
+}
+
+#IMAGE9 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/ring.png);
+  background-size: contain;
+}
+
+#IMAGE8,
+#IMAGE8 > .ladi-image > .ladi-image-background {
+  width: 38px;
+  height: 38px;
+}
+
+#IMAGE8 {
+  top: 1px;
+  left: 0px;
+}
+
+#IMAGE8 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/camera.png);
+  background-size: contain;
+}
+
+#GROUP22 {
+  width: 85px;
+  height: 112.7px;
+  top: 317.5px;
+  left: 216.5px;
+}
+
+#IMAGE10 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/eat.png);
+  background-size: contain;
+}
+
+#HEADLINE48 {
+  top: 378.2px;
+  left: 44.5px;
+}
+
+#HEADLINE52 {
+  width: 70px;
+  top: 402.2px;
+  left: 31.5px;
+}
+
+#HEADLINE55 > .ladi-headline,
+#HEADLINE54 > .ladi-headline,
+#HEADLINE53 > .ladi-headline,
+#HEADLINE52 > .ladi-headline {
+  font-size: 10px;
+  line-height: 1.4;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+#HEADLINE49 {
+  top: 378.2px;
+  left: 141px;
+}
+
+#HEADLINE53 {
+  top: 402.2px;
+  left: 120.5px;
+}
+
+#HEADLINE50 {
+  top: 60.7px;
+  left: 20.5px;
+}
+
+#HEADLINE54 {
+  top: 84.7px;
+  left: 0px;
+}
+
+#HEADLINE55,
+#HEADLINE54,
+#HEADLINE53 {
+  width: 85px;
+}
+
+#HEADLINE55 {
+  top: 85.7px;
+  left: 0px;
+}
+
+#LINE2,
+#IMAGE10 {
+  top: 0px;
+  left: 24.5px;
+}
+
+#BOX29 {
+  top: 358px;
+  left: 63px;
+}
+
+#BOX30 {
+  top: 358px;
+  left: 158px;
+}
+
+#BOX31 {
+  top: 358px;
+  left: 253px;
+}
+
+#FORM_ITEM5 {
+  top: 205px;
+  left: 0px;
+}
+
+#FORM_ITEM5 {
+  width: 382.078px;
+  height: 35px;
+}
+
+#FORM_ITEM5 .ladi-form-item {
+  background-image: none !important;
+}
+
+#FORM2 {
+  width: 382.078px;
+  height: 338px;
+  top: 96.4px;
+  left: 0px;
+}
+
+#FORM2 > .ladi-form {
+  font-family: TESQSSRUdVTEFSLlRURg;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgb(146, 131, 98);
+}
+
+#FORM2 .ladi-form .ladi-form-checkout-payment-item {
+  --check-size: calc(14px * 1.5);
+  --width-quantity: calc(14px * 2.5 + 30px);
+}
+
+#FORM2
+  .ladi-form
+  .ladi-form-item.ladi-form-checkbox
+  .ladi-form-checkbox-item
+  span[data-checked="false"],
+#FORM2
+  .ladi-form
+  .ladi-form-item.ladi-form-checkbox
+  .ladi-form-checkbox-item
+  .ladi-editing,
+#FORM2
+  .ladi-form
+  .ladi-form-item.ladi-form-checkbox
+  .ladi-form-checkbox-item
+  .ladi-editing::placeholder,
+#FORM2 .ladi-form .ladi-survey-option .ladi-survey-option-label,
+#FORM2 .ladi-form-item .ladi-form-control::placeholder,
+#FORM2 .ladi-form-item select.ladi-form-control[data-selected=""],
+#FORM2 .ladi-form-checkout-payment-quantity input {
+  color: rgb(146, 131, 98);
+}
+
+#FORM2:hover .overlay-checkout {
+  display: flex !important;
+}
+
+#FORM2 .ladi-form-item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#FORM2 .ladi-form-item.otp-countdown:before {
+  right: 10px;
+}
+
+#FORM2 .ladi-form-item.ladi-form-checkbox {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#FORM2 .ladi-survey-option {
+  text-align: left;
+}
+
+#FORM2 .ladi-form-item-container,
+#FORM2 .ladi-form-checkout-box,
+#FORM2 .ladi-form-checkout-bump-offer-product,
+#FORM2 .ladi-form-label-container .ladi-form-label-item {
+  border-width: 1px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: rgb(146, 131, 98);
+}
+
+#FORM2 .ladi-form-item-container .ladi-form-item.ladi-form-quantity {
+  width: calc(100% + 1px);
+}
+
+#FORM2 .ladi-form [data-form-checkout-item="total_price"] .space,
+#FORM2 .ladi-form-checkout-payment-quantity input {
+  border-color: rgb(146, 131, 98);
+}
+
+#FORM2 .ladi-form-checkout-payment-quantity input {
+  width: 65px;
 }

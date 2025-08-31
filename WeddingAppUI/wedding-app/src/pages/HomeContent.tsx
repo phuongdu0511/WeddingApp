@@ -552,7 +552,7 @@ const HomeContent: React.FC = () => {
             </div>
             <div id="SECTION7" className="ladi-section absolute mt-181">
               <div className="ladi-container">
-                <div id="FORM2" className="absolute ladi-animation">
+                <div id="FORM2" className="absolute ladi-animation flex justify-center">
                   <div id="FORM_ITEM5" className="absolute">
                     <div className="ladi-form-item-container">
                       <div className="ladi-form-item-background"></div>
@@ -611,7 +611,7 @@ const HomeContent: React.FC = () => {
             <div id="HEADLINE63" className="absolute mt-190">
               <p className="ladi-headline font-highSpirited">Thank you!</p>
             </div>
-            <Music />
+            {/* <Music /> */}
           </div>
         </div>
       </div>

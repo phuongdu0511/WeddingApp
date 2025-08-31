@@ -64,7 +64,13 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
   }, []);
 
   return (
-    <div className="relative min-h-screen items-center main-wr overflow-y-hidden">
+    <div
+      className="relative min-h-screen items-center main-wr overflow-y-hidden"
+      onClick={(e) => {
+        e.stopPropagation(); // chặn click lan xuống HomeContent
+        onClick(); // đóng Welcome, mở HomeContent
+      }}
+    >
       <img src={home1} alt="Ảnh 1" className="absolute w-full" />
       <img src={home2} alt="Ảnh 2" className="absolute w-full mt-img-2" />
       <img src={home3} alt="Ảnh 3" className="absolute w-full mt-img-3" />
@@ -80,15 +86,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
         <p className="font-math text-2xl  text-center">29.11.2025</p>
       </div>
       <div className="absolute mt-cursor left-1/2 -translate-x-1/8 -translate-y-1/2 w-1/6 z-20 cursor-click">
-        <img
-          src={cursor}
-          alt="cursor"
-          className="pointer-animate"
-          onClick={(e) => {
-            e.stopPropagation(); // chặn click lan xuống HomeContent
-            onClick(); // đóng Welcome, mở HomeContent
-          }}
-        />
+        <img src={cursor} alt="cursor" className="pointer-animate" />
       </div>
     </div>
   );

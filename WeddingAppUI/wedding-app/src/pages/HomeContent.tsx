@@ -33,7 +33,14 @@ const HomeContent: React.FC = () => {
   return (
     <div className="relative min-h-screen items-center main-wr">
       <div className="relative">
-        <video autoPlay loop muted playsInline preload="none" className="w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          className="w-full h-full"
+        >
           <source src={bgVideo} type="video/mp4" />
           Trình duyệt của bạn không hỗ trợ video.
         </video>
@@ -50,7 +57,8 @@ const HomeContent: React.FC = () => {
         <div className="relative">
           <img loading="lazy" src={home4} alt="Ảnh home4" className="w-full" />
           <div className="flex justify-center">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src={logo}
               alt="Ảnh logo"
               className="absolute top-32 w-1/3 z-10 animate-on-scroll"
@@ -66,7 +74,12 @@ const HomeContent: React.FC = () => {
               HUSBAND AND WIFE IN
             </p>
             <WeddingCountdown />
-            <img loading="lazy" src={home7} alt="Ảnh home7" className="absolute w-420 z-10" />
+            <img
+              loading="lazy"
+              src={home7}
+              alt="Ảnh home7"
+              className="absolute w-420 z-10"
+            />
             <div id="LETTER1" className="absolute">
               <div className="ladi-box ladi-transition"></div>
             </div>
@@ -76,15 +89,26 @@ const HomeContent: React.FC = () => {
           </div>
         </div>
         <div className="relative h-[510px]">
-          <img loading="lazy" src={home5} alt="Ảnh home5" className="absolute w-full" />
-          <img loading="lazy"
+          <img
+            loading="lazy"
+            src={home5}
+            alt="Ảnh home5"
+            className="absolute w-full"
+          />
+          <img
+            loading="lazy"
             src={home6}
             alt="Ảnh home6"
             className="absolute w-full z-5 mt-72"
           />
         </div>
         <div className="relative h-[265px]">
-          <img loading="lazy" src={BONN0412} alt="Ảnh BONN0412" className="absolute" />
+          <img
+            loading="lazy"
+            src={BONN0412}
+            alt="Ảnh BONN0412"
+            className="absolute"
+          />
           <div className="absolute left-8 top-40 z-20 w-full text-white">
             <p
               className="font-lora text-5xl animate-on-scroll"
@@ -102,9 +126,24 @@ const HomeContent: React.FC = () => {
           </div>
         </div>
         <div className="relative h-[765px]">
-          <img loading="lazy" src={home1} alt="Ảnh home1" className="absolute" />
-          <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-24" />
-          <img loading="lazy" src={home8} alt="Ảnh home8" className="absolute mt-47 z-5" />
+          <img
+            loading="lazy"
+            src={home1}
+            alt="Ảnh home1"
+            className="absolute"
+          />
+          <img
+            loading="lazy"
+            src={home2}
+            alt="Ảnh home2"
+            className="absolute mt-24"
+          />
+          <img
+            loading="lazy"
+            src={home8}
+            alt="Ảnh home8"
+            className="absolute mt-47 z-5"
+          />
           <div className="absolute flex items-start justify-center gap-4 border border-transparent w-full mt-48">
             <div
               className="text-center animate-on-scroll"
@@ -202,8 +241,18 @@ const HomeContent: React.FC = () => {
           </div>
         </div>
         <div className="relative">
-          <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-8" />
-          <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-30" />
+          <img
+            loading="lazy"
+            src={home2}
+            alt="Ảnh home2"
+            className="absolute mt-8"
+          />
+          <img
+            loading="lazy"
+            src={home2}
+            alt="Ảnh home2"
+            className="absolute mt-30"
+          />
           <div
             className="absolute top-40 z-20 w-full flex gap-3 justify-center animate-on-scroll"
             data-animate="fadeInUp"
@@ -214,7 +263,12 @@ const HomeContent: React.FC = () => {
           </div>
           <div id="GROUP1" className="absolute">
             <div className="flex">
-              <img loading="lazy" src={home9} alt="Cô dâu" className="absolute z-30" />
+              <img
+                loading="lazy"
+                src={home9}
+                alt="Cô dâu"
+                className="absolute z-30"
+              />
               <div id="BOX1" className="absolute z-40">
                 <div className="ladi-box ladi-transition z-40"></div>
               </div>
@@ -236,7 +290,12 @@ const HomeContent: React.FC = () => {
                 <p className="font-lora text-1xl">PHƯƠNG DUY</p>
                 <p>05.11.1996</p>
               </div>
-              <img loading="lazy" src={home10} alt="Chú rể" className="absolute z-20" />
+              <img
+                loading="lazy"
+                src={home10}
+                alt="Chú rể"
+                className="absolute z-20"
+              />
               <div id="BOX2" className="absolute">
                 <div className="ladi-box ladi-transition z-20"></div>
               </div>
@@ -245,13 +304,48 @@ const HomeContent: React.FC = () => {
         </div>
         <div className="relative">
           <div className="SECTION5 absolute">
-            <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-50" />
-            <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-135" />
-            <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-74" />
-            <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-81" />
-            <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-172" />
-            <img loading="lazy" src={home2} alt="Ảnh home2" className="absolute mt-186" />
-            <img loading="lazy" src={home13} alt="Ảnh home2" className="absolute mt-209" />
+            <img
+              loading="lazy"
+              src={home2}
+              alt="Ảnh home2"
+              className="absolute mt-50"
+            />
+            <img
+              loading="lazy"
+              src={home2}
+              alt="Ảnh home2"
+              className="absolute mt-135"
+            />
+            <img
+              loading="lazy"
+              src={home2}
+              alt="Ảnh home2"
+              className="absolute mt-74"
+            />
+            <img
+              loading="lazy"
+              src={home2}
+              alt="Ảnh home2"
+              className="absolute mt-81"
+            />
+            <img
+              loading="lazy"
+              src={home2}
+              alt="Ảnh home2"
+              className="absolute mt-172"
+            />
+            <img
+              loading="lazy"
+              src={home2}
+              alt="Ảnh home2"
+              className="absolute mt-186"
+            />
+            <img
+              loading="lazy"
+              src={home13}
+              alt="Ảnh home2"
+              className="absolute mt-209"
+            />
             <div id="GROUP38" className="absolute mt-16">
               <div className="ladi-group">
                 <div id="IMAGE50" className="absolute">
@@ -552,7 +646,10 @@ const HomeContent: React.FC = () => {
             </div>
             <div id="SECTION7" className="ladi-section absolute mt-181">
               <div className="ladi-container">
-                <div id="FORM2" className="absolute ladi-animation flex justify-center">
+                <div
+                  id="FORM2"
+                  className="absolute ladi-animation flex justify-center"
+                >
                   <div id="FORM_ITEM5" className="absolute">
                     <div className="ladi-form-item-container">
                       <div className="ladi-form-item-background"></div>
@@ -572,6 +669,32 @@ const HomeContent: React.FC = () => {
                   </div>
 
                   <button type="submit" className="ladi-hidden"></button>
+                </div>
+                <div
+                  id="BUTTON3"
+                  className="absolute ladi-animation"
+                >
+                  <div className="ladi-button">
+                    <div className="ladi-button-background absolute"></div>
+                    <div
+                      id="BUTTON_TEXT3"
+                      className="absolute"
+                    >
+                      <p className="ladi-headline font-lora">GỬI QUÀ MỪNG CƯỚI&nbsp;</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="HEADLINE56" className="absolute ladi-animation">
+                  <p className="ladi-headline">
+                    Hãy xác nhận sự có mặt của bạn để chúng mình
+                  </p>
+                  <p className="ladi-headline">
+                    chuẩn bị đón tiếp một cách chu đáo nhất.
+                  </p>
+                  <p className="ladi-headline">
+                    Trân trọng!
+                  </p>
                 </div>
 
                 <div id="GROUP44" className="absolute mt-31">

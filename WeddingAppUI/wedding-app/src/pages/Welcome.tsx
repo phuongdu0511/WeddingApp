@@ -73,6 +73,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
     >
       <img src={home1} alt="Ảnh 1" className="absolute w-full" />
       <img src={home2} alt="Ảnh 2" className="absolute w-full mt-img-2" />
+      <img src={home2} alt="Ảnh 2" className="absolute w-full mt-33" />
       <img src={home3} alt="Ảnh 3" className="absolute w-full mt-img-3" />
       <div className="absolute mt-letter left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 z-10">
         <img src={letter} alt="Letter" className="zoom-in-animate" />

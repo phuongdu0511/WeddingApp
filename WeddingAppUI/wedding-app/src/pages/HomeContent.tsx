@@ -338,13 +338,13 @@ const HomeContent: React.FC = () => {
               loading="lazy"
               src={home2}
               alt="Ảnh home2"
-              className="absolute mt-186"
+              className="absolute mt-199"
             />
             <img
               loading="lazy"
               src={home13}
               alt="Ảnh home2"
-              className="absolute mt-209"
+              className="absolute mt-222"
             />
             <div id="GROUP38" className="absolute mt-16">
               <div className="ladi-group">
@@ -584,6 +584,68 @@ const HomeContent: React.FC = () => {
                 <div id="BOX31" className="absolute">
                   <div className="ladi-box ladi-transition"></div>
                 </div>
+                <div id="GROUP24" className="absolute ladi-animation">
+                  <div className="ladi-group">
+                    <div
+                      id="IMAGE8"
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftCamera"
+                    >
+                      <div className="ladi-image">
+                        <div className="ladi-image-background"></div>
+                      </div>
+                    </div>
+                    <div
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftCamera"
+                    >
+                      <div id="HEADLINE57" className="absolute">
+                        <p className="ladi-headline font-lora">17:30</p>
+                      </div>
+                      <div id="HEADLINE58" className="absolute">
+                        <p className="ladi-headline font-lora">đón tiếp</p>
+                        <p className="ladi-headline font-lora">khách mời</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="GROUP25" className="absolute ladi-animation">
+                  <div className="ladi-group">
+                    <div
+                      id="IMAGE9"
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftRing"
+                    >
+                      <div className="ladi-image">
+                        <div className="ladi-image-background"></div>
+                      </div>
+                    </div>
+                    <div
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftRing"
+                    >
+                      <div id="HEADLINE59" className="absolute">
+                        <p className="ladi-headline font-lora">18:00</p>
+                      </div>
+                      <div id="HEADLINE60" className="absolute">
+                        <p className="ladi-headline font-lora">bắt đầu</p>
+                        <p className="ladi-headline font-lora">lễ thành hôn</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <div className="absolute">
+                  <div id="HEADLINE49" className="absolute">
+                    <p className="ladi-headline font-lora">18:00</p>
+                  </div>
+                  <div id="HEADLINE53" className="absolute">
+                    <p className="ladi-headline font-lora">bắt đầu</p>
+                    <p className="ladi-headline font-lora">lễ thành hôn</p>
+                  </div>
+                </div> */}
+
                 <div id="GROUP22" className="absolute ladi-animation">
                   <div className="ladi-group">
                     <div
@@ -609,17 +671,8 @@ const HomeContent: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="absolute">
-                  <div id="HEADLINE49" className="absolute">
-                    <p className="ladi-headline font-lora">18:00</p>
-                  </div>
-                  <div id="HEADLINE53" className="absolute">
-                    <p className="ladi-headline font-lora">bắt đầu</p>
-                    <p className="ladi-headline font-lora">lễ thành hôn</p>
-                  </div>
-                </div>
 
-                <div id="GROUP49" className="absolute">
+                {/* <div id="GROUP49" className="absolute">
                   <div className="ladi-group">
                     <div id="IMAGE9" className="absolute">
                       <div className="ladi-image">
@@ -632,16 +685,7 @@ const HomeContent: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="absolute">
-                  <div id="HEADLINE48" className="absolute">
-                    <p className="ladi-headline font-lora">17:30</p>
-                  </div>
-                  <div id="HEADLINE52" className="absolute">
-                    <p className="ladi-headline font-lora">đón tiếp</p>
-                    <p className="ladi-headline font-lora">khách mời</p>
-                  </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div id="SECTION7" className="ladi-section absolute mt-181">
@@ -670,17 +714,24 @@ const HomeContent: React.FC = () => {
 
                   <button type="submit" className="ladi-hidden"></button>
                 </div>
-                <div
-                  id="BUTTON3"
-                  className="absolute ladi-animation"
-                >
+                <div id="BUTTON3" className="absolute ladi-animation">
                   <div className="ladi-button">
                     <div className="ladi-button-background absolute"></div>
-                    <div
-                      id="BUTTON_TEXT3"
-                      className="absolute"
-                    >
-                      <p className="ladi-headline font-lora">GỬI QUÀ MỪNG CƯỚI&nbsp;</p>
+                    <div id="BUTTON_TEXT3" className="absolute">
+                      <p className="ladi-headline font-lora">
+                        XÁC NHẬN THAM DỰ
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="BUTTON4" className="absolute ladi-animation">
+                  <div className="ladi-button">
+                    <div className="ladi-button-background absolute"></div>
+                    <div id="BUTTON_TEXT4" className="absolute">
+                      <p className="ladi-headline font-lora">
+                        GỬI QUÀ MỪNG CƯỚI
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -692,9 +743,7 @@ const HomeContent: React.FC = () => {
                   <p className="ladi-headline">
                     chuẩn bị đón tiếp một cách chu đáo nhất.
                   </p>
-                  <p className="ladi-headline">
-                    Trân trọng!
-                  </p>
+                  <p className="ladi-headline">Trân trọng!</p>
                 </div>
 
                 <div id="GROUP44" className="absolute mt-31">

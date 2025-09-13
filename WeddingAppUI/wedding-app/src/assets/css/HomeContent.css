@@ -152,7 +152,7 @@
 @keyframes fadeInLeftRing {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-70px);
   }
   to {
     opacity: 1;
@@ -184,21 +184,22 @@
 
 .animate-on-scroll.visible.fadeInLeftCamera {
   animation: fadeInLeftCamera 0.7s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
 .animate-on-scroll.visible.fadeInLeftRing {
-  animation: fadeInLeftRing 1.2s ease-out forwards;
-  animation-delay: 0.5s;
+  animation: fadeInLeftRing 0.7s ease-out forwards;
+  animation-delay: 0.7s;
 }
 
 .animate-on-scroll.visible.fadeInLeftEat {
   animation: fadeInLeftEat 0.7s ease-out forwards;
-  animation-delay: 1;
+  animation-delay: 1s;
 }
 
 .animate-on-scroll.visible.fadeInLeftDisco {
   animation: fadeInLeftDisco 0.7s ease-out forwards;
-  animation-delay: 1.5;
+  animation-delay: 1.3s;
 }
 
 .animate-on-scroll.visible.fadeInLeftBlack {
@@ -627,7 +628,7 @@
 }
 .SECTION5 {
   width: 100%;
-  height: 3900px;
+  height: 3950px;
   overflow: hidden;
 }
 #GROUP19 {
@@ -785,13 +786,13 @@
   margin-top: 89rem;
 }
 
-.mt-209 {
-  margin-top: 209rem;
+.mt-222 {
+  margin-top: 222rem;
 }
 
 #HEADLINE63 {
   width: 320px;
-  top: 555px;
+  top: 660px;
   left: 50px;
 }
 
@@ -807,8 +808,8 @@
   margin-top: 172rem;
 }
 
-.mt-186 {
-  margin-top: 186rem;
+.mt-199 {
+  margin-top: 199rem;
 }
 
 .bg-home2 {
@@ -1056,7 +1057,7 @@
 
 #GROUP39 {
   top: 316.5px;
-  left: 311px;
+  left: 305px;
 }
 
 #BOX32,
@@ -1098,6 +1099,8 @@
 
 #HEADLINE51 > .ladi-headline,
 #HEADLINE50 > .ladi-headline,
+#HEADLINE57 > .ladi-headline,
+#HEADLINE59 > .ladi-headline,
 #HEADLINE49 > .ladi-headline,
 #HEADLINE48 > .ladi-headline {
   font-size: 17.27px;
@@ -1198,8 +1201,8 @@
 }
 
 #IMAGE9 {
-  top: 0px;
-  left: 92.4996px;
+  top: -5px;
+  left: 20px;
 }
 
 #IMAGE9 > .ladi-image > .ladi-image-background {
@@ -1214,8 +1217,8 @@
 }
 
 #IMAGE8 {
-  top: 1px;
-  left: 0px;
+  top: -3px;
+  left: 24.5px;
 }
 
 #IMAGE8 > .ladi-image > .ladi-image-background {
@@ -1248,6 +1251,8 @@
 
 #HEADLINE55 > .ladi-headline,
 #HEADLINE54 > .ladi-headline,
+#HEADLINE58 > .ladi-headline,
+#HEADLINE60 > .ladi-headline,
 #HEADLINE53 > .ladi-headline,
 #HEADLINE52 > .ladi-headline {
   font-size: 10px;
@@ -1280,6 +1285,8 @@
 
 #HEADLINE55,
 #HEADLINE54,
+#HEADLINE58,
+#HEADLINE60,
 #HEADLINE53 {
   width: 85px;
 }
@@ -1430,7 +1437,7 @@
 }
 
 #BUTTON3 {
-  top: 680px;
+  top: 735px;
   width: 100%;
   height: 40px;
   display: flex;
@@ -1471,4 +1478,67 @@
   width: 100%;
   pointer-events: none;
   transition: inherit;
+}
+
+#GROUP24 {
+  width: 85px;
+  height: 112.7px;
+  top: 317.5px;
+  left: 25px;
+}
+
+#HEADLINE57 {
+  top: 60.7px;
+  left: 20.5px;
+}
+
+#HEADLINE58 {
+  top: 84.7px;
+  left: 0px;
+}
+
+#GROUP25 {
+  width: 85px;
+  height: 112.7px;
+  top: 317.5px;
+  left: 123px;
+}
+
+#HEADLINE59 {
+  top: 60.7px;
+  left: 20.5px;
+}
+
+#HEADLINE60 {
+  top: 84.7px;
+  left: 0px;
+}
+
+#BUTTON4 {
+  top: 680px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+#BUTTON4 > .ladi-button {
+  width: 382.078px;
+  border-width: 1px;
+  border-radius: 37px;
+  border-color: rgb(146, 131, 98);
+}
+
+#BUTTON_TEXT4 {
+  width: 382px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#BUTTON_TEXT4 > .ladi-headline {
+  font-size: 19px;
+  line-height: 1.6;
+  text-align: center;
 }

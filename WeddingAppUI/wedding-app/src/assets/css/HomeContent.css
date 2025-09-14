@@ -408,53 +408,6 @@
   transform: rotate(10deg);
 }
 
-#LETTER1 {
-  width: 153px;
-  height: 153px;
-  top: 241px;
-  left: 186px;
-}
-
-#LETTER1 > .ladi-box {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  background-image: url(../images/wedding/BONN0977.JPG);
-  background-size: cover;
-  background-origin: content-box;
-  background-position: 50% 0%;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  transform: rotate(10deg);
-}
-
-#LETTER2 {
-  width: 127px;
-  height: 127px;
-  top: 314px;
-  left: 91px;
-}
-
-.w-420 {
-  width: 420px;
-  max-width: 420px;
-}
-
-#LETTER2 > .ladi-box {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  background-image: url(../images/wedding/BONN0255.JPG);
-  background-size: cover;
-  background-origin: content-box;
-  background-position: 50% 0%;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  transform: rotate(-2deg);
-}
-
 #IMAGE7 > .ladi-image > .ladi-image-background {
   background-image: url(../images/cover/home_11.png);
   background-size: contain;
@@ -606,6 +559,7 @@
   width: 100%;
   height: 100%;
 }
+
 #BOX8 > .ladi-box:hover,
 #BOX9 > .ladi-box:hover,
 #BOX20 > .ladi-box:hover,
@@ -1541,4 +1495,147 @@
   font-size: 19px;
   line-height: 1.6;
   text-align: center;
+}
+
+#GROUP46 {
+  width: 100%;
+  height: 486.3px;
+  top: 130px;
+  left: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+#GROUP46 .ladi-group {
+  width: 361.846px;
+}
+
+#IMAGE62,
+#IMAGE62 > .ladi-image > .ladi-image-background {
+  width: 352.718px;
+  height: 383.757px;
+}
+
+#IMAGE62 {
+  top: 102.543px;
+  left: 0px;
+}
+
+#IMAGE62 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/letter-open.png);
+  background-size: cover;
+}
+
+#IMAGE63,
+#IMAGE63 > .ladi-image > .ladi-image-background {
+  width: 316.057px;
+  height: 385.591px;
+}
+
+#IMAGE63 {
+  top: 0px;
+  left: 9.65267px;
+}
+
+#IMAGE63 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/letter-flower.png);
+  background-size: cover;
+}
+
+#GROUP47,
+#IMAGE64,
+#IMAGE64 > .ladi-image > .ladi-image-background {
+  width: 230.589px;
+  height: 230.591px;
+}
+
+#GROUP47 {
+  top: 106.789px;
+  left: 131.257px;
+}
+
+#IMAGE64 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/letter-right.png);
+  background-size: cover;
+}
+
+#BOX46 {
+  width: 176.46px;
+  height: 176.461px;
+  top: 27.065px;
+  left: 25.9934px;
+}
+
+#BOX46 > .ladi-box {
+  background-image: url(../images/wedding/BONN0977.JPG);
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 50%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+
+#BOX46 > .ladi-box,
+#BOX8 > .ladi-box {
+  transform: rotate(10deg);
+}
+
+#BOX46 > .ladi-box:hover,
+#BOX47 > .ladi-box:hover,
+#BOX20 > .ladi-box:hover,
+#BOX21 > .ladi-box:hover,
+#BOX18 > .ladi-box:hover,
+#BOX19 > .ladi-box:hover {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+#GROUP48,
+#IMAGE65,
+#IMAGE65 > .ladi-image > .ladi-image-background {
+  width: 185.657px;
+  height: 185.657px;
+}
+
+#GROUP48 {
+  top: 202.955px;
+  left: 14.7267px;
+}
+
+#IMAGE65 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/letter-left.png);
+  background-size: cover;
+}
+
+#BOX47 {
+  width: 155.214px;
+  height: 154.143px;
+  top: 16.0009px;
+  left: 14.1512px;
+}
+
+#BOX47 > .ladi-box {
+  background-image: url(../images/wedding/BONN0255.JPG);
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 50%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  transform: rotate(-2deg);
+}
+
+#IMAGE66,
+#IMAGE66 > .ladi-image > .ladi-image-background {
+  width: 351.429px;
+  height: 221.862px;
+}
+
+#IMAGE66 {
+  top: 264.438px;
+  left: 0.644404px;
+}
+
+#IMAGE66 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/letter-close.png);
+  background-size: cover;
 }

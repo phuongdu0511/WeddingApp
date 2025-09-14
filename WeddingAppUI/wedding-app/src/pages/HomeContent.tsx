@@ -6,20 +6,13 @@ import home2 from "../assets/images/cover/home_2.jpg";
 import home4 from "../assets/images/cover/home_4.jpg";
 import home5 from "../assets/images/cover/home_5.jpg";
 import home6 from "../assets/images/cover/home_6.jpg";
-import home7 from "../assets/images/cover/phong-bi-chinh-sua.png";
 import home8 from "../assets/images/cover/home_8.jpg";
 import home9 from "../assets/images/cover/home_9.png";
 import home10 from "../assets/images/cover/home_10.png";
 import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.png";
 import navigation from "../assets/images/cover/navigation.png";
-import BONN0283 from "../assets/images/wedding/BONN0283.jpg";
-// import BONN0052 from '../assets/images/wedding/BONN0052.jpg';
-// import BONN8959 from '../assets/images/wedding/BONN8959.jpg';
-// import BONN1012 from '../assets/images/wedding/BONN1012.jpg';
 import BONN0412 from "../assets/images/wedding/BONN0412.jpg";
-import BONN1068 from "../assets/images/wedding/BONN1068.jpg";
-import BONN0785 from "../assets/images/wedding/BONN0785.jpg";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
@@ -74,21 +67,52 @@ const HomeContent: React.FC = () => {
               HUSBAND AND WIFE IN
             </p>
             <WeddingCountdown />
-            <img
-              loading="lazy"
-              src={home7}
-              alt="Ảnh home7"
-              className="absolute w-420 z-10"
-            />
-            <div id="LETTER1" className="absolute">
-              <div className="ladi-box ladi-transition"></div>
-            </div>
-            <div id="LETTER2" className="absolute">
-              <div className="ladi-box ladi-transition"></div>
+            <div id="GROUP46" className="absolute">
+              <div className="ladi-group">
+                <div id="IMAGE62" className="absolute">
+                  <div className="ladi-image">
+                    <div className="ladi-image-background"></div>
+                  </div>
+                </div>
+                <div id="IMAGE63" className="absolute">
+                  <div className="ladi-image">
+                    <div className="ladi-image-background"></div>
+                  </div>
+                </div>
+                <div id="GROUP47" className="absolute">
+                  <div className="ladi-group">
+                    <div id="IMAGE64" className="absolute">
+                      <div className="ladi-image">
+                        <div className="ladi-image-background"></div>
+                      </div>
+                    </div>
+                    <div id="BOX46" className="absolute">
+                      <div className="ladi-box ladi-transition"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="GROUP48" className="absolute">
+                  <div className="ladi-group">
+                    <div id="IMAGE65" className="absolute">
+                      <div className="ladi-image">
+                        <div className="ladi-image-background"></div>
+                      </div>
+                    </div>
+                    <div id="BOX47" className="absolute">
+                      <div className="ladi-box ladi-transition"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="IMAGE66" className="absolute">
+                  <div className="ladi-image">
+                    <div className="ladi-image-background"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="relative h-[510px]">
+        <div className="relative h-[600px]">
           <img
             loading="lazy"
             src={home5}
@@ -99,7 +123,7 @@ const HomeContent: React.FC = () => {
             loading="lazy"
             src={home6}
             alt="Ảnh home6"
-            className="absolute w-full z-5 mt-72"
+            className="absolute w-full z-5 mt-22"
           />
         </div>
         <div className="relative h-[265px]">

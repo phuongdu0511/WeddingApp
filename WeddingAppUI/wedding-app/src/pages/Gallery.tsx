@@ -1,21 +1,31 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import BONN0052 from "../assets/images/wedding/BONN0052.jpg";
-import BONN0451 from "../assets/images/wedding/BONN0451.jpg";
-import BONN0255 from "../assets/images/wedding/BONN0255.jpg";
-import BONN0283 from "../assets/images/wedding/BONN0283.jpg";
-import BONN1012 from "../assets/images/wedding/BONN1012.jpg";
-import BONN1068 from "../assets/images/wedding/BONN1068.jpg";
-import BONN9555 from "../assets/images/wedding/BONN9555.jpg";
+import BONN0724 from "../assets/images/wedding/BONN0724.jpg";
+import BONN1025 from "../assets/images/wedding/BONN1025.jpg";
+import BONN9280 from "../assets/images/wedding/BONN9280.jpg";
+import BONN9018 from "../assets/images/wedding/BONN9018.jpg";
+import BONN9771 from "../assets/images/wedding/BONN9771.jpg";
+import BONN9786 from "../assets/images/wedding/BONN9786.jpg";
+import BONN0914 from "../assets/images/wedding/BONN0914.jpg";
+import BONN1019 from "../assets/images/wedding/BONN1019.jpg";
+import BONN0893 from "../assets/images/wedding/BONN0893.jpg";
+import BONN1038 from "../assets/images/wedding/BONN1038.jpg";
+import BONN0610 from "../assets/images/wedding/BONN0610.jpg";
+import BONN0931 from "../assets/images/wedding/BONN0931.jpg";
 
 const images = [
-  BONN0052,
-  BONN0255,
-  BONN0283,
-  BONN0451,
-  BONN1012,
-  BONN1068,
-  BONN9555,
+  BONN0724,
+  BONN9280,
+  BONN1025,
+  BONN9771,
+  BONN9018,
+  BONN9786,
+  BONN0914,
+  BONN1019,
+  BONN0893,
+  BONN1038,
+  BONN0610,
+  BONN0931,
 ];
 
 export default function Gallery() {

@@ -267,6 +267,10 @@
   margin-top: 22rem;
 }
 
+.mt-27 {
+  margin-top: 27rem;
+}
+
 .mt-24 {
   margin-top: 24rem;
 }
@@ -362,7 +366,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url(../images/wedding/BONN0785.JPG);
+  background-image: url(../images/wedding/BONN0582.JPG);
   background-size: cover;
   background-origin: content-box;
   background-position: 50% 0%;
@@ -399,10 +403,10 @@
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-image: url(../images/wedding/BONN1068.JPG);
+  background-image: url(../images/wedding/BONN1049.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 50% 20%;
   background-repeat: repeat;
   background-attachment: scroll;
   transform: rotate(10deg);
@@ -447,10 +451,10 @@
 }
 
 #BOX16 > .ladi-box {
-  background-image: url(../images/wedding/BONN0255.JPG);
+  background-image: url(../images/wedding/BONN0280.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 50% 50%;
   background-repeat: repeat;
   background-attachment: scroll;
 }
@@ -463,10 +467,10 @@
 }
 
 #BOX15 > .ladi-box {
-  background-image: url(../images/wedding/BONN0283.JPG);
+  background-image: url(../images/wedding/BONN0315.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 50% 50%;
   background-repeat: repeat;
   background-attachment: scroll;
 }
@@ -479,10 +483,10 @@
 }
 
 #BOX14 > .ladi-box {
-  background-image: url(../images/wedding/BONN0451.JPG);
+  background-image: url(../images/wedding/BONN0186.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 30% 60%;
   background-repeat: repeat;
   background-attachment: scroll;
 }
@@ -495,10 +499,10 @@
 }
 
 #BOX13 > .ladi-box {
-  background-image: url(../images/wedding/BONN0412.JPG);
+  background-image: url(../images/wedding/BONN0395.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 100% 60%;
   background-repeat: repeat;
   background-attachment: scroll;
 }
@@ -541,10 +545,10 @@
 }
 
 #BOX19 > .ladi-box {
-  background-image: url(../images/wedding/BONN0283.JPG);
+  background-image: url(../images/wedding/BONN0050.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 80% 80%;
   background-repeat: repeat;
   background-attachment: scroll;
   transform: rotate(13deg);
@@ -681,10 +685,10 @@
 }
 
 #BOX21 > .ladi-box {
-  background-image: url(../images/wedding/BONN0255.JPG);
+  background-image: url(../images/wedding/BONN0414.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 50% 90%;
   background-repeat: repeat;
   background-attachment: scroll;
   transform: rotate(-3deg);
@@ -696,10 +700,8 @@
 }
 
 #HEADLINE45 > .ladi-headline {
-  font-size: 30px;
   line-height: 1.1;
   color: rgb(146, 131, 98);
-  text-transform: uppercase;
   letter-spacing: 0px;
   text-align: left;
 }
@@ -823,9 +825,12 @@
 #BOX11 > .ladi-box,
 #BOX12 > .ladi-box,
 #BOX35 > .ladi-box,
-#BUTTON3 > .ladi-button > .ladi-button-background,
-#BOX42 > .ladi-box {
+#BUTTON3 > .ladi-button > .ladi-button-background {
   background-color: rgb(146, 131, 98);
+}
+
+#BOX42 > .ladi-box {
+  background-color: rgb(255, 218, 185);
 }
 
 #BOX11 {
@@ -930,7 +935,7 @@
 }
 
 #BOX27 > .ladi-box {
-  background-image: url(../images/wedding/BONN0255.JPG);
+  background-image: url(../images/wedding/BONN9133.JPG);
   background-size: cover;
   background-origin: content-box;
   background-position: 50% 0%;
@@ -948,29 +953,25 @@
 }
 
 #HEADLINE46 {
-  top: 38.2px;
+  top: 7.2px;
   left: 88.5px;
 }
 
 #HEADLINE46 > .ladi-headline {
-  font-size: 30px;
   line-height: 1.1;
   color: rgb(146, 131, 98);
-  text-transform: uppercase;
   letter-spacing: 0px;
   text-align: center;
 }
 
 #HEADLINE47 {
-  top: 241.2px;
-  left: 88.5px;
+  top: 220.2px;
+  left: -5.5px;
 }
 
 #HEADLINE47 > .ladi-headline {
-  font-size: 40px;
   line-height: 1.1;
   color: rgb(255, 255, 255);
-  text-transform: uppercase;
   letter-spacing: 0px;
   text-align: center;
 }
@@ -1077,27 +1078,44 @@
   left: 130px;
 }
 
+#BOX40,
 #BOX41,
 #BOX42,
 #BOX43,
-#BOX44 {
+#BOX44,
+#BOX45,
+#BOX48 {
   width: 39.7px;
   height: 39.7px;
 }
 
+#BOX40 > .ladi-box,
 #BOX41 > .ladi-box,
 #BOX42 > .ladi-box,
 #BOX43 > .ladi-box,
-#BOX44 > .ladi-box {
+#BOX44 > .ladi-box,
+#BOX45 > .ladi-box,
+#BOX48 > .ladi-box {
   border-radius: 1000px;
   box-shadow: rgb(0, 0, 0) 0px 15px 20px -15px;
 }
 
 #BOX41 > .ladi-box {
-  background-color: rgb(45, 48, 33);
+  background-color: rgb(255, 228, 196);
 }
 
 #BOX41.ladi-animation > .ladi-box {
+  animation-name: fadeInLeft;
+  animation-delay: 0.5s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+#BOX40 > .ladi-box {
+  background-color: white;
+}
+
+#BOX40.ladi-animation > .ladi-box {
   animation-name: fadeInLeft;
   animation-delay: 0.5s;
   animation-duration: 1s;
@@ -1122,7 +1140,7 @@
 }
 
 #BOX43 > .ladi-box {
-  background-color: rgb(246, 241, 214);
+  background-color: rgb(238, 203, 173);
 }
 
 #BOX44 {
@@ -1131,10 +1149,42 @@
 }
 
 #BOX44 > .ladi-box {
-  background-color: white;
+  background-color: rgb(205, 175, 149);
 }
 
 #BOX44.ladi-animation > .ladi-box {
+  animation-name: fadeInLeft;
+  animation-delay: 1.3s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+#BOX45 {
+  top: 0px;
+  left: 122.5px;
+}
+
+#BOX45 > .ladi-box {
+  background-color: rgb(160, 82, 45);
+}
+
+#BOX45.ladi-animation > .ladi-box {
+  animation-name: fadeInLeft;
+  animation-delay: 1.3s;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+#BOX48 {
+  top: 0px;
+  left: 153.5px;
+}
+
+#BOX48 > .ladi-box {
+  background-color: white;
+}
+
+#BOX48.ladi-animation > .ladi-box {
   animation-name: fadeInLeft;
   animation-delay: 1.3s;
   animation-duration: 1s;
@@ -1455,7 +1505,7 @@
 #GROUP46 {
   width: 100%;
   height: 486.3px;
-  top: 130px;
+  top: 210px;
   left: 5px;
   display: flex;
   justify-content: center;
@@ -1522,10 +1572,10 @@
 }
 
 #BOX46 > .ladi-box {
-  background-image: url(../images/wedding/BONN0977.JPG);
+  background-image: url(../images/wedding/BONN0901.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 50%;
+  background-position: 50% 10%;
   background-repeat: repeat;
   background-attachment: scroll;
 }
@@ -1570,10 +1620,10 @@
 }
 
 #BOX47 > .ladi-box {
-  background-image: url(../images/wedding/BONN0255.JPG);
+  background-image: url(../images/wedding/BONN0977.JPG);
   background-size: cover;
   background-origin: content-box;
-  background-position: 50% 50%;
+  background-position: 0% 20%;
   background-repeat: repeat;
   background-attachment: scroll;
   transform: rotate(-2deg);
@@ -1593,4 +1643,8 @@
 #IMAGE66 > .ladi-image > .ladi-image-background {
   background-image: url(../images/cover/letter-close.png);
   background-size: cover;
+}
+
+.left-16 {
+  left: 16rem;
 }

@@ -13,6 +13,7 @@ import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.png";
 import navigation from "../assets/images/cover/navigation.png";
 import BONN0412 from "../assets/images/wedding/BONN0412.jpg";
+import BONN9907 from "../assets/images/wedding/BONN9907.JPG";
 import bgVideo from "../assets/video/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
@@ -64,9 +65,9 @@ const HomeContent: React.FC = () => {
             className="absolute top-72 z-20 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-2xl text-center">WE WILL BECOME</p>
-            <p className="font-lora text-2xl text-center">
-              HUSBAND AND WIFE IN
+            <p className="font-highSpirited text-6xl font-bold text-center">We will become</p>
+            <p className="font-highSpirited text-6xl font-bold text-center">
+              husband and wife in
             </p>
             <WeddingCountdown />
             <div id="GROUP46" className="absolute">
@@ -114,7 +115,7 @@ const HomeContent: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="relative h-[600px]">
+        <div className="relative h-[660px]">
           <img
             loading="lazy"
             src={home5}
@@ -123,31 +124,36 @@ const HomeContent: React.FC = () => {
           />
           <img
             loading="lazy"
+            src={home5}
+            alt="Ảnh home5"
+            className="absolute w-full mt-22"
+          />
+          <img
+            loading="lazy"
             src={home6}
             alt="Ảnh home6"
-            className="absolute w-full z-5 mt-22"
+            className="absolute w-full z-5 mt-27"
           />
         </div>
         <div className="relative h-[265px]">
           <img
             loading="lazy"
-            src={BONN0412}
-            alt="Ảnh BONN0412"
-            className="absolute"
+            src={BONN9907}
+            alt="Ảnh BONN9907"
+            className="absolute scale-100"
           />
-          <div className="absolute left-8 top-40 z-20 w-full text-white">
+          <div className="absolute left-16 top-36 z-20 w-full text-white">
             <p
-              className="font-lora text-5xl animate-on-scroll"
+              className="font-highSpirited font-bold text-7xl animate-on-scroll"
               data-animate="fadeInLeft"
             >
-              SAVE
+              Save
             </p>
             <div
               className="flex gap-2 animate-on-scroll"
               data-animate="fadeInRight"
             >
-              <p className="font-highSpirited text-5xl">the</p>
-              <p className="font-lora text-5xl">DATE</p>
+              <p className="font-highSpirited text-5xl font-bold">the Date</p>
             </div>
           </div>
         </div>
@@ -176,8 +182,8 @@ const HomeContent: React.FC = () => {
               data-animate="fadeInLeft"
             >
               <p className="font-lora font-bold text-lg">NHÀ GÁI</p>
-              <p>Ông. Nguyễn Văn Long</p>
-              <p>Bà. Hứa Hồng Vân</p>
+              <p className="font-lora">Ông Nguyễn Văn Long</p>
+              <p className="font-lora">Bà Hứa Hồng Vân</p>
             </div>
             <div className="line-1"></div>
             <div
@@ -185,8 +191,8 @@ const HomeContent: React.FC = () => {
               data-animate="fadeInRight"
             >
               <p className="font-lora font-bold text-lg">NHÀ TRAI</p>
-              <p>Ông. Dương Lê Phương</p>
-              <p>Bà. Bùi Thị Hương Giang</p>
+              <p className="font-lora">Ông Dương Lê Phương</p>
+              <p className="font-lora">Bà Bùi Hương Giang</p>
             </div>
           </div>
           <div
@@ -194,7 +200,7 @@ const HomeContent: React.FC = () => {
             data-animate="fadeInUp"
           >
             <p className="font-lora text-lg">
-              Thân mời đến dự lễ thành hôn của chúng tôi!
+              Thân mời đến dự lễ thành hôn của chúng tôi
             </p>
           </div>
           <div className="absolute w-full mt-22">
@@ -219,7 +225,7 @@ const HomeContent: React.FC = () => {
               className="font-lora text-3xl text-center animate-on-scroll"
               data-animate="fadeInRight"
             >
-              17:30 - THỨ BẢY
+              17:00 - THỨ BẢY
             </p>
             <p
               className="font-lora text-3xl text-center animate-on-scroll"
@@ -245,10 +251,10 @@ const HomeContent: React.FC = () => {
             data-animate="fadeInUp"
           >
             <p className="font-lora text-2xl text-center">
-              SOFTWATER RESTAURANT
+              SOFTWATER
             </p>
             <i className="block font-lora text-1xl text-center">
-              42 đường 9, tập thể F361 An Dương, Tây Hồ, Hà Nội
+              42 đường 9, F361 An Dương, Tây Hồ, Hà Nội
             </i>
           </div>
           <div className="absolute mt-50 w-full pointer-animate z-10">
@@ -304,7 +310,6 @@ const HomeContent: React.FC = () => {
               >
                 <p className="font-highSpirited text-5xl">Cô dâu</p>
                 <p className="font-lora text-1xl">NGỌC DIỆP</p>
-                <p>06.10.1995</p>
               </div>
             </div>
             <div className="flex">
@@ -314,7 +319,6 @@ const HomeContent: React.FC = () => {
               >
                 <p className="font-highSpirited text-5xl">Chú rê</p>
                 <p className="font-lora text-1xl">PHƯƠNG DUY</p>
-                <p>05.11.1996</p>
               </div>
               <img
                 loading="lazy"
@@ -536,7 +540,7 @@ const HomeContent: React.FC = () => {
               className="absolute mt-54 ladi-animation z-30 animate-on-scroll"
               data-animate="fadeInRight"
             >
-              <p className="ladi-headline font-lora">OF LOVE</p>
+              <p className="ladi-headline font-highSpirited text-6xl">ofLove</p>
             </div>
             <div id="GALLERY1" className="absolute mt-89">
               <Gallery />
@@ -566,10 +570,10 @@ const HomeContent: React.FC = () => {
                   className="absolute animate-on-scroll"
                   data-animate="zoomIn"
                 >
-                  <p className="ladi-headline font-lora">dress code</p>
+                  <p className="ladi-headline font-highSpirited text-7xl">Dress code</p>
                 </div>
                 <div id="HEADLINE47" className="absolute">
-                  <p className="ladi-headline font-lora">timeline</p>
+                  <p className="ladi-headline font-highSpirited text-7xl">Timeline</p>
                 </div>
                 <div className="w-full absolute flex items-start justify-center time-line-1">
                   <div className="time-line"></div>
@@ -594,8 +598,7 @@ const HomeContent: React.FC = () => {
                           <p className="ladi-headline font-lora">20:00</p>
                         </div>
                         <div id="HEADLINE55" className="absolute">
-                          <p className="ladi-headline font-lora">minigame</p>
-                          <p className="ladi-headline font-lora">và khiêu vũ</p>
+                          <p className="ladi-headline font-lora">after party</p>
                         </div>
                       </div>
                     </div>
@@ -626,11 +629,10 @@ const HomeContent: React.FC = () => {
                       data-animate="fadeInLeftCamera"
                     >
                       <div id="HEADLINE57" className="absolute">
-                        <p className="ladi-headline font-lora">17:30</p>
+                        <p className="ladi-headline font-lora">17:00</p>
                       </div>
                       <div id="HEADLINE58" className="absolute">
-                        <p className="ladi-headline font-lora">đón tiếp</p>
-                        <p className="ladi-headline font-lora">khách mời</p>
+                        <p className="ladi-headline font-lora">chụp hình</p>
                       </div>
                     </div>
                   </div>
@@ -655,23 +657,11 @@ const HomeContent: React.FC = () => {
                         <p className="ladi-headline font-lora">18:00</p>
                       </div>
                       <div id="HEADLINE60" className="absolute">
-                        <p className="ladi-headline font-lora">bắt đầu</p>
                         <p className="ladi-headline font-lora">lễ thành hôn</p>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                {/* <div className="absolute">
-                  <div id="HEADLINE49" className="absolute">
-                    <p className="ladi-headline font-lora">18:00</p>
-                  </div>
-                  <div id="HEADLINE53" className="absolute">
-                    <p className="ladi-headline font-lora">bắt đầu</p>
-                    <p className="ladi-headline font-lora">lễ thành hôn</p>
-                  </div>
-                </div> */}
-
                 <div id="GROUP22" className="absolute ladi-animation">
                   <div className="ladi-group">
                     <div
@@ -688,10 +678,9 @@ const HomeContent: React.FC = () => {
                       data-animate="fadeInLeftEat"
                     >
                       <div id="HEADLINE50" className="absolute">
-                        <p className="ladi-headline font-lora">18:30</p>
+                        <p className="ladi-headline font-lora">19:00</p>
                       </div>
                       <div id="HEADLINE54" className="absolute">
-                        <p className="ladi-headline font-lora">chung vui</p>
                         <p className="ladi-headline font-lora">khai tiệc</p>
                       </div>
                     </div>
@@ -715,7 +704,7 @@ const HomeContent: React.FC = () => {
                       <div className="ladi-form-item">
                         <select
                           name="form_item8"
-                          className="ladi-form-control ladi-form-control-select [text-align-last:center]"
+                          className="ladi-form-control font-lora ladi-form-control-select [text-align-last:center]"
                         >
                           <option value="">Bạn tham dự cùng ai?</option>
                           <option value="0">Tham dự một mình</option>
@@ -767,17 +756,24 @@ const HomeContent: React.FC = () => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">
+                  <p className="ladi-headline font-lora">
                     Hãy xác nhận sự có mặt của bạn để chúng mình
                   </p>
-                  <p className="ladi-headline">
-                    chuẩn bị đón tiếp một cách chu đáo nhất.
+                  <p className="ladi-headline font-lora">
+                    chuẩn bị đón tiếp một cách chu đáo nhất nhé!
                   </p>
-                  <p className="ladi-headline">Trân trọng!</p>
+                  <p className="ladi-headline font-lora">Trân trọng!</p>
                 </div>
 
                 <div id="GROUP44" className="absolute mt-31">
                   <div className="ladi-group">
+                    <div
+                      id="BOX40"
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftBlack"
+                    >
+                      <div className="ladi-box ladi-transition"></div>
+                    </div>
                     <div
                       id="BOX41"
                       className="absolute animate-on-scroll"
@@ -801,6 +797,20 @@ const HomeContent: React.FC = () => {
                     </div>
                     <div
                       id="BOX44"
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftWhite"
+                    >
+                      <div className="ladi-box ladi-transition"></div>
+                    </div>
+                    <div
+                      id="BOX45"
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftWhite"
+                    >
+                      <div className="ladi-box ladi-transition"></div>
+                    </div>
+                    <div
+                      id="BOX48"
                       className="absolute animate-on-scroll"
                       data-animate="fadeInLeftWhite"
                     >

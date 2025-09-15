@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/HomeContent.css";
 import "../assets/css/Animation.css";
 import home1 from "../assets/images/cover/home_1.jpg";
@@ -13,15 +13,17 @@ import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.png";
 import navigation from "../assets/images/cover/navigation.png";
 import BONN0412 from "../assets/images/wedding/BONN0412.jpg";
+import bgVideo from "../assets/video/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
-import ChatBox from "./ChatBox";
+// import ChatBox from "./ChatBox";
 import Music from "./Music";
+import Gift from "./Gift";
 import { Link } from "react-router-dom";
-import bgVideo from "../assets/video/v1.mp4";
 
 const HomeContent: React.FC = () => {
+  const [showGift, setShowGift] = useState(false);
   useAutoScrollAnimation();
   return (
     <div className="relative min-h-screen items-center main-wr">
@@ -695,21 +697,6 @@ const HomeContent: React.FC = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* <div id="GROUP49" className="absolute">
-                  <div className="ladi-group">
-                    <div id="IMAGE9" className="absolute">
-                      <div className="ladi-image">
-                        <div className="ladi-image-background"></div>
-                      </div>
-                    </div>
-                    <div id="IMAGE8" className="absolute">
-                      <div className="ladi-image">
-                        <div className="ladi-image-background"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
             <div id="SECTION7" className="ladi-section absolute mt-181">
@@ -718,27 +705,35 @@ const HomeContent: React.FC = () => {
                   id="FORM2"
                   className="absolute ladi-animation flex justify-center"
                 >
-                  <div id="FORM_ITEM5" className="absolute">
+                  <div
+                    id="FORM_ITEM5"
+                    className="absolute animate-on-scroll"
+                    data-animate="fadeInUp"
+                  >
                     <div className="ladi-form-item-container">
                       <div className="ladi-form-item-background"></div>
                       <div className="ladi-form-item">
                         <select
                           name="form_item8"
-                          className="ladi-form-control ladi-form-control-select"
+                          className="ladi-form-control ladi-form-control-select [text-align-last:center]"
                         >
                           <option value="">Bạn tham dự cùng ai?</option>
-                          <option value="1 người">1 người</option>
-                          <option value="2 người">2 người</option>
-                          <option value="3 người">3 người</option>
-                          <option value="4 người">4 người</option>
+                          <option value="0">Tham dự một mình</option>
+                          <option value="1">Tham dự cùng 1 người</option>
+                          <option value="2">Tham dự cùng 2 người</option>
+                          <option value="3">Tham dự cùng 3 người</option>
+                          <option value="4">Tham dự cùng 4 người</option>
+                          <option value="5">Tham dự cùng 5 người</option>
                         </select>
                       </div>
                     </div>
                   </div>
-
-                  <button type="submit" className="ladi-hidden"></button>
                 </div>
-                <div id="BUTTON3" className="absolute ladi-animation">
+                <div
+                  id="BUTTON3"
+                  className="absolute animate-on-scroll"
+                  data-animate="fadeInUp"
+                >
                   <div className="ladi-button">
                     <div className="ladi-button-background absolute"></div>
                     <div id="BUTTON_TEXT3" className="absolute">
@@ -749,7 +744,12 @@ const HomeContent: React.FC = () => {
                   </div>
                 </div>
 
-                <div id="BUTTON4" className="absolute ladi-animation">
+                <div
+                  id="BUTTON4"
+                  className="absolute animate-on-scroll"
+                  data-animate="fadeInUp"
+                  onClick={() => setShowGift(true)}
+                >
                   <div className="ladi-button">
                     <div className="ladi-button-background absolute"></div>
                     <div id="BUTTON_TEXT4" className="absolute">
@@ -759,8 +759,14 @@ const HomeContent: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                {/* Gift */}
+                {showGift && <Gift onClose={() => setShowGift(false)}></Gift>}
 
-                <div id="HEADLINE56" className="absolute ladi-animation">
+                <div
+                  id="HEADLINE56"
+                  className="absolute animate-on-scroll"
+                  data-animate="fadeInUp"
+                >
                   <p className="ladi-headline">
                     Hãy xác nhận sự có mặt của bạn để chúng mình
                   </p>
@@ -804,7 +810,11 @@ const HomeContent: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div id="HEADLINE63" className="absolute mt-190">
+            <div
+              id="HEADLINE63"
+              className="absolute mt-190 animate-on-scroll"
+              data-animate="fadeInUp"
+            >
               <p className="ladi-headline font-highSpirited">Thank you!</p>
             </div>
             {/* <Music /> */}

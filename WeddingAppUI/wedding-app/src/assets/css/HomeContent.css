@@ -1295,41 +1295,9 @@
 }
 
 #FORM2 > .ladi-form {
-  font-family: TESQSSRUdVTEFSLlRURg;
   font-size: 14px;
   line-height: 1.6;
   color: rgb(146, 131, 98);
-}
-
-#FORM2 .ladi-form .ladi-form-checkout-payment-item {
-  --check-size: calc(14px * 1.5);
-  --width-quantity: calc(14px * 2.5 + 30px);
-}
-
-#FORM2
-  .ladi-form
-  .ladi-form-item.ladi-form-checkbox
-  .ladi-form-checkbox-item
-  span[data-checked="false"],
-#FORM2
-  .ladi-form
-  .ladi-form-item.ladi-form-checkbox
-  .ladi-form-checkbox-item
-  .ladi-editing,
-#FORM2
-  .ladi-form
-  .ladi-form-item.ladi-form-checkbox
-  .ladi-form-checkbox-item
-  .ladi-editing::placeholder,
-#FORM2 .ladi-form .ladi-survey-option .ladi-survey-option-label,
-#FORM2 .ladi-form-item .ladi-form-control::placeholder,
-#FORM2 .ladi-form-item select.ladi-form-control[data-selected=""],
-#FORM2 .ladi-form-checkout-payment-quantity input {
-  color: rgb(146, 131, 98);
-}
-
-#FORM2:hover .overlay-checkout {
-  display: flex !important;
 }
 
 #FORM2 .ladi-form-item {
@@ -1358,19 +1326,6 @@
   border-radius: 20px;
   border-style: solid;
   border-color: rgb(146, 131, 98);
-}
-
-#FORM2 .ladi-form-item-container .ladi-form-item.ladi-form-quantity {
-  width: calc(100% + 1px);
-}
-
-#FORM2 .ladi-form [data-form-checkout-item="total_price"] .space,
-#FORM2 .ladi-form-checkout-payment-quantity input {
-  border-color: rgb(146, 131, 98);
-}
-
-#FORM2 .ladi-form-checkout-payment-quantity input {
-  width: 65px;
 }
 
 .ladi-form-control-select {

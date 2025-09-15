@@ -1,0 +1,135 @@
+#SECTION_POPUP {
+  height: 0px;
+}
+
+#POPUP2 {
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  left: -15px;
+  margin: auto;
+}
+
+#BOX34 {
+  width: 420px;
+  height: 165px;
+}
+
+#POPUP2 {
+  width: 420px;
+  height: 460px;
+}
+
+#IMAGE58,
+#IMAGE58 > .ladi-image > .ladi-image-background {
+  width: 420px;
+  height: 454.56px;
+}
+
+#IMAGE58 {
+  top: 3.69px;
+  left: 0px;
+}
+
+#IMAGE58 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/home_2.jpg);
+  background-size: cover;
+}
+
+#BOX34 {
+  top: -0.25px;
+  left: 0px;
+}
+
+#BOX34 > .ladi-box {
+  background-image: url(../images/wedding/BONN8959.JPG);
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 100% 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+
+#GROUP58 {
+  width: 356px;
+  height: 241px;
+  top: 196px;
+  left: 31.9997px;
+}
+
+#GROUP59,
+#BOX35,
+#GROUP40,
+#BOX36 {
+  width: 170px;
+  height: 241px;
+}
+
+#BOX35 > .ladi-box,
+#BOX36 > .ladi-box {
+  border-width: 2px;
+  border-radius: 14px;
+  border-style: solid;
+  border-color: rgb(146, 131, 98);
+  background-color: rgba(77, 104, 65, 0);
+}
+
+#IMAGE29,
+#IMAGE29 > .ladi-image > .ladi-image-background,
+#IMAGE30,
+#IMAGE30 > .ladi-image > .ladi-image-background {
+  width: 132.708px;
+  height: 131.655px;
+}
+
+#IMAGE29,
+#IMAGE30 {
+  top: 15.172px;
+  left: 18.646px;
+}
+
+#HEADLINE109,
+#HEADLINE112 {
+  width: 169px;
+  top: 155.116px;
+  text-align: center;
+}
+
+#HEADLINE110 {
+  width: 169px;
+  top: 178.616px;
+  text-align: center;
+}
+
+#HEADLINE111 {
+  width: 169px;
+  top: 202.116px;
+  text-align: center;
+}
+
+#GROUP40 {
+  top: 0px;
+  left: 186px;
+}
+
+#IMAGE29 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/qr-diep.jpg);
+  background-size: cover;
+}
+
+#IMAGE30 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/qr-diep.jpg);
+  background-size: cover;
+}
+
+#HEADLINE113 {
+  width: 169px;
+  top: 178.616px;
+  text-align: center;
+}
+
+#HEADLINE114 {
+  width: 169px;
+  top: 202.116px;
+  text-align: center;
+}

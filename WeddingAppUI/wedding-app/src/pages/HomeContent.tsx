@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/HomeContent.css";
 import "../assets/css/Animation.css";
 import home1 from "../assets/images/cover/home_1.jpg";
@@ -24,6 +24,38 @@ import { Link } from "react-router-dom";
 const HomeContent: React.FC = () => {
   const [showGift, setShowGift] = useState(false);
   useAutoScrollAnimation();
+
+  // Đổi tên khách mời nếu tìm thấy
+  const [guestName, setGuestName] = useState<string | null>(null);
+  const [showVow, setShowVow] = useState(false);
+  useEffect(() => {
+    const rawName = window.location.pathname.replace(/^\/+/, "");
+
+    if (!rawName) return; // nếu không có tên sau domain
+
+    if (rawName === "thanhthao") {
+      setGuestName("Em Thảo");
+      setShowVow(true);
+    }
+
+    if (rawName === "emlinh") {
+      setGuestName("Em Linh");
+    }
+
+    // Gọi API kiểm tra tên khách mời
+    // fetch(`/api/guests?name=${encodeURIComponent(rawName)}`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data?.exists) {
+    //       // Dữ liệu trả về có thể chứa tên hiển thị chuẩn
+    //       setGuestName(data.displayName ?? rawName);
+    //     } else {
+    //       setGuestName(null);
+    //     }
+    //   })
+    //   .catch(() => setGuestName(null));
+  }, []);
+
   return (
     <div className="relative min-h-screen items-center main-wr">
       <div className="relative">
@@ -63,7 +95,9 @@ const HomeContent: React.FC = () => {
             className="absolute top-72 z-20 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-highSpirited text-6xl font-bold text-center">We will become</p>
+            <p className="font-highSpirited text-6xl font-bold text-center">
+              We will become
+            </p>
             <p className="font-highSpirited text-6xl font-bold text-center">
               husband and wife in
             </p>
@@ -194,14 +228,25 @@ const HomeContent: React.FC = () => {
             </div>
           </div>
           <div
-            className="absolute flex items-start justify-center mt-73 w-full animate-on-scroll"
+            className="absolute flex items-start justify-center mt-19 w-full animate-on-scroll"
+            data-animate="fadeInUp"
+          >
+            <p className="font-lora text-lg">Trân trọng kính mời</p>
+            {guestName ? (
+              <p className="font-lora text-lg font-bold">:&nbsp;{guestName}</p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div
+            className="absolute flex items-start justify-center mt-20 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
             <p className="font-lora text-lg">
-              Thân mời đến dự lễ thành hôn của chúng tôi
+              đến dự Lễ Thành Hôn của chúng tôi
             </p>
           </div>
-          <div className="absolute w-full mt-22">
+          <div className="absolute w-full mt-23">
             <p className="font-lora text-4xl  text-center">PHƯƠNG DUY</p>
             <p className="font-highSpirited text-6xl text-center">and</p>
             <p className="font-lora text-4xl  text-center">NGỌC DIỆP</p>
@@ -248,9 +293,7 @@ const HomeContent: React.FC = () => {
             className="absolute w-full mt-45 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-2xl text-center">
-              SOFTWATER
-            </p>
+            <p className="font-lora text-2xl text-center">SOFTWATER</p>
             <i className="block font-lora text-1xl text-center">
               42 đường 9, F361 An Dương, Tây Hồ, Hà Nội
             </i>
@@ -568,10 +611,14 @@ const HomeContent: React.FC = () => {
                   className="absolute animate-on-scroll"
                   data-animate="zoomIn"
                 >
-                  <p className="ladi-headline font-highSpirited text-7xl">Dress code</p>
+                  <p className="ladi-headline font-highSpirited text-7xl">
+                    Dress code
+                  </p>
                 </div>
                 <div id="HEADLINE47" className="absolute">
-                  <p className="ladi-headline font-highSpirited text-7xl">Timeline</p>
+                  <p className="ladi-headline font-highSpirited text-7xl">
+                    Timeline
+                  </p>
                 </div>
                 <div className="w-full absolute flex items-start justify-center time-line-1">
                   <div className="time-line"></div>
@@ -612,7 +659,32 @@ const HomeContent: React.FC = () => {
                   <div className="ladi-box ladi-transition"></div>
                 </div>
                 <div id="GROUP24" className="absolute ladi-animation">
-                  <div className="ladi-group">
+                  {showVow ? (
+                    <div className="ladi-group">
+                    <div
+                      id="IMAGE12"
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftCamera"
+                    >
+                      <div className="ladi-image">
+                        <div className="ladi-image-background"></div>
+                      </div>
+                    </div>
+                    <div
+                      className="absolute animate-on-scroll"
+                      data-animate="fadeInLeftCamera"
+                    >
+                      <div id="HEADLINE57" className="absolute">
+                        <p className="ladi-headline font-lora">16:00</p>
+                      </div>
+                      <div id="HEADLINE58" className="absolute">
+                        <p className="ladi-headline font-lora">lễ vow</p>
+                        <p className="ladi-headline font-lora">chụp hình</p>
+                      </div>
+                    </div>
+                  </div>
+                  ) : 
+                  (<div className="ladi-group">
                     <div
                       id="IMAGE8"
                       className="absolute animate-on-scroll"
@@ -633,7 +705,7 @@ const HomeContent: React.FC = () => {
                         <p className="ladi-headline font-lora">chụp hình</p>
                       </div>
                     </div>
-                  </div>
+                  </div>)}
                 </div>
 
                 <div id="GROUP25" className="absolute ladi-animation">

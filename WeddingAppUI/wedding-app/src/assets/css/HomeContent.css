@@ -297,6 +297,10 @@
   margin-top: 22rem;
 }
 
+.mt-23 {
+  margin-top: 23rem;
+}
+
 .mt-27 {
   margin-top: 27rem;
 }
@@ -356,8 +360,12 @@
   margin-top: 93rem;
 }
 
-.mt-73 {
-  margin-top: 19rem;
+.mt-19 {
+  margin-top: 18rem;
+}
+
+.mt-20 {
+  margin-top: 20rem;
 }
 
 .nav-image {
@@ -1244,6 +1252,22 @@
 
 #IMAGE8 > .ladi-image > .ladi-image-background {
   background-image: url(../images/cover/camera.png);
+  background-size: contain;
+}
+
+#IMAGE12,
+#IMAGE12 > .ladi-image > .ladi-image-background {
+  width: 38px;
+  height: 38px;
+}
+
+#IMAGE12 {
+  top: -3px;
+  left: 24.5px;
+}
+
+#IMAGE12 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/vow1.png);
   background-size: contain;
 }
 

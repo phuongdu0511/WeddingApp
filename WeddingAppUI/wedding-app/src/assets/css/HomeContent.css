@@ -94,7 +94,7 @@
 }
 
 /* Fade In Left DressCode*/
-@keyframes fadeInLeftBlack {
+@keyframes fadeInLeft41 {
   from {
     opacity: 0;
     transform: translateX(-50px);
@@ -105,7 +105,7 @@
   }
 }
 
-@keyframes fadeInLeftBrown {
+@keyframes fadeInLeft42 {
   from {
     opacity: 0;
     transform: translateX(-70px);
@@ -116,7 +116,7 @@
   }
 }
 
-@keyframes fadeInLeftRed {
+@keyframes fadeInLeft43 {
   from {
     opacity: 0;
     transform: translateX(-90px);
@@ -127,10 +127,32 @@
   }
 }
 
-@keyframes fadeInLeftWhite {
+@keyframes fadeInLeft44 {
   from {
     opacity: 0;
     transform: translateX(-110px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft45 {
+  from {
+    opacity: 0;
+    transform: translateX(-130px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft48 {
+  from {
+    opacity: 0;
+    transform: translateX(-150px);
   }
   to {
     opacity: 1;
@@ -202,20 +224,28 @@
   animation-delay: 1.3s;
 }
 
-.animate-on-scroll.visible.fadeInLeftBlack {
-  animation: fadeInLeftBlack 0.7s ease-out forwards;
+.animate-on-scroll.visible.fadeInLeft41 {
+  animation: fadeInLeft41 0.7s ease-out forwards;
 }
 
-.animate-on-scroll.visible.fadeInLeftBrown {
-  animation: fadeInLeftBrown 1.2s ease-out forwards;
+.animate-on-scroll.visible.fadeInLeft42 {
+  animation: fadeInLeft42 1.2s ease-out forwards;
 }
 
-.animate-on-scroll.visible.fadeInLeftRed {
-  animation: fadeInLeftRed 1.7s ease-out forwards;
+.animate-on-scroll.visible.fadeInLeft43 {
+  animation: fadeInLeft43 1.7s ease-out forwards;
 }
 
-.animate-on-scroll.visible.fadeInLeftWhite {
-  animation: fadeInLeftWhite 2.2s ease-out forwards;
+.animate-on-scroll.visible.fadeInLeft44 {
+  animation: fadeInLeft44 2.2s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeft45 {
+  animation: fadeInLeft45 2.7s ease-out forwards;
+}
+
+.animate-on-scroll.visible.fadeInLeft48 {
+  animation: fadeInLeft48 3.2s ease-out forwards;
 }
 
 /* Common hidden state */
@@ -586,7 +616,7 @@
 }
 .SECTION5 {
   width: 100%;
-  height: 3950px;
+  height: 3900px;
   overflow: hidden;
 }
 #GROUP19 {
@@ -743,12 +773,12 @@
 }
 
 .mt-222 {
-  margin-top: 222rem;
+  margin-top: 219rem;
 }
 
 #HEADLINE63 {
   width: 320px;
-  top: 660px;
+  top: 600px;
   left: 50px;
 }
 
@@ -830,7 +860,7 @@
 }
 
 #BOX42 > .ladi-box {
-  background-color: rgb(255, 218, 185);
+  background-color: rgb(255, 228, 196);
 }
 
 #BOX11 {
@@ -1075,10 +1105,9 @@
   width: 131.2px;
   height: 39.7px;
   top: -411.33px;
-  left: 130px;
+  left: 116px;
 }
 
-#BOX40,
 #BOX41,
 #BOX42,
 #BOX43,
@@ -1089,7 +1118,6 @@
   height: 39.7px;
 }
 
-#BOX40 > .ladi-box,
 #BOX41 > .ladi-box,
 #BOX42 > .ladi-box,
 #BOX43 > .ladi-box,
@@ -1101,21 +1129,10 @@
 }
 
 #BOX41 > .ladi-box {
-  background-color: rgb(255, 228, 196);
-}
-
-#BOX41.ladi-animation > .ladi-box {
-  animation-name: fadeInLeft;
-  animation-delay: 0.5s;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-}
-
-#BOX40 > .ladi-box {
   background-color: white;
 }
 
-#BOX40.ladi-animation > .ladi-box {
+#BOX41.ladi-animation > .ladi-box {
   animation-name: fadeInLeft;
   animation-delay: 0.5s;
   animation-duration: 1s;
@@ -1140,7 +1157,7 @@
 }
 
 #BOX43 > .ladi-box {
-  background-color: rgb(238, 203, 173);
+  background-color: rgb(255, 218, 185);
 }
 
 #BOX44 {
@@ -1149,7 +1166,7 @@
 }
 
 #BOX44 > .ladi-box {
-  background-color: rgb(205, 175, 149);
+  background-color: rgb(238, 203, 173);
 }
 
 #BOX44.ladi-animation > .ladi-box {
@@ -1165,7 +1182,7 @@
 }
 
 #BOX45 > .ladi-box {
-  background-color: rgb(160, 82, 45);
+  background-color: rgb(205, 175, 149);
 }
 
 #BOX45.ladi-animation > .ladi-box {
@@ -1181,7 +1198,7 @@
 }
 
 #BOX48 > .ladi-box {
-  background-color: white;
+  background-color: rgb(160, 82, 45);
 }
 
 #BOX48.ladi-animation > .ladi-box {
@@ -1396,7 +1413,7 @@
 }
 
 #BUTTON3 {
-  top: 735px;
+  top: 686px;
   width: 100%;
   height: 40px;
   display: flex;
@@ -1416,6 +1433,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
 }
 
 #BUTTON_TEXT3 > .ladi-headline {
@@ -1474,7 +1492,7 @@
 }
 
 #BUTTON4 {
-  top: 680px;
+  top: 628px;
   width: 100%;
   height: 40px;
   display: flex;

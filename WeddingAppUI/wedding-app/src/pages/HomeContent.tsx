@@ -12,14 +12,12 @@ import home10 from "../assets/images/cover/home_10.png";
 import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.png";
 import navigation from "../assets/images/cover/navigation.png";
-import BONN0412 from "../assets/images/wedding/BONN0412.jpg";
-import BONN9907 from "../assets/images/wedding/BONN9907.JPG";
+import BONN9907 from "../assets/images/wedding/BONN9907.jpg";
 import bgVideo from "../assets/video/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
-// import ChatBox from "./ChatBox";
-import Music from "./Music";
+// import Music from "./Music";
 import Gift from "./Gift";
 import { Link } from "react-router-dom";
 
@@ -694,7 +692,7 @@ const HomeContent: React.FC = () => {
                   id="FORM2"
                   className="absolute ladi-animation flex justify-center"
                 >
-                  <div
+                  {/* <div
                     id="FORM_ITEM5"
                     className="absolute animate-on-scroll"
                     data-animate="fadeInUp"
@@ -716,7 +714,7 @@ const HomeContent: React.FC = () => {
                         </select>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div
                   id="BUTTON3"
@@ -727,7 +725,7 @@ const HomeContent: React.FC = () => {
                     <div className="ladi-button-background absolute"></div>
                     <div id="BUTTON_TEXT3" className="absolute">
                       <p className="ladi-headline font-lora">
-                        XÁC NHẬN THAM DỰ
+                        phản hồi lời mời
                       </p>
                     </div>
                   </div>
@@ -768,51 +766,44 @@ const HomeContent: React.FC = () => {
                 <div id="GROUP44" className="absolute mt-31">
                   <div className="ladi-group">
                     <div
-                      id="BOX40"
-                      className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftBlack"
-                    >
-                      <div className="ladi-box ladi-transition"></div>
-                    </div>
-                    <div
                       id="BOX41"
                       className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftBlack"
+                      data-animate="fadeInLeft41"
                     >
                       <div className="ladi-box ladi-transition"></div>
                     </div>
                     <div
                       id="BOX42"
                       className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftBrown"
+                      data-animate="fadeInLeft42"
                     >
                       <div className="ladi-box ladi-transition"></div>
                     </div>
                     <div
                       id="BOX43"
                       className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftRed"
+                      data-animate="fadeInLeft43"
                     >
                       <div className="ladi-box ladi-transition"></div>
                     </div>
                     <div
                       id="BOX44"
                       className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftWhite"
+                      data-animate="fadeInLeft44"
                     >
                       <div className="ladi-box ladi-transition"></div>
                     </div>
                     <div
                       id="BOX45"
                       className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftWhite"
+                      data-animate="fadeInLeft45"
                     >
                       <div className="ladi-box ladi-transition"></div>
                     </div>
                     <div
                       id="BOX48"
                       className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftWhite"
+                      data-animate="fadeInLeft48"
                     >
                       <div className="ladi-box ladi-transition"></div>
                     </div>

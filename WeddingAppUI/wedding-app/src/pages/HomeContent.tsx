@@ -20,9 +20,12 @@ import Gallery from "./Gallery";
 // import Music from "./Music";
 import Gift from "./Gift";
 import { Link } from "react-router-dom";
+import Confirm from "./Confirm";
+import Music from "./Music";
 
 const HomeContent: React.FC = () => {
   const [showGift, setShowGift] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   useAutoScrollAnimation();
 
   // Đổi tên khách mời nếu tìm thấy
@@ -95,10 +98,10 @@ const HomeContent: React.FC = () => {
             className="absolute top-72 z-20 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-highSpirited text-6xl font-bold text-center">
+            <p className="font-highSpirited text-6xl text-center">
               We will become
             </p>
-            <p className="font-highSpirited text-6xl font-bold text-center">
+            <p className="font-highSpirited text-6xl text-center">
               husband and wife in
             </p>
             <WeddingCountdown />
@@ -268,7 +271,7 @@ const HomeContent: React.FC = () => {
               className="font-lora text-3xl text-center animate-on-scroll"
               data-animate="fadeInRight"
             >
-              17:00 - THỨ BẢY
+              {showVow ? "16:00" : "17:00"} - THỨ BẢY
             </p>
             <p
               className="font-lora text-3xl text-center animate-on-scroll"
@@ -293,7 +296,7 @@ const HomeContent: React.FC = () => {
             className="absolute w-full mt-45 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-2xl text-center">SOFTWATER</p>
+            <p className="font-lora text-2xl font-bold text-center">SOFTWATER</p>
             <i className="block font-lora text-1xl text-center">
               42 đường 9, F361 An Dương, Tây Hồ, Hà Nội
             </i>
@@ -679,7 +682,6 @@ const HomeContent: React.FC = () => {
                       </div>
                       <div id="HEADLINE58" className="absolute">
                         <p className="ladi-headline font-lora">lễ vow</p>
-                        <p className="ladi-headline font-lora">chụp hình</p>
                       </div>
                     </div>
                   </div>
@@ -761,37 +763,10 @@ const HomeContent: React.FC = () => {
             <div id="SECTION7" className="ladi-section absolute mt-181">
               <div className="ladi-container">
                 <div
-                  id="FORM2"
-                  className="absolute ladi-animation flex justify-center"
-                >
-                  {/* <div
-                    id="FORM_ITEM5"
-                    className="absolute animate-on-scroll"
-                    data-animate="fadeInUp"
-                  >
-                    <div className="ladi-form-item-container">
-                      <div className="ladi-form-item-background"></div>
-                      <div className="ladi-form-item">
-                        <select
-                          name="form_item8"
-                          className="ladi-form-control font-lora ladi-form-control-select [text-align-last:center]"
-                        >
-                          <option value="">Bạn tham dự cùng ai?</option>
-                          <option value="0">Tham dự một mình</option>
-                          <option value="1">Tham dự cùng 1 người</option>
-                          <option value="2">Tham dự cùng 2 người</option>
-                          <option value="3">Tham dự cùng 3 người</option>
-                          <option value="4">Tham dự cùng 4 người</option>
-                          <option value="5">Tham dự cùng 5 người</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div> */}
-                </div>
-                <div
                   id="BUTTON3"
-                  className="absolute animate-on-scroll"
+                  className="absolute animate-on-scroll cursor-pointer"
                   data-animate="fadeInUp"
+                  onClick={() => setShowConfirm(true)}
                 >
                   <div className="ladi-button">
                     <div className="ladi-button-background absolute"></div>
@@ -802,10 +777,12 @@ const HomeContent: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                {/* Gift */}
+                {showConfirm && <Confirm onClose={() => setShowConfirm(false)} guestName={guestName}/>}
 
                 <div
                   id="BUTTON4"
-                  className="absolute animate-on-scroll"
+                  className="absolute animate-on-scroll cursor-pointer"
                   data-animate="fadeInUp"
                   onClick={() => setShowGift(true)}
                 >
@@ -819,7 +796,7 @@ const HomeContent: React.FC = () => {
                   </div>
                 </div>
                 {/* Gift */}
-                {showGift && <Gift onClose={() => setShowGift(false)}></Gift>}
+                {showGift && <Gift onClose={() => setShowGift(false)}/>}
 
                 <div
                   id="HEADLINE56"
@@ -827,7 +804,7 @@ const HomeContent: React.FC = () => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Hãy xác nhận sự có mặt của bạn để chúng mình
+                    Rất mong bạn phản hồi lời mời để chúng mình
                   </p>
                   <p className="ladi-headline font-lora">
                     chuẩn bị đón tiếp một cách chu đáo nhất nhé!

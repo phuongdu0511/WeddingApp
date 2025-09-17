@@ -1,0 +1,143 @@
+#FORM2 {
+  width: 100%;
+  height: 338px;
+  top: 195px;
+  left: 0px;
+}
+
+#FORM2 > .ladi-form {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgb(146, 131, 98);
+}
+
+#FORM2 .ladi-form-item {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#FORM2 .ladi-form-item.otp-countdown:before {
+  right: 10px;
+}
+
+#FORM2 .ladi-form-item.ladi-form-checkbox {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#FORM2 .ladi-survey-option {
+  text-align: left;
+}
+
+#FORM2 .ladi-form-item-container,
+#FORM2 .ladi-form-checkout-box,
+#FORM2 .ladi-form-checkout-bump-offer-product,
+#FORM2 .ladi-form-label-container .ladi-form-label-item {
+  border-width: 1px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: rgb(146, 131, 98);
+}
+
+#FORM_ITEM5 {
+  top: 324px;
+  width: 85%;
+  height: 35px;
+}
+
+#FORM_ITEM5 .ladi-form-item-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#FORM_ITEM5 .ladi-form-item {
+  width: 100%;
+}
+
+#FORM_ITEM4 {
+  top: 277px;
+  width: 85%;
+  height: 35px;
+}
+
+#FORM_ITEM4 .ladi-form-item-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#FORM_ITEM4 .ladi-form-item {
+  width: 100%;
+}
+
+#FORM_ITEM3 {
+  top: 230px;
+  width: 85%;
+  height: 35px;
+}
+
+#FORM_ITEM3 .ladi-form-item-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#FORM_ITEM3 .ladi-form-item {
+  width: 100%;
+}
+
+input::placeholder {
+  color: rgb(146, 131, 98);
+  opacity: 1;
+}
+
+#BUTTON5 {
+  top: 394px;
+  width: 85%;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+#BUTTON5 > .ladi-button {
+  border-width: 1px;
+  border-radius: 37px;
+  border-color: rgb(146, 131, 98);
+}
+
+#BUTTON_TEXT5 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+#BUTTON_TEXT5 > .ladi-headline {
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+#BUTTON5 > .ladi-button > .ladi-button-background {
+  background-color: rgb(146, 131, 98);
+}
+
+#BOX37 {
+  width: 420px;
+  height: 220px;
+  top: -0.25px;
+  left: 0px;
+}
+
+#BOX37 > .ladi-box {
+  background-image: url(../images/wedding/BONN0994.JPG);
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 100% 40%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}

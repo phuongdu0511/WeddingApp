@@ -84,9 +84,9 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
         <p className="font-lora text-4xl  text-center">NGỌC DIỆP</p>
       </div>
       <div className="absolute w-full mt-date z-20 zoom-in-animate">
-        <p className="font-math text-2xl  text-center">29.11.2025</p>
+        <p className="font-lora text-2xl  text-center">29.11.2025</p>
       </div>
-      <div className="absolute mt-cursor left-1/2 -translate-x-1/8 -translate-y-1/2 w-1/6 z-20 cursor-click">
+      <div className="absolute mt-cursor left-1/2 -translate-x-1/8 -translate-y-1/2 w-1/6 z-20 cursor-pointer">
         <img src={cursor} alt="cursor" className="pointer-animate" />
       </div>
     </div>

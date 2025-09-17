@@ -69,7 +69,7 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
                         <h3 className="ladi-headline">MBBank</h3>
                       </div>
                       <div id="HEADLINE114" className="absolute">
-                        <h3 className="ladi-headline">0011004389106</h3>
+                        <h3 className="ladi-headline">1006101995</h3>
                       </div>
                     </div>
                   </div>

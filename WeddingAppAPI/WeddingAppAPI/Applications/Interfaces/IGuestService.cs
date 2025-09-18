@@ -5,6 +5,7 @@ namespace WeddingAppAPI.Applications.Interfaces
 {
     public interface IGuestService
     {
+        Guest? GetGuestByPath(string path);
         List<Guest> GetGuests(string name);
         Task<Guest> FindByIdAsync(Guid Id, CancellationToken cancellationToken = default);
         Task<Guest> FindByConditionAsync(Guid Id, CancellationToken cancellationToken = default);

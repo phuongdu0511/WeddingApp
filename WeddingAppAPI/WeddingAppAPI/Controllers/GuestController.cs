@@ -24,6 +24,15 @@ namespace WeddingAppAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("path")]
+        public IActionResult GetGuestByPath(string path)
+        {
+            var result = _guestService.GetGuestByPath(path);
+            if (result == null)
+                return Ok(new Guest());
+            return Ok(result);
+        }
+
         [HttpGet("guest")]
         public async Task<IActionResult> GuestById(string id)
         {

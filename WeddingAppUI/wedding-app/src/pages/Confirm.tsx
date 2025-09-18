@@ -1,14 +1,17 @@
 import React from "react";
 import "../assets/css/Confirm.css";
+import type { Guest } from "../types/Guest";
 
 interface ConfirmProps {
   onClose: () => void;
-  guestName: string;
+  guest: Guest | null;
 }
 
-const Confirm: React.FC<ConfirmProps> = ({ onClose, guestName }) => {
+const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
   let flagGuest: boolean = false;
-  if (guestName != "" && guestName != null && guestName != undefined) flagGuest = true;
+  if (guest != null && guest != undefined) {
+    flagGuest = true;
+  }
   return (
     <div className="fixed inset-0 flex items-center justify-center z-[9999]">
       {/* Overlay mờ */}
@@ -36,7 +39,13 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guestName }) => {
                 <div id="FORM_ITEM3" className="absolute">
                   <div className="ladi-form-item-container">
                     <div className="ladi-form-item">
-                      <input className="ladi-form-control-select" placeholder="Tên của bạn" value={guestName} disabled={flagGuest}></input>
+                      <input
+                        className="ladi-form-control-select"
+                        placeholder="Tên của bạn"
+                        defaultValue={guest?.guestName}
+                        disabled={flagGuest}
+                        maxLength={40}
+                      ></input>
                     </div>
                   </div>
                 </div>
@@ -46,10 +55,17 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guestName }) => {
                       <select
                         name="form_item7"
                         className="ladi-form-control font-lora ladi-form-control-select"
+                        defaultValue={
+                          guest?.status === null
+                            ? "" // chưa có dữ liệu thì hiển thị option mặc định
+                            : guest?.status
+                            ? "1" // true  => "0"
+                            : "0" // false => "1"
+                        }
                       >
                         <option value="">Bạn sẽ đến chứ?</option>
-                        <option value="0">Mình chắc chắn sẽ đến</option>
-                        <option value="1">Xin lỗi mình bận rồi!</option>
+                        <option value="1">Mình chắc chắn sẽ đến</option>
+                        <option value="0">Xin lỗi mình bận rồi!</option>
                       </select>
                     </div>
                   </div>
@@ -60,6 +76,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guestName }) => {
                       <select
                         name="form_item8"
                         className="ladi-form-control font-lora ladi-form-control-select"
+                        defaultValue={guest?.partner}
                       >
                         <option value="">Bạn tham dự cùng ai?</option>
                         <option value="0">Tham dự một mình</option>
@@ -80,9 +97,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guestName }) => {
                   <div className="ladi-button">
                     <div className="ladi-button-background absolute"></div>
                     <div id="BUTTON_TEXT5" className="absolute">
-                      <p className="ladi-headline font-lora">
-                        xác nhận
-                      </p>
+                      <p className="ladi-headline font-lora">xác nhận</p>
                     </div>
                   </div>
                 </div>

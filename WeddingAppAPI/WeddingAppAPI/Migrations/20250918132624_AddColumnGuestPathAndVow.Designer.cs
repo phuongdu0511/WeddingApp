@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeddingAppAPI.Infrastructure;
 
@@ -11,9 +12,11 @@ using WeddingAppAPI.Infrastructure;
 namespace WeddingAppAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250918132624_AddColumnGuestPathAndVow")]
+    partial class AddColumnGuestPathAndVow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,13 +51,10 @@ namespace WeddingAppAPI.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("Partner")
+                    b.Property<bool>("Status")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bit")
                         .HasDefaultValueSql("0");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("bit");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");

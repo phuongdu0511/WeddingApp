@@ -21,42 +21,24 @@ import Gallery from "./Gallery";
 import Gift from "./Gift";
 import { Link } from "react-router-dom";
 import Confirm from "./Confirm";
-import Music from "./Music";
+import type { Guest } from "../types/Guest";
 
-const HomeContent: React.FC = () => {
+interface HomeContentProps {
+  guest: Guest | null;
+}
+
+const HomeContent: React.FC<HomeContentProps> = ({ guest }) => {
   const [showGift, setShowGift] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   useAutoScrollAnimation();
 
   // Đổi tên khách mời nếu tìm thấy
-  const [guestName, setGuestName] = useState<string | null>(null);
+  const [guestName, setGuestName] = useState<string>("");
   const [showVow, setShowVow] = useState(false);
   useEffect(() => {
-    const rawName = window.location.pathname.replace(/^\/+/, "");
-
-    if (!rawName) return; // nếu không có tên sau domain
-
-    if (rawName === "thanhthao") {
-      setGuestName("Em Thảo");
-      setShowVow(true);
-    }
-
-    if (rawName === "emlinh") {
-      setGuestName("Em Linh");
-    }
-
-    // Gọi API kiểm tra tên khách mời
-    // fetch(`/api/guests?name=${encodeURIComponent(rawName)}`)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     if (data?.exists) {
-    //       // Dữ liệu trả về có thể chứa tên hiển thị chuẩn
-    //       setGuestName(data.displayName ?? rawName);
-    //     } else {
-    //       setGuestName(null);
-    //     }
-    //   })
-    //   .catch(() => setGuestName(null));
+    if (guest == null) return; // nếu không có tên sau domain
+    setGuestName(guest.guestName);
+    setShowVow(guest.vow);
   }, []);
 
   return (
@@ -296,7 +278,9 @@ const HomeContent: React.FC = () => {
             className="absolute w-full mt-45 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-2xl font-bold text-center">SOFTWATER</p>
+            <p className="font-lora text-2xl font-bold text-center">
+              SOFTWATER
+            </p>
             <i className="block font-lora text-1xl text-center">
               42 đường 9, F361 An Dương, Tây Hồ, Hà Nội
             </i>
@@ -664,50 +648,51 @@ const HomeContent: React.FC = () => {
                 <div id="GROUP24" className="absolute ladi-animation">
                   {showVow ? (
                     <div className="ladi-group">
-                    <div
-                      id="IMAGE12"
-                      className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftCamera"
-                    >
-                      <div className="ladi-image">
-                        <div className="ladi-image-background"></div>
+                      <div
+                        id="IMAGE12"
+                        className="absolute animate-on-scroll"
+                        data-animate="fadeInLeftCamera"
+                      >
+                        <div className="ladi-image">
+                          <div className="ladi-image-background"></div>
+                        </div>
+                      </div>
+                      <div
+                        className="absolute animate-on-scroll"
+                        data-animate="fadeInLeftCamera"
+                      >
+                        <div id="HEADLINE57" className="absolute">
+                          <p className="ladi-headline font-lora">16:00</p>
+                        </div>
+                        <div id="HEADLINE58" className="absolute">
+                          <p className="ladi-headline font-lora">lễ vow</p>
+                        </div>
                       </div>
                     </div>
-                    <div
-                      className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftCamera"
-                    >
-                      <div id="HEADLINE57" className="absolute">
-                        <p className="ladi-headline font-lora">16:00</p>
+                  ) : (
+                    <div className="ladi-group">
+                      <div
+                        id="IMAGE8"
+                        className="absolute animate-on-scroll"
+                        data-animate="fadeInLeftCamera"
+                      >
+                        <div className="ladi-image">
+                          <div className="ladi-image-background"></div>
+                        </div>
                       </div>
-                      <div id="HEADLINE58" className="absolute">
-                        <p className="ladi-headline font-lora">lễ vow</p>
-                      </div>
-                    </div>
-                  </div>
-                  ) : 
-                  (<div className="ladi-group">
-                    <div
-                      id="IMAGE8"
-                      className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftCamera"
-                    >
-                      <div className="ladi-image">
-                        <div className="ladi-image-background"></div>
-                      </div>
-                    </div>
-                    <div
-                      className="absolute animate-on-scroll"
-                      data-animate="fadeInLeftCamera"
-                    >
-                      <div id="HEADLINE57" className="absolute">
-                        <p className="ladi-headline font-lora">17:00</p>
-                      </div>
-                      <div id="HEADLINE58" className="absolute">
-                        <p className="ladi-headline font-lora">chụp hình</p>
+                      <div
+                        className="absolute animate-on-scroll"
+                        data-animate="fadeInLeftCamera"
+                      >
+                        <div id="HEADLINE57" className="absolute">
+                          <p className="ladi-headline font-lora">17:00</p>
+                        </div>
+                        <div id="HEADLINE58" className="absolute">
+                          <p className="ladi-headline font-lora">chụp hình</p>
+                        </div>
                       </div>
                     </div>
-                  </div>)}
+                  )}
                 </div>
 
                 <div id="GROUP25" className="absolute ladi-animation">
@@ -778,7 +763,12 @@ const HomeContent: React.FC = () => {
                   </div>
                 </div>
                 {/* Gift */}
-                {showConfirm && <Confirm onClose={() => setShowConfirm(false)} guestName={guestName}/>}
+                {showConfirm && (
+                  <Confirm
+                    onClose={() => setShowConfirm(false)}
+                    guest={guest}
+                  />
+                )}
 
                 <div
                   id="BUTTON4"
@@ -796,7 +786,7 @@ const HomeContent: React.FC = () => {
                   </div>
                 </div>
                 {/* Gift */}
-                {showGift && <Gift onClose={() => setShowGift(false)}/>}
+                {showGift && <Gift onClose={() => setShowGift(false)} />}
 
                 <div
                   id="HEADLINE56"

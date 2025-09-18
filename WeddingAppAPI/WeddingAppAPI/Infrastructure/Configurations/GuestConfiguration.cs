@@ -17,6 +17,10 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             .IsRequired()
             .HasMaxLength(40);
 
+            builder.Property(g => g.GuestPath)
+            .IsRequired()
+            .HasMaxLength(40);
+
             builder.Property(g => g.Comment)
             .HasColumnType("nvarchar(max)");
 
@@ -33,8 +37,15 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             .HasColumnType("int");
 
             builder.Property(g => g.Status)
-            .IsRequired()
             .HasColumnType("bit")
+            .IsRequired(false);
+
+            builder.Property(g => g.Vow)
+            .HasColumnType("bit")
+            .HasDefaultValueSql("0");
+
+            builder.Property(g => g.Partner)
+            .HasColumnType("int")
             .HasDefaultValueSql("0");
         }
     }

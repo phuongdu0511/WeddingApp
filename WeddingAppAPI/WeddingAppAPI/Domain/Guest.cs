@@ -13,11 +13,17 @@ namespace WeddingAppAPI.Domain
         [Required]
         public string GuestName { get; set; }
         [Required]
+        public string GuestPath { get; set; }
+        [Required]
         public int Type { get; set; }
 
         public string Comment { get; set; }
 
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
+
+        public bool Vow { get; set; }
+
+        public int Partner { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

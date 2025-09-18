@@ -21,6 +21,21 @@ namespace WeddingAppAPI.Applications.Implements
             _unitOfWork = unitOfWork;
             _telegramService = telegramService;
         }
+
+        public Guest? GetGuestByPath(string path)
+        {
+            Guest? guest = null;
+            if (!string.IsNullOrEmpty(path)) 
+            { 
+                var result = _guestRepository.FindAll(g => g.GuestPath.Equals(path)).FirstOrDefault();
+                if (result != null)
+                {
+                    guest = result;
+                }
+            }
+            return guest;
+        }
+
         public List<Guest> GetGuests(string name)
         {
             List<Guest> result = new List<Guest>();

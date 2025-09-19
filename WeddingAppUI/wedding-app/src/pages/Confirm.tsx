@@ -56,11 +56,11 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
                         name="form_item7"
                         className="ladi-form-control font-lora ladi-form-control-select"
                         defaultValue={
-                          guest?.status === null
+                          guest?.status === null || guest?.status === undefined
                             ? "" // chưa có dữ liệu thì hiển thị option mặc định
                             : guest?.status
-                            ? "1" // true  => "0"
-                            : "0" // false => "1"
+                            ? "1" // true  => "1"
+                            : "0" // false => "0"
                         }
                       >
                         <option value="">Bạn sẽ đến chứ?</option>

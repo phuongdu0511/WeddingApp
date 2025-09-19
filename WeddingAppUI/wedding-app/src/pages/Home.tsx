@@ -18,11 +18,7 @@ const Home: React.FC = () => {
     if (!query) return; // nếu không có tên sau domain
 
     api.get(`/api/Guest/path?path=${query}`).then((res) => {
-      if (res?.data?.guestName != null || res?.data?.guestPath != null) {
-        setGuest(res?.data);
-      } else {
-        setGuest(null);
-      }
+      setGuest(res?.data);
     }).catch(() => setGuest(null));;
   }, []);
   return (
@@ -30,7 +26,7 @@ const Home: React.FC = () => {
       {showWelcome ? (
         <Welcome onClick={() => setShowWelcome(false)} />
       ) : (
-        <HomeContent guest={guest} />
+        <HomeContent guest={guest} setGuest={setGuest}/>
       )}
     </>
   );

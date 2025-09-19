@@ -13,5 +13,6 @@ namespace WeddingAppAPI.Applications.Interfaces
 
         void RemoveGuest(Guest guest);
         Task UpdateGuest(UpdateGuestViewModel guest);
+        Task AddOrUpdateGuest(AddOrUpdateGuestViewModel model);
     }
 }

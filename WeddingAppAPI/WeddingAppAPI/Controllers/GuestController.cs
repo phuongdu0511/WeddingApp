@@ -29,7 +29,8 @@ namespace WeddingAppAPI.Controllers
         {
             var result = _guestService.GetGuestByPath(path);
             if (result == null)
-                return Ok(new Guest());
+                // Trả về Guest chỉ có Path để tiếp tục logic với Path là Parent
+                return Ok(new Guest() { GuestPath = path});
             return Ok(result);
         }
 
@@ -43,7 +44,7 @@ namespace WeddingAppAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddGuest(AddGuestViewModel model) {
+        public IActionResult AddGuest([FromBody] AddGuestViewModel model) {
             var result = _guestService.AddGuest(model);
             return Ok(result);
         }
@@ -58,8 +59,15 @@ namespace WeddingAppAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult UpdateGuest(UpdateGuestViewModel model) {
+        public IActionResult UpdateGuest([FromBody] UpdateGuestViewModel model) {
             _guestService.UpdateGuest(model);
+            return Ok();
+        }
+
+        [HttpPost("addOrUpdate")]
+        public async Task<IActionResult> AddOrUpdateGuest([FromBody] AddOrUpdateGuestViewModel model)
+        {
+            await _guestService.AddOrUpdateGuest(model);
             return Ok();
         }
     }

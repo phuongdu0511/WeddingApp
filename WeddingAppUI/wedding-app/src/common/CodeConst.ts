@@ -1,0 +1,1 @@
+export const PARENT_FRIEND: string[] = ['bbp', 'bmg', 'bbl', 'bmv']

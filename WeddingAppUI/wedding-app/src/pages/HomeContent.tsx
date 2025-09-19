@@ -22,12 +22,14 @@ import Gift from "./Gift";
 import { Link } from "react-router-dom";
 import Confirm from "./Confirm";
 import type { Guest } from "../types/Guest";
+import { PARENT_FRIEND } from "../common/CodeConst";
 
 interface HomeContentProps {
   guest: Guest | null;
+  setGuest: React.Dispatch<React.SetStateAction<Guest | null>>;
 }
 
-const HomeContent: React.FC<HomeContentProps> = ({ guest }) => {
+const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
   const [showGift, setShowGift] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   useAutoScrollAnimation();
@@ -35,9 +37,13 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest }) => {
   // Đổi tên khách mời nếu tìm thấy
   const [guestName, setGuestName] = useState<string>("");
   const [showVow, setShowVow] = useState(false);
+  const [parentFriend, setParentFriend] = useState<string>(" ");
+
   useEffect(() => {
-    if (guest == null) return; // nếu không có tên sau domain
-    setGuestName(guest.guestName);
+    if (guest == null) return;
+    if (guest.guestName != null) setGuestName(guest.guestName);
+    if (PARENT_FRIEND.includes(guest.guestPath)) setParentFriend(" con ");
+
     setShowVow(guest.vow);
   }, []);
 
@@ -228,7 +234,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest }) => {
             data-animate="fadeInUp"
           >
             <p className="font-lora text-lg">
-              đến dự Lễ Thành Hôn của chúng tôi
+              đến dự Lễ Thành Hôn của{parentFriend}chúng tôi
             </p>
           </div>
           <div className="absolute w-full mt-23">
@@ -767,6 +773,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest }) => {
                   <Confirm
                     onClose={() => setShowConfirm(false)}
                     guest={guest}
+                    setGuest={setGuest}
                   />
                 )}
 

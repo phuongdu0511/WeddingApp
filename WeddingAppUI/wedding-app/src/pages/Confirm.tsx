@@ -1,17 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/Confirm.css";
 import type { Guest } from "../types/Guest";
+import { API_BASE_URL } from "../config/api";
+import axios from "axios";
 
 interface ConfirmProps {
   onClose: () => void;
   guest: Guest | null;
+  setGuest: React.Dispatch<React.SetStateAction<Guest | null>>;
 }
 
-const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
+const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
+  const api = axios.create({
+    baseURL: API_BASE_URL,
+  });
   let flagGuest: boolean = false;
-  if (guest != null && guest != undefined) {
+  if (guest?.guestName != null && guest.guestName != undefined) {
     flagGuest = true;
   }
+  const [guestName, setGuestName] = useState("");
+  const [status, setStatus] = useState<boolean>(false);
+  const [partner, setPartner] = useState<number>(0);
+
+  const payload = {
+    guestName: guest?.guestName ?? guestName,
+    guestPath: guest?.guestPath,
+    status: status,
+    partner: partner,
+  }
+
+  const confirm = async () => {
+    try {
+      await api.post(
+        `/api/Guest/addOrUpdate`, payload
+      );
+      if (guest?.guestName != null) {
+        const updated = {...guest, status, partner}
+        setGuest(updated);
+      }
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-[9999]">
       {/* Overlay mờ */}
@@ -45,6 +77,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
                         defaultValue={guest?.guestName}
                         disabled={flagGuest}
                         maxLength={40}
+                        onChange={(e) => setGuestName(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -62,6 +95,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
                             ? "1" // true  => "1"
                             : "0" // false => "0"
                         }
+                        onChange={(e) => setStatus(e.target.value === "1")}
                       >
                         <option value="">Bạn sẽ đến chứ?</option>
                         <option value="1">Mình chắc chắn sẽ đến</option>
@@ -77,6 +111,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
                         name="form_item8"
                         className="ladi-form-control font-lora ladi-form-control-select"
                         defaultValue={guest?.partner}
+                        onChange={(e) => setPartner(Number(e.target.value))}
                       >
                         <option value="">Bạn tham dự cùng ai?</option>
                         <option value="0">Tham dự một mình</option>
@@ -92,7 +127,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest }) => {
                 <div
                   id="BUTTON5"
                   className="absolute cursor-pointer"
-                  onClick={onClose}
+                  onClick={confirm}
                 >
                   <div className="ladi-button">
                     <div className="ladi-button-background absolute"></div>

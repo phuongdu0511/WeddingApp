@@ -18,5 +18,9 @@
             { false, "sẽ KHÔNG tham dự" },
             { true, "đã XÁC NHẬN tham dự" },
         };
+        public const string BAN_BO_PHUONG = "bbp";
+        public const string BAN_ME_GIANG = "bmg";
+        public const string BAN_BO_LONG = "bbl";
+        public const string BAN_ME_VAN = "bmv";
     }
 }

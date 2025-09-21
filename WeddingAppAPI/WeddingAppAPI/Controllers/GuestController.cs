@@ -16,9 +16,9 @@ namespace WeddingAppAPI.Controllers
                 _guestService = guestService;
         }
         [HttpGet("list")]
-        public IActionResult GetGuest(string name)
+        public IActionResult GetGuest()
         {
-            var result = _guestService.GetGuests(name);
+            var result = _guestService.GetGuests();
             if (result == null)
                 return Ok(new List<Guest>());
             return Ok(result);

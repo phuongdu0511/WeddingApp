@@ -39,17 +39,9 @@ namespace WeddingAppAPI.Applications.Implements
             return guest;
         }
 
-        public List<Guest> GetGuests(string name)
+        public List<Guest> GetGuests()
         {
-            List<Guest> result = new List<Guest>();
-            if (!string.IsNullOrEmpty(name))
-            {
-                result = _guestRepository.FindAll(g => g.GuestName.Contains(name)).ToList();
-            }
-            else { 
-                result = _guestRepository.FindAll().ToList();
-            }
-            return result;
+            return _guestRepository.FindAll().ToList();
         }
 
         public async Task<Guest> FindByConditionAsync(Guid Id, CancellationToken cancellationToken = default)

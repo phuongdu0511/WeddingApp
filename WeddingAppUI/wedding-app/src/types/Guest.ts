@@ -5,4 +5,5 @@ export interface Guest {
   vow: boolean;
   type: number;
   partner: number;
+  donate: number;
 }

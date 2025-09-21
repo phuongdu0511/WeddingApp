@@ -50,6 +50,11 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             .IsRequired(false)
             .HasColumnType("int")
             .HasDefaultValueSql("0");
+
+            builder.Property(g => g.Donate)
+            .IsRequired(false)
+            .HasColumnType("decimal")
+            .HasDefaultValueSql("0");
         }
     }
 }

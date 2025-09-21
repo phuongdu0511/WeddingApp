@@ -21909,12 +21909,13 @@ a.badge-purple:focus {
   vertical-align: middle;
 }
 
-table .sticky-col {
+/* Cố định cột tên đầu tiên */
+/* table .sticky-col {
   position: sticky;
-  left: 0;                /* luôn dính mép trái khi cuộn */
-  background: #fff;       /* nền trắng để không lộ cột bên dưới */
-  z-index: 2;             /* cao hơn các cell khác */
-}
+  left: 0;
+  background: #fff;
+  z-index: 2;
+} */
 
 .table tr.selected {
   background-color: #f8fafd;

@@ -1,14 +1,14 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import { API_BASE_URL } from "../config/api";
+import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 // import '../assets/admin/css/app.min.css';
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "../assets/css/Admin.css";
 // import '../assets/admin/vendors/datatables/dataTables.bootstrap.min.css'
 import { DeleteOutlined, EditOutlined, CopyOutlined } from "@ant-design/icons";
+import { GUEST_TYPE } from "../common/CodeConst";
 
 interface Guest {
-  guestId: string;
+  id: string;
   guestName: string;
   guestPath: string;
   status: boolean;
@@ -18,45 +18,23 @@ interface Guest {
   donate: number;
 }
 
-const initialGuests: Guest[] = [
-  {
-    guestId: "1",
-    guestName: "Nguyễn Văn A",
-    guestPath: "nguyenvana",
-    status: true,
-    vow: true,
-    type: 1,
-    partner: 0,
-    donate: 500.0,
-  },
-  {
-    guestId: "2",
-    guestName: "Nguyễn Văn B",
-    guestPath: "nguyenvana",
-    status: true,
-    vow: false,
-    type: 1,
-    partner: 0,
-    donate: 500.0,
-  },
-  {
-    guestId: "3",
-    guestName: "Nguyễn Văn C",
-    guestPath: "nguyenvana",
-    status: false,
-    vow: true,
-    type: 4,
-    partner: 0,
-    donate: 500.0,
-  },
-];
-
 const Admin: React.FC = () => {
-  //   const api = axios.create({
-  //     baseURL: API_BASE_URL,
-  //   });
+    const api = axios.create({
+      baseURL: API_BASE_URL,
+    });
+    useEffect(() => {
+    
+        api
+          .get(`/api/Guest/list`)
+          .then((res) => {
+            setGuests(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, []);
 
-  const [guests, setGuests] = useState<Guest[]>(initialGuests);
+  const [guests, setGuests] = useState<Guest[]>([]);
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState<"all" | "true" | "false">(
     "all"
@@ -70,8 +48,8 @@ const Admin: React.FC = () => {
   // Popup
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingGuest, setEditingGuest] = useState<Guest | null>(null);
-  const [tempGuest, setTempGuest] = useState<Omit<Guest, "id">>({
-    guestId: "",
+  const [tempGuest, setTempGuest] = useState<Omit<Guest, "guestId">>({
+    id: "",
     guestName: "",
     guestPath: "",
     status: false,
@@ -112,7 +90,7 @@ const Admin: React.FC = () => {
     } else {
       setEditingGuest(null);
       setTempGuest({
-        guestId: "",
+        id: "",
         guestName: "",
         guestPath: "",
         status: false,
@@ -133,7 +111,7 @@ const Admin: React.FC = () => {
     if (editingGuest) {
       setGuests((prev) =>
         prev.map((g) =>
-          g.guestId === editingGuest.guestId
+          g.id === editingGuest.id
             ? { ...editingGuest, ...tempGuest }
             : g
         )
@@ -147,9 +125,9 @@ const Admin: React.FC = () => {
     closeModal();
   };
 
-  const handleDelete = (guestId: string) => {
+  const handleDelete = (id: string) => {
     if (window.confirm("Bạn có chắc muốn xóa khách mời này?")) {
-      setGuests((prev) => prev.filter((g) => g.guestId !== guestId));
+      setGuests((prev) => prev.filter((g) => g.id !== id));
     }
   };
 
@@ -283,7 +261,7 @@ const Admin: React.FC = () => {
               </thead>
               <tbody>
                 {filteredGuests.map((g) => (
-                  <tr key={g.guestId}>
+                  <tr key={g.id}>
                     <td className="sticky-col">
                       <div className="d-flex align-items-center">
                         <h6 className="m-b-0">{g.guestName}</h6>
@@ -325,7 +303,7 @@ const Admin: React.FC = () => {
                         </div>
                       )}
                     </td>
-                    <td>{g.type}</td>
+                    <td>{GUEST_TYPE[g.type as keyof typeof GUEST_TYPE] ?? "Không rõ"}</td>
                     <td>
                       {getSide(g.type) === "trai" ? "Nhà Trai" : "Nhà Gái"}
                     </td>
@@ -341,7 +319,7 @@ const Admin: React.FC = () => {
                       </button>
                       <button
                         className="btn btn-icon btn-hover btn-sm btn-rounded"
-                        onClick={() => handleDelete(g.guestId)}
+                        onClick={() => handleDelete(g.id)}
                       >
                         <DeleteOutlined />
                       </button>

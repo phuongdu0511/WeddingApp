@@ -6,12 +6,10 @@ import BONN9280 from "../assets/images/wedding/BONN9280.jpg";
 import BONN9018 from "../assets/images/wedding/BONN9018.jpg";
 import BONN9771 from "../assets/images/wedding/BONN9771.jpg";
 import BONN9786 from "../assets/images/wedding/BONN9786.jpg";
-import BONN0914 from "../assets/images/wedding/BONN0914.jpg";
 import BONN1019 from "../assets/images/wedding/BONN1019.jpg";
 import BONN0893 from "../assets/images/wedding/BONN0893.jpg";
 import BONN1038 from "../assets/images/wedding/BONN1038.jpg";
 import BONN0610 from "../assets/images/wedding/BONN0610.jpg";
-import BONN0931 from "../assets/images/wedding/BONN0931.jpg";
 
 const images = [
   BONN0724,
@@ -20,12 +18,10 @@ const images = [
   BONN9771,
   BONN9018,
   BONN9786,
-  BONN0914,
   BONN1019,
   BONN0893,
   BONN1038,
   BONN0610,
-  BONN0931,
 ];
 
 export default function Gallery() {

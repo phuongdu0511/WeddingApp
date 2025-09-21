@@ -12,13 +12,6 @@ html, body, #root {
   padding: 0;
 }
 
-#root {
-  display: flex;
-  justify-content: center;
-  color: rgb(146, 131, 98);
-  overflow-x: hidden;
-}
-
 .text-white {
   color: white;
 }

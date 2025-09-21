@@ -717,7 +717,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                       data-animate="fadeInLeftRing"
                     >
                       <div id="HEADLINE59" className="absolute">
-                        <p className="ladi-headline font-lora">18:00</p>
+                        <p className="ladi-headline font-lora">17:30</p>
                       </div>
                       <div id="HEADLINE60" className="absolute">
                         <p className="ladi-headline font-lora">lễ thành hôn</p>
@@ -741,7 +741,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                       data-animate="fadeInLeftEat"
                     >
                       <div id="HEADLINE50" className="absolute">
-                        <p className="ladi-headline font-lora">19:00</p>
+                        <p className="ladi-headline font-lora">18:00</p>
                       </div>
                       <div id="HEADLINE54" className="absolute">
                         <p className="ladi-headline font-lora">khai tiệc</p>

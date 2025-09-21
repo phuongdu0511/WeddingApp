@@ -1,0 +1,9 @@
+.wedding-app {
+  display: flex;
+  justify-content: center;
+  color: rgb(146, 131, 98);
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -11,7 +11,7 @@ interface Guest {
   id: string;
   guestName: string;
   guestPath: string;
-  status: boolean;
+  status: boolean | null;
   vow: boolean;
   type: number;
   partner: number;
@@ -19,20 +19,19 @@ interface Guest {
 }
 
 const Admin: React.FC = () => {
-    const api = axios.create({
-      baseURL: API_BASE_URL,
-    });
-    useEffect(() => {
-    
-        api
-          .get(`/api/Guest/list`)
-          .then((res) => {
-            setGuests(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, []);
+  const api = axios.create({
+    baseURL: API_BASE_URL,
+  });
+  useEffect(() => {
+    api
+      .get(`/api/Guest/list`)
+      .then((res) => {
+        setGuests(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const [guests, setGuests] = useState<Guest[]>([]);
   const [search, setSearch] = useState("");
@@ -52,7 +51,7 @@ const Admin: React.FC = () => {
     id: "",
     guestName: "",
     guestPath: "",
-    status: false,
+    status: null,
     vow: false,
     type: 0,
     partner: 0,
@@ -93,7 +92,7 @@ const Admin: React.FC = () => {
         id: "",
         guestName: "",
         guestPath: "",
-        status: false,
+        status: null,
         vow: false,
         type: 0,
         partner: 0,
@@ -106,14 +105,13 @@ const Admin: React.FC = () => {
   const closeModal = () => setIsModalOpen(false);
 
   const handleSave = () => {
+    console.log(tempGuest, 'asd');
     if (!tempGuest.guestName.trim()) return;
 
     if (editingGuest) {
       setGuests((prev) =>
         prev.map((g) =>
-          g.id === editingGuest.id
-            ? { ...editingGuest, ...tempGuest }
-            : g
+          g.id === editingGuest.id ? { ...editingGuest, ...tempGuest } : g
         )
       );
     } else {
@@ -277,17 +275,22 @@ const Admin: React.FC = () => {
                       </button>
                     </td>
                     <td>
-                      {g.status ? (
+                      {g.status === null ? (
+                        <div className="d-flex align-items-center">
+                          <div className="badge badge-warning badge-dot m-r-10"></div>
+                          <div>Chưa phản hồi</div>
+                        </div>
+                      ) : g.status ? ((
                         <div className="d-flex align-items-center">
                           <div className="badge badge-success badge-dot m-r-10"></div>
                           <div>Sẽ đến</div>
                         </div>
-                      ) : (
+                      )) : ((
                         <div className="d-flex align-items-center">
                           <div className="badge badge-danger badge-dot m-r-10"></div>
                           <div>Không đến</div>
                         </div>
-                      )}
+                      ))}
                     </td>
                     <td>{g.partner}</td>
                     <td>
@@ -303,7 +306,10 @@ const Admin: React.FC = () => {
                         </div>
                       )}
                     </td>
-                    <td>{GUEST_TYPE[g.type as keyof typeof GUEST_TYPE] ?? "Không rõ"}</td>
+                    <td>
+                      {GUEST_TYPE[g.type as keyof typeof GUEST_TYPE] ??
+                        "Không rõ"}
+                    </td>
                     <td>
                       {getSide(g.type) === "trai" ? "Nhà Trai" : "Nhà Gái"}
                     </td>
@@ -334,7 +340,12 @@ const Admin: React.FC = () => {
               <div className="modal-content">
                 <h2>{editingGuest ? "Sửa khách mời" : "Thêm khách mời"}</h2>
 
-                {["guestName", "guestPath", "status", "vow", "type", "partner", "donate"].map((field) => (
+                {[
+                  "Tên khách:",
+                  "Link:",
+                  "Khách đi cùng:",
+                  "Tiền mừng:",
+                ].map((field) => (
                   <div className="modal-field" key={field}>
                     <label>{field.toUpperCase()}</label>
                     <input
@@ -349,16 +360,69 @@ const Admin: React.FC = () => {
                 ))}
 
                 <div className="modal-field">
-                  <label>Trạng thái:</label>
+                  <label>Loại khách:</label>
                   <select
-                    value={tempGuest.status ? "true" : "false"}
+                    // nếu type === null thì hiển thị option "Chưa chọn"
+                    value={
+                      tempGuest.type === null ? "" : String(tempGuest.type)
+                    }
                     onChange={(e) =>
                       setTempGuest({
                         ...tempGuest,
-                        status: e.target.value === "true",
+                        type:
+                          e.target.value === "" ? 0 : Number(e.target.value),
                       })
                     }
                   >
+                    <option value="">Chưa chọn</option>
+                    <option value="1">Bạn bố Phương</option>
+                    <option value="2">Bạn mẹ Giang</option>
+                    <option value="3">Bạn bố Long</option>
+                    <option value="4">Bạn mẹ Vân</option>
+                    <option value="5">Bạn Duy</option>
+                    <option value="6">Bạn Diệp</option>
+                    <option value="7">Bạn Thảo</option>
+                  </select>
+                </div>
+
+                <div className="modal-field">
+                  <label>Lễ Vow:</label>
+                  <select
+                    value={tempGuest.vow ? "true" : "false"}
+                    onChange={(e) =>
+                      setTempGuest({
+                        ...tempGuest,
+                        vow: e.target.value === "true",
+                      })
+                    }
+                  >
+                    <option value="true">Có</option>
+                    <option value="false">Không</option>
+                  </select>
+                </div>
+
+                <div className="modal-field">
+                  <label>Trạng thái:</label>
+                  <select
+                    // nếu status === null thì giá trị control = "" => option “Chưa chọn” được hiển thị
+                    value={
+                      tempGuest.status === null
+                        ? ""
+                        : tempGuest.status
+                        ? "true"
+                        : "false"
+                    }
+                    onChange={(e) =>
+                      setTempGuest({
+                        ...tempGuest,
+                        status:
+                          e.target.value === "" // người dùng chọn “Chưa chọn”
+                            ? null
+                            : e.target.value === "true",
+                      })
+                    }
+                  >
+                    <option value="">Chưa phản hồi</option>
                     <option value="true">Sẽ đến</option>
                     <option value="false">Không đến</option>
                   </select>

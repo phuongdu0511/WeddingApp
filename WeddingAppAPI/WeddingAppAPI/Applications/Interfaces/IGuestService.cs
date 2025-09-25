@@ -9,10 +9,10 @@ namespace WeddingAppAPI.Applications.Interfaces
         List<Guest> GetGuests();
         Task<Guest> FindByIdAsync(Guid Id, CancellationToken cancellationToken = default);
         Task<Guest> FindByConditionAsync(Guid Id, CancellationToken cancellationToken = default);
-        Task AddGuest(AddGuestViewModel model);
+        Task<Guest> AddGuest(AddGuestViewModel model);
 
         void RemoveGuest(Guest guest);
-        Task UpdateGuest(UpdateGuestViewModel guest);
+        Task<Guest?> UpdateGuest(UpdateGuestViewModel guest);
         Task AddOrUpdateGuest(AddOrUpdateGuestViewModel model);
     }
 }

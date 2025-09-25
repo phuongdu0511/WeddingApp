@@ -29,7 +29,7 @@ const Admin: React.FC = () => {
         setGuests(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }, []);
 
@@ -104,28 +104,70 @@ const Admin: React.FC = () => {
 
   const closeModal = () => setIsModalOpen(false);
 
-  const handleSave = () => {
-    console.log(tempGuest, 'asd');
+  const handleSave = async () => {
     if (!tempGuest.guestName.trim()) return;
 
     if (editingGuest) {
-      setGuests((prev) =>
-        prev.map((g) =>
-          g.id === editingGuest.id ? { ...editingGuest, ...tempGuest } : g
-        )
-      );
+      // Cập nhật
+      await api
+        .post(`${API_BASE_URL}/api/Guest/update`, tempGuest)
+        .then((res) => {
+          if (res?.data?.result != null) {
+            api
+              .get(`/api/Guest/list`)
+              .then((res) => {
+                setGuests(res.data);
+              })
+              .catch((err) => {
+                alert(err);
+              });
+          }
+        })
+        .catch((err) => {
+          alert(err);
+        });
     } else {
-      const newGuest: Guest = {
-        ...tempGuest,
-      };
-      setGuests((prev) => [...prev, newGuest]);
+      // Thêm mới
+      await api
+        .post(`${API_BASE_URL}/api/Guest/add`, tempGuest)
+        .then((res) => {
+          if (res?.data?.result != null) {
+            api
+              .get(`/api/Guest/list`)
+              .then((res) => {
+                setGuests(res.data);
+              })
+              .catch((err) => {
+                alert(err);
+              });
+          }
+        })
+        .catch((err) => {
+          alert(err);
+        });
     }
     closeModal();
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (window.confirm("Bạn có chắc muốn xóa khách mời này?")) {
-      setGuests((prev) => prev.filter((g) => g.id !== id));
+      await api
+        .post(`${API_BASE_URL}/api/Guest/delete`, null, { params: { id } })
+        .then((res) => {
+          if (res?.data != null) {
+            api
+              .get(`/api/Guest/list`)
+              .then((res) => {
+                setGuests(res.data);
+              })
+              .catch((err) => {
+                alert(err);
+              });
+          }
+        })
+        .catch((err) => {
+          alert(err);
+        });
     }
   };
 
@@ -136,6 +178,57 @@ const Admin: React.FC = () => {
       .then(() => alert(`Đã copy: ${domain}`))
       .catch((err) => console.error("Copy thất bại", err));
   };
+
+  const fields = [
+    { label: "Tên khách", key: "guestName" },
+    { label: "Link", key: "guestPath" },
+    { label: "Khách đi cùng", key: "partner" },
+    { label: "Tiền mừng", key: "donate" },
+  ] as const;
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
+
+  const totalPages = Math.ceil(filteredGuests.length / pageSize);
+
+  const pagedGuests = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return filteredGuests.slice(start, start + pageSize);
+  }, [filteredGuests, currentPage]);
+
+  function getPageNumbers(current: number, total: number) {
+    const delta = 2; // số trang hiển thị hai bên
+    const pages: (number | string)[] = [];
+
+    // Luôn thêm trang 1
+    pages.push(1);
+
+    let left = current - delta;
+    let right = current + delta;
+
+    if (left <= 2) {
+      left = 2;
+      right = Math.min(2 * delta + 1, total - 1);
+    }
+    if (right >= total - 1) {
+      right = total - 1;
+      left = Math.max(total - (2 * delta + 1), 2);
+    }
+
+    if (left > 2) pages.push("...");
+
+    for (let i = left; i <= right; i++) {
+      if (i > 1 && i < total) pages.push(i);
+    }
+
+    if (right < total - 1) pages.push("...");
+
+    // Luôn thêm trang cuối (nếu có nhiều hơn 1)
+    if (total > 1) pages.push(total);
+
+    return pages;
+  }
 
   return (
     <div className="flex justify-center">
@@ -258,7 +351,7 @@ const Admin: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredGuests.map((g) => (
+                {pagedGuests.map((g) => (
                   <tr key={g.id}>
                     <td className="sticky-col">
                       <div className="d-flex align-items-center">
@@ -280,17 +373,17 @@ const Admin: React.FC = () => {
                           <div className="badge badge-warning badge-dot m-r-10"></div>
                           <div>Chưa phản hồi</div>
                         </div>
-                      ) : g.status ? ((
+                      ) : g.status ? (
                         <div className="d-flex align-items-center">
                           <div className="badge badge-success badge-dot m-r-10"></div>
                           <div>Sẽ đến</div>
                         </div>
-                      )) : ((
+                      ) : (
                         <div className="d-flex align-items-center">
                           <div className="badge badge-danger badge-dot m-r-10"></div>
                           <div>Không đến</div>
                         </div>
-                      ))}
+                      )}
                     </td>
                     <td>{g.partner}</td>
                     <td>
@@ -334,26 +427,58 @@ const Admin: React.FC = () => {
                 ))}
               </tbody>
             </table>
+            <div className="pagination">
+              <button
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((p) => p - 1)}
+              >
+                « Trước
+              </button>
+
+              {getPageNumbers(currentPage, totalPages).map((p, idx) =>
+                p === "..." ? (
+                  <span key={`dots-${idx}`} className="dots">
+                    …
+                  </span>
+                ) : (
+                  <button
+                    key={p}
+                    className={currentPage === p ? "active" : ""}
+                    onClick={() => setCurrentPage(p as number)}
+                  >
+                    {p}
+                  </button>
+                )
+              )}
+
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage((p) => p + 1)}
+              >
+                Sau »
+              </button>
+            </div>
           </div>
           {isModalOpen && (
             <div className="modal-overlay">
               <div className="modal-content">
                 <h2>{editingGuest ? "Sửa khách mời" : "Thêm khách mời"}</h2>
 
-                {[
-                  "Tên khách:",
-                  "Link:",
-                  "Khách đi cùng:",
-                  "Tiền mừng:",
-                ].map((field) => (
-                  <div className="modal-field" key={field}>
-                    <label>{field.toUpperCase()}</label>
+                {fields.map(({ label, key }) => (
+                  <div className="modal-field" key={key}>
+                    <label>{label}</label>
                     <input
                       type="text"
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      value={(tempGuest as any)[field]}
+                      value={(tempGuest as any)[key] ?? ""}
                       onChange={(e) =>
-                        setTempGuest({ ...tempGuest, [field]: e.target.value })
+                        setTempGuest({
+                          ...tempGuest,
+                          [key]:
+                            key === "partner" || key === "donate"
+                              ? Number(e.target.value)
+                              : e.target.value,
+                        })
                       }
                     />
                   </div>

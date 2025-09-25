@@ -23447,3 +23447,29 @@ div.is-invalid {
   background: #aaa; color: #fff; border: none; padding: 8px 14px;
   border-radius: 4px; cursor: pointer;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.pagination button,
+.pagination .dots {
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+.pagination button.active {
+  background: #007bff;
+  color: #fff;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination .dots {
+  cursor: default;
+}

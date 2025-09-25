@@ -60,8 +60,8 @@ namespace WeddingAppAPI.Controllers
 
         [HttpPost("update")]
         public IActionResult UpdateGuest([FromBody] UpdateGuestViewModel model) {
-            _guestService.UpdateGuest(model);
-            return Ok();
+            var result = _guestService.UpdateGuest(model);
+            return Ok(result);
         }
 
         [HttpPost("addOrUpdate")]

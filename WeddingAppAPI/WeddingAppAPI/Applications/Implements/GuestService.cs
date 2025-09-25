@@ -41,7 +41,7 @@ namespace WeddingAppAPI.Applications.Implements
 
         public List<Guest> GetGuests()
         {
-            return _guestRepository.FindAll().ToList();
+            return _guestRepository.FindAll().OrderByDescending(x => x.UpdatedAt).ToList();
         }
 
         public async Task<Guest> FindByConditionAsync(Guid Id, CancellationToken cancellationToken = default)
@@ -55,7 +55,7 @@ namespace WeddingAppAPI.Applications.Implements
         }
 
 
-        public async Task AddGuest(AddGuestViewModel model)
+        public async Task<Guest> AddGuest(AddGuestViewModel model)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace WeddingAppAPI.Applications.Implements
                 _guestRepository.Add(guest);
                 _unitOfWork.Commit();
 
-                if (model.IsGuest)
+                if (model.IsGuest == true)
                 {
                     var type = CodeConst.FriendTypes.FirstOrDefault(x => x.Key == guest.Type).Value;
                     var acceptStatus = CodeConst.AcceptStatus.FirstOrDefault(x => x.Key == model.Status).Value;
@@ -83,11 +83,11 @@ namespace WeddingAppAPI.Applications.Implements
                     }
                     await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
                 }
+                return guest;
             }
             catch (Exception ex)
             {
-
-                await _telegramService.SendMessageAsync($"Lỗi ở AddGuest: {ex.Message}, {DateTime.Now}");
+                await _telegramService.SendMessageAsync($"Lỗi ở AddGuest: {ex.Message}, {DateTime.UtcNow}");
                 throw new Exception(ex.Message);
             }
         }
@@ -98,7 +98,7 @@ namespace WeddingAppAPI.Applications.Implements
             _unitOfWork.Commit();
         }
 
-        public async Task UpdateGuest(UpdateGuestViewModel model)
+        public async Task<Guest?> UpdateGuest(UpdateGuestViewModel model)
         {
             try
             {
@@ -116,13 +116,14 @@ namespace WeddingAppAPI.Applications.Implements
                         }
                         guest.Status = model.Status;
                         guest.Partner = model.Partner;
-                        guest.UpdatedAt = DateTime.Now;
+                        guest.UpdatedAt = DateTime.UtcNow;
 
                         _guestRepository.Update(guest);
                         _unitOfWork.Commit();
 
                         await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
                     }
+                    return guest;
                 }
                 // Trường hợp mình update
                 else
@@ -136,16 +137,18 @@ namespace WeddingAppAPI.Applications.Implements
                         guest.Vow = model.Vow;
                         guest.Comment = model.Comment;
                         guest.Type = model.Type;
-                        guest.UpdatedAt = DateTime.Now;
+                        guest.Donate = model.Donate;
+                        guest.UpdatedAt = DateTime.UtcNow;
 
                         _guestRepository.Update(guest);
                         _unitOfWork.Commit();
                     }
+                    return guest;
                 }
             }
             catch (Exception ex)
             {
-                await _telegramService.SendMessageAsync($"Lỗi ở UpdateGuest: {ex.Message}, {DateTime.Now}");
+                //await _telegramService.SendMessageAsync($"Lỗi ở UpdateGuest: {ex.Message}, {DateTime.UtcNow}");
                 throw new Exception(ex.Message);
             }
         }
@@ -200,7 +203,7 @@ namespace WeddingAppAPI.Applications.Implements
             }
             catch (Exception ex)
             {
-                await _telegramService.SendMessageAsync($"Lỗi ở AddOrUpdateGuest: {ex.Message}, {DateTime.Now}");
+                await _telegramService.SendMessageAsync($"Lỗi ở AddOrUpdateGuest: {ex.Message}, {DateTime.UtcNow}");
                 throw new Exception(ex.Message);
             }
         }

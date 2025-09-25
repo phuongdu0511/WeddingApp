@@ -31,7 +31,7 @@ namespace WeddingAppAPI.Infrastructure.Configurations
 
             builder.Property(g => g.UpdatedAt)
             .HasDefaultValueSql("GETDATE()")
-            .ValueGeneratedOnAddOrUpdate();
+            .ValueGeneratedOnAdd();
 
             builder.Property(g => g.Type)
             .IsRequired()

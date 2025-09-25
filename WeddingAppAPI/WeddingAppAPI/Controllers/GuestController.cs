@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WeddingAppAPI.Applications.Interfaces;
 using WeddingAppAPI.Domain;
 using WeddingAppAPI.ViewModel;
@@ -59,9 +60,17 @@ namespace WeddingAppAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult UpdateGuest([FromBody] UpdateGuestViewModel model) {
-            var result = _guestService.UpdateGuest(model);
-            return Ok(result);
+        public async Task<IActionResult> UpdateGuest([FromBody] UpdateGuestViewModel model) {
+            try
+            {
+                var result = await _guestService.UpdateGuest(model);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+
         }
 
         [HttpPost("addOrUpdate")]

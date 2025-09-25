@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using WeddingAppAPI.Abstractions;
+using WeddingAppAPI.Applications.Interfaces;
 using WeddingAppAPI.Infrastructure;
 
 namespace WeddingAppAPI.Repositories
@@ -64,6 +65,12 @@ namespace WeddingAppAPI.Repositories
         public void Update(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
+        }
+
+        public void Update<T>(T entity, byte[] originalRowVersion) where T : class, IHasRowVersion
+        {
+            _context.Entry(entity).Property(e => e.RowVersion).OriginalValue = originalRowVersion;
+            _context.Set<T>().Update(entity);
         }
 
         // Working side by side with unitOfWork, this method just change status and is not in case IO-Bound

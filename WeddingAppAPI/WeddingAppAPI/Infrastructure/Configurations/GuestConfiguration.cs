@@ -55,6 +55,10 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             .IsRequired(false)
             .HasColumnType("decimal")
             .HasDefaultValueSql("0");
+
+            builder.Property(g => g.RowVersion)
+            .IsRowVersion()
+            .IsConcurrencyToken();
         }
     }
 }

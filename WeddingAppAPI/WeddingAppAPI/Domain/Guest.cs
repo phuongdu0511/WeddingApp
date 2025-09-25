@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WeddingAppAPI.Abstractions;
+using WeddingAppAPI.Applications.Interfaces;
 
 namespace WeddingAppAPI.Domain
 {
     [Table("Guest")]
-    public class Guest : DomainEntity<Guid>
+    public class Guest : DomainEntity<Guid>, IHasRowVersion
     {
         [Column("GuestId")]
         public override Guid Id { get; set; }
@@ -26,6 +27,8 @@ namespace WeddingAppAPI.Domain
         public int? Partner { get; set; }
 
         public decimal? Donate { get; set; }
+
+        public byte[] RowVersion { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

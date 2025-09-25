@@ -16,6 +16,7 @@ interface Guest {
   type: number;
   partner: number;
   donate: number;
+  rowVersion: string;
 }
 
 const Admin: React.FC = () => {
@@ -56,6 +57,7 @@ const Admin: React.FC = () => {
     type: 0,
     partner: 0,
     donate: 0,
+    rowVersion: "",
   });
 
   // Hàm tính bên trai/gái từ type
@@ -97,6 +99,7 @@ const Admin: React.FC = () => {
         type: 0,
         partner: 0,
         donate: 0,
+        rowVersion: "",
       });
     }
     setIsModalOpen(true);
@@ -109,42 +112,30 @@ const Admin: React.FC = () => {
 
     if (editingGuest) {
       // Cập nhật
-      await api
+      const res = await api
         .post(`${API_BASE_URL}/api/Guest/update`, tempGuest)
-        .then((res) => {
-          if (res?.data?.result != null) {
-            api
-              .get(`/api/Guest/list`)
-              .then((res) => {
-                setGuests(res.data);
-              })
-              .catch((err) => {
-                alert(err);
-              });
-          }
-        })
         .catch((err) => {
-          alert(err);
+          alert(err.response.data.message);
         });
+
+      if (res?.data != null) {
+        await api.get(`/api/Guest/list`).then((res) => {
+          setGuests(res.data);
+        });
+      }
     } else {
       // Thêm mới
-      await api
-        .post(`${API_BASE_URL}/api/Guest/add`, tempGuest)
-        .then((res) => {
-          if (res?.data?.result != null) {
-            api
-              .get(`/api/Guest/list`)
-              .then((res) => {
-                setGuests(res.data);
-              })
-              .catch((err) => {
-                alert(err);
-              });
-          }
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      const res = await api.post(`${API_BASE_URL}/api/Guest/add`, tempGuest);
+      if (res?.data != null) {
+        await api
+          .get(`/api/Guest/list`)
+          .then((res) => {
+            setGuests(res.data);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      }
     }
     closeModal();
   };
@@ -332,8 +323,10 @@ const Admin: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 text-right"></div>
           </div>
+          {/* <div className="">Tổng số khách</div>
+          <div className="">Tổng số khách</div>
+          <div className="">Tổng số khách</div> */}
           <div className="table-responsive">
             <table className="table table-hover e-commerce-table">
               <thead>
@@ -468,6 +461,7 @@ const Admin: React.FC = () => {
                   <div className="modal-field" key={key}>
                     <label>{label}</label>
                     <input
+                      className="admin-search-input"
                       type="text"
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       value={(tempGuest as any)[key] ?? ""}
@@ -487,6 +481,7 @@ const Admin: React.FC = () => {
                 <div className="modal-field">
                   <label>Loại khách:</label>
                   <select
+                    className="custom-select"
                     // nếu type === null thì hiển thị option "Chưa chọn"
                     value={
                       tempGuest.type === null ? "" : String(tempGuest.type)
@@ -513,6 +508,7 @@ const Admin: React.FC = () => {
                 <div className="modal-field">
                   <label>Lễ Vow:</label>
                   <select
+                    className="custom-select"
                     value={tempGuest.vow ? "true" : "false"}
                     onChange={(e) =>
                       setTempGuest({
@@ -529,6 +525,7 @@ const Admin: React.FC = () => {
                 <div className="modal-field">
                   <label>Trạng thái:</label>
                   <select
+                    className="custom-select"
                     // nếu status === null thì giá trị control = "" => option “Chưa chọn” được hiển thị
                     value={
                       tempGuest.status === null

@@ -17,6 +17,7 @@ namespace WeddingAppAPI.ViewModel
         public bool? Status { get; set; }
         public decimal? Donate { get; set; }
         // Phân biệt là khách tự update hay mình update
-        public bool IsGuest { get; set; }
+        public bool? IsGuest { get; set; }
+        public string RowVersion { get; set; }
     }
 }

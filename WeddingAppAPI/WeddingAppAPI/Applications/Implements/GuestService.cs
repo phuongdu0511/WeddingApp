@@ -7,6 +7,7 @@ using WeddingAppAPI.Applications.Interfaces;
 using WeddingAppAPI.Common;
 using WeddingAppAPI.Domain;
 using WeddingAppAPI.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace WeddingAppAPI.Applications.Implements
 {
@@ -103,7 +104,7 @@ namespace WeddingAppAPI.Applications.Implements
             try
             {
                 // Trường hợp khách tự update
-                if (model.IsGuest) {
+                if (model.IsGuest == true) {
                     var guest = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath)).FirstOrDefault();
                     if (guest != null)
                     {
@@ -118,7 +119,9 @@ namespace WeddingAppAPI.Applications.Implements
                         guest.Partner = model.Partner;
                         guest.UpdatedAt = DateTime.UtcNow;
 
-                        _guestRepository.Update(guest);
+                        var originalRowVersion = Convert.FromBase64String(model.RowVersion);
+
+                        _guestRepository.Update(guest, originalRowVersion);
                         _unitOfWork.Commit();
 
                         await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
@@ -140,15 +143,21 @@ namespace WeddingAppAPI.Applications.Implements
                         guest.Donate = model.Donate;
                         guest.UpdatedAt = DateTime.UtcNow;
 
-                        _guestRepository.Update(guest);
+                        var originalRowVersion = Convert.FromBase64String(model.RowVersion);
+
+                        _guestRepository.Update(guest, originalRowVersion);
                         _unitOfWork.Commit();
                     }
                     return guest;
                 }
             }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new Exception("Bản ghi đã bị người khác cập nhật.");
+            }
             catch (Exception ex)
             {
-                //await _telegramService.SendMessageAsync($"Lỗi ở UpdateGuest: {ex.Message}, {DateTime.UtcNow}");
+                await _telegramService.SendMessageAsync($"Lỗi ở UpdateGuest: {ex.Message}, {DateTime.UtcNow}");
                 throw new Exception(ex.Message);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using WeddingAppAPI.Applications.Interfaces;
 
 namespace WeddingAppAPI.Abstractions
 {
@@ -15,6 +16,8 @@ namespace WeddingAppAPI.Abstractions
         void Add(TEntity entity);
 
         void Update(TEntity entity);
+
+        void Update<T>(T entity,byte[] originalRowVersion) where T : class, IHasRowVersion;
 
         void Remove(TEntity entity);
 

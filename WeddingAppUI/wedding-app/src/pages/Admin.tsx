@@ -1,11 +1,10 @@
 import axios from "axios";
 import { API_BASE_URL } from "../config/api";
-// import '../assets/admin/css/app.min.css';
 import { useEffect, useMemo, useState } from "react";
 import "../assets/css/Admin.css";
-// import '../assets/admin/vendors/datatables/dataTables.bootstrap.min.css'
 import { DeleteOutlined, EditOutlined, CopyOutlined } from "@ant-design/icons";
 import { GUEST_TYPE } from "../common/CodeConst";
+import Swal from "sweetalert2";
 
 interface Guest {
   id: string;
@@ -14,7 +13,7 @@ interface Guest {
   status: boolean | null;
   vow: boolean;
   type: number;
-  partner: number;
+  partner: number | null;
   donate: number;
   rowVersion: string;
 }
@@ -23,10 +22,50 @@ const Admin: React.FC = () => {
   const api = axios.create({
     baseURL: API_BASE_URL,
   });
+
+  const loading = () => {
+    Swal.fire({
+      title: "Đang tải...",
+      allowOutsideClick: false,
+      width: "300px",
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  };
+
+  const closeLoading = () => {
+    Swal.close();
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const errorMessage = (err: any) => {
+    Swal.fire({
+      icon: "error",
+      title: "Lỗi",
+      text: err.response.data.message,
+      confirmButtonText: "Đóng",
+      width: "300px",
+    });
+  };
+
+  const successMessage = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Thành công",
+      text: "Dữ liệu đã được lưu!",
+      confirmButtonText: "Đóng",
+      timer: 3500,
+      width: "300px",
+    });
+  };
+
   useEffect(() => {
+    loading();
     api
       .get(`/api/Guest/list`)
       .then((res) => {
+        closeLoading();
         setGuests(res.data);
       })
       .catch((err) => {
@@ -55,7 +94,7 @@ const Admin: React.FC = () => {
     status: null,
     vow: false,
     type: 0,
-    partner: 0,
+    partner: null,
     donate: 0,
     rowVersion: "",
   });
@@ -97,7 +136,7 @@ const Admin: React.FC = () => {
         status: null,
         vow: false,
         type: 0,
-        partner: 0,
+        partner: null,
         donate: 0,
         rowVersion: "",
       });
@@ -110,55 +149,79 @@ const Admin: React.FC = () => {
   const handleSave = async () => {
     if (!tempGuest.guestName.trim()) return;
 
+    loading();
+
     if (editingGuest) {
       // Cập nhật
       const res = await api
         .post(`${API_BASE_URL}/api/Guest/update`, tempGuest)
         .catch((err) => {
-          alert(err.response.data.message);
+          closeLoading();
+          errorMessage(err);
         });
 
       if (res?.data != null) {
         await api.get(`/api/Guest/list`).then((res) => {
           setGuests(res.data);
+          successMessage();
         });
       }
     } else {
       // Thêm mới
-      const res = await api.post(`${API_BASE_URL}/api/Guest/add`, tempGuest);
+      const res = await api
+        .post(`${API_BASE_URL}/api/Guest/add`, tempGuest)
+        .catch((err) => {
+          closeLoading();
+          errorMessage(err);
+        });
       if (res?.data != null) {
         await api
           .get(`/api/Guest/list`)
           .then((res) => {
             setGuests(res.data);
+            successMessage();
           })
           .catch((err) => {
-            alert(err);
+            errorMessage(err);
           });
       }
     }
     closeModal();
   };
 
-  const handleDelete = async (id: string) => {
-    if (window.confirm("Bạn có chắc muốn xóa khách mời này?")) {
-      await api
-        .post(`${API_BASE_URL}/api/Guest/delete`, null, { params: { id } })
-        .then((res) => {
-          if (res?.data != null) {
-            api
-              .get(`/api/Guest/list`)
-              .then((res) => {
-                setGuests(res.data);
-              })
-              .catch((err) => {
-                alert(err);
-              });
-          }
+  const handleDelete = async (guest: Guest) => {
+    const id = guest.id;
+    const result = await Swal.fire({
+      title: `Có chắc muốn xóa ${guest.guestName} không?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Có!",
+      cancelButtonText: "Không",
+      width: "300px",
+    });
+
+    if (result.isConfirmed) {
+      loading();
+      const res = await api
+        .post(`${API_BASE_URL}/api/Guest/delete`, null, {
+          params: { id },
         })
         .catch((err) => {
-          alert(err);
+          errorMessage(err);
         });
+      if (res?.data != null) {
+        await api
+          .get(`/api/Guest/list`)
+          .then((res) => {
+            setGuests(res.data);
+            closeLoading();
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      }
     }
   };
 
@@ -411,7 +474,7 @@ const Admin: React.FC = () => {
                       </button>
                       <button
                         className="btn btn-icon btn-hover btn-sm btn-rounded"
-                        onClick={() => handleDelete(g.id)}
+                        onClick={() => handleDelete(g)}
                       >
                         <DeleteOutlined />
                       </button>

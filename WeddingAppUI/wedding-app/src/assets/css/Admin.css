@@ -21910,12 +21910,12 @@ a.badge-purple:focus {
 }
 
 /* Cố định cột tên đầu tiên */
-/* table .sticky-col {
+table .sticky-col {
   position: sticky;
   left: 0;
   background: #fff;
   z-index: 2;
-} */
+}
 
 .table tr.selected {
   background-color: #f8fafd;

@@ -48,8 +48,7 @@ namespace WeddingAppAPI.Infrastructure.Configurations
 
             builder.Property(g => g.Partner)
             .IsRequired(false)
-            .HasColumnType("int")
-            .HasDefaultValueSql("0");
+            .HasColumnType("int");
 
             builder.Property(g => g.Donate)
             .IsRequired(false)

@@ -54,7 +54,7 @@ namespace WeddingAppAPI.Controllers
         public IActionResult DeleteGuest(string id) {
             var guestDelete = _guestService.FindByIdAsync(Guid.Parse(id)).Result;
             if(guestDelete == null)
-                return NotFound();
+                return NotFound(new { message = "Không tìm thấy khách, vui lòng tải lại trang" });
             _guestService.RemoveGuest(guestDelete);
             return Ok(guestDelete);
         }
@@ -70,7 +70,6 @@ namespace WeddingAppAPI.Controllers
             {
                 return BadRequest(new { message = ex.Message });
             }
-
         }
 
         [HttpPost("addOrUpdate")]

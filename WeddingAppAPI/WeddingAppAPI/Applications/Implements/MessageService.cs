@@ -42,7 +42,7 @@ namespace WeddingAppAPI.Applications.Implements
             }
             catch (Exception ex)
             {
-                await _telegramService.SendMessageAsync($"Có lỗi ở SendMessage: {ex.Message}, {DateTime.UtcNow}");
+                await _telegramService.SendMessageAsync($"Có lỗi ở SendMessage: {ex.Message}, {DateTime.Now}");
                 throw new Exception(ex.Message);
             }
         }

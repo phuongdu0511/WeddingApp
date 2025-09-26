@@ -122,7 +122,7 @@ namespace WeddingAppAPI.Applications.Implements
                         _guestRepository.Update(guest, guest.RowVersion);
                         _unitOfWork.Commit();
 
-                        //await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
+                        await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
                     }
                     return guest;
                 }
@@ -151,12 +151,12 @@ namespace WeddingAppAPI.Applications.Implements
             }
             catch (DbUpdateConcurrencyException)
             {
-                throw new Exception("Bản ghi đã được cập nhật trước đó, vui lòng tải lại.");
+                throw new Exception("Thông tin đã được cập nhật trước đó, vui lòng tải lại.");
             }
             catch (Exception ex)
             {
                 await _telegramService.SendMessageAsync($"Lỗi ở UpdateGuest: {ex.Message}, {DateTime.Now}");
-                throw new Exception(ex.Message);
+                throw new Exception("Có lỗi xảy ra vui lòng thử lại.");
             }
         }
 

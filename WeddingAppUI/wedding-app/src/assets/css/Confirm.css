@@ -141,3 +141,95 @@ input::placeholder {
   background-repeat: repeat;
   background-attachment: scroll;
 }
+
+#POPUP1,
+#GROUP31,
+#IMAGE32,
+#IMAGE32 > .ladi-image > .ladi-image-background {
+  width: 420px;
+  height: 439px;
+}
+
+#POPUP1 {
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  left: -15px;
+  margin: auto;
+}
+
+#IMAGE32 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/home_2.jpg);
+  background-size: cover;
+}
+
+#IMAGE34 {
+  width: 151px;
+  height: 201.727px;
+  top: 237.273px;
+  left: 0px;
+}
+
+#IMAGE34 > .ladi-image > .ladi-image-background {
+  width: 240.656px;
+  height: 235.938px;
+  background-image: url(../images/cover/thank-you-flower-left.png);
+  background-size: cover;
+}
+
+#IMAGE33,
+#IMAGE33 > .ladi-image > .ladi-image-background {
+  width: 229px;
+  height: 229px;
+}
+
+#IMAGE33 {
+  top: 210px;
+  left: 191px;
+}
+
+#IMAGE33 > .ladi-image > .ladi-image-background {
+  background-image: url(../images/cover/thank-you-flower-right.png);
+  background-size: cover;
+}
+
+#BOX33 {
+  width: 420px;
+  height: 287px;
+}
+
+#BOX33 > .ladi-box {
+  background-image: url(../images/wedding/BONN0989.JPG);
+  background-size: cover;
+  background-origin: content-box;
+  background-position: 50% 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+
+#PARAGRAPH1 {
+  width: 390px;
+  top: 308.5px;
+  left: 15px;
+  text-align: center;
+}
+
+#PARAGRAPH2 {
+  width: 118px;
+  top: 370.5px;
+  left: 151px;
+}
+
+#PARAGRAPH2 > .ladi-paragraph {
+  font-size: 33.23px;
+  line-height: 1.6;
+  color: rgb(146, 131, 98);
+  text-align: center;
+}
+
+.ladi-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

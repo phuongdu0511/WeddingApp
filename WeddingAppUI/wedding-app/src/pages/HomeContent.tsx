@@ -32,6 +32,7 @@ interface HomeContentProps {
 const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
   const [showGift, setShowGift] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [invite, setInvite] = useState(false);
   useAutoScrollAnimation();
 
   // Đổi tên khách mời nếu tìm thấy
@@ -43,6 +44,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
     if (guest == null) return;
     if (guest.guestName != null) setGuestName(guest.guestName);
     if (PARENT_FRIEND.includes(guest.guestPath)) setParentFriend(" con ");
+    if (guest.guestName != null || PARENT_FRIEND.includes(guest.guestPath))
+      setInvite(true);
 
     setShowVow(guest.vow);
   }, []);
@@ -367,7 +370,10 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           </div>
         </div>
         <div className="relative">
-          <div className="SECTION5 absolute">
+          <div
+            className="SECTION5 absolute"
+            style={{ height: invite ? 3900 : 3700 }}
+          >
             <img
               loading="lazy"
               src={home2}
@@ -409,6 +415,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               src={home13}
               alt="Ảnh home2"
               className="absolute mt-222"
+              style={{ marginTop: invite ? `219rem` : `206rem` }}
             />
             <div id="GROUP38" className="absolute mt-16">
               <div className="ladi-group">
@@ -753,22 +760,60 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             </div>
             <div id="SECTION7" className="ladi-section absolute mt-181">
               <div className="ladi-container">
-                <div
-                  id="BUTTON3"
-                  className="absolute animate-on-scroll cursor-pointer"
-                  data-animate="fadeInUp"
-                  onClick={() => setShowConfirm(true)}
-                >
-                  <div className="ladi-button">
-                    <div className="ladi-button-background absolute"></div>
-                    <div id="BUTTON_TEXT3" className="absolute">
-                      <p className="ladi-headline font-lora">
-                        phản hồi lời mời
-                      </p>
+                <div style={{ display: invite ? `flex` : `none` }}>
+                  <div
+                    id="BUTTON3"
+                    className="absolute animate-on-scroll cursor-pointer"
+                    data-animate="fadeInUp"
+                    onClick={(e) => {
+                      setShowConfirm(true);
+                      e.stopPropagation();
+                    }}
+                  >
+                    <div className="ladi-button">
+                      <div className="ladi-button-background absolute"></div>
+                      <div id="BUTTON_TEXT3" className="absolute">
+                        <p className="ladi-headline font-lora">
+                          phản hồi lời mời
+                        </p>
+                      </div>
                     </div>
                   </div>
+                  <div
+                    id="BUTTON4"
+                    className="absolute animate-on-scroll cursor-pointer"
+                    data-animate="fadeInUp"
+                    onClick={(e) => {
+                      setShowGift(true);
+                      e.stopPropagation();
+                    }}
+                  >
+                    <div className="ladi-button">
+                      <div className="ladi-button-background absolute"></div>
+                      <div id="BUTTON_TEXT4" className="absolute">
+                        <p className="ladi-headline font-lora">
+                          GỬI QUÀ MỪNG CƯỚI
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    id="HEADLINE56"
+                    className="absolute animate-on-scroll"
+                    data-animate="fadeInUp"
+                  >
+                    <p className="ladi-headline font-lora">
+                      Rất mong bạn phản hồi lời mời để chúng mình
+                    </p>
+                    <p className="ladi-headline font-lora">
+                      chuẩn bị đón tiếp một cách chu đáo nhất nhé!
+                    </p>
+                    <p className="ladi-headline font-lora">Trân trọng!</p>
+                  </div>
                 </div>
-                {/* Gift */}
+
+                {/* Confirm */}
                 {showConfirm && (
                   <Confirm
                     onClose={() => setShowConfirm(false)}
@@ -777,37 +822,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   />
                 )}
 
-                <div
-                  id="BUTTON4"
-                  className="absolute animate-on-scroll cursor-pointer"
-                  data-animate="fadeInUp"
-                  onClick={() => setShowGift(true)}
-                >
-                  <div className="ladi-button">
-                    <div className="ladi-button-background absolute"></div>
-                    <div id="BUTTON_TEXT4" className="absolute">
-                      <p className="ladi-headline font-lora">
-                        GỬI QUÀ MỪNG CƯỚI
-                      </p>
-                    </div>
-                  </div>
-                </div>
                 {/* Gift */}
                 {showGift && <Gift onClose={() => setShowGift(false)} />}
-
-                <div
-                  id="HEADLINE56"
-                  className="absolute animate-on-scroll"
-                  data-animate="fadeInUp"
-                >
-                  <p className="ladi-headline font-lora">
-                    Rất mong bạn phản hồi lời mời để chúng mình
-                  </p>
-                  <p className="ladi-headline font-lora">
-                    chuẩn bị đón tiếp một cách chu đáo nhất nhé!
-                  </p>
-                  <p className="ladi-headline font-lora">Trân trọng!</p>
-                </div>
 
                 <div id="GROUP44" className="absolute mt-31">
                   <div className="ladi-group">
@@ -860,7 +876,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             <div
               id="HEADLINE63"
               className="absolute mt-190 animate-on-scroll"
-              data-animate="fadeInUp"
+              style={{ top: invite ? 600 : 395 }}
+              data-animate="zoomIn"
             >
               <p className="ladi-headline font-highSpirited">Thank you!</p>
             </div>

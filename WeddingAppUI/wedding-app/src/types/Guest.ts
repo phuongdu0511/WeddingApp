@@ -6,4 +6,5 @@ export interface Guest {
   type: number;
   partner: number;
   donate: number;
+  rowVersion: string;
 }

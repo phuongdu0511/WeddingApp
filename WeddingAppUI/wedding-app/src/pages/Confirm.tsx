@@ -40,9 +40,9 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
       if (guest?.guestName != null) {
         const updated = { ...guest, status, partner };
         setGuest(updated);
-        setLoading(false);
-        setThankYou(true);
       }
+      setLoading(false);
+      setThankYou(true);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +53,10 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
       {/* Overlay mờ */}
       <div
         className="absolute inset-0 bg-black/50"
-        onClick={onClose} // bấm ra ngoài sẽ đóng
+        onClick={(e) => {
+          onClose();
+          e.stopPropagation();
+        }} // bấm ra ngoài sẽ đóng
       ></div>
 
       {/* Nội dung Confirm */}
@@ -100,8 +103,10 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                     </div>
                     <div id="PARAGRAPH1" className="absolute">
                       <div className="ladi-paragraph font-lora">
-                        Cảm ơn bạn đã dành thời gian phản hồi. Chúng mình vô
-                        cùng trân quý sự quan tâm của bạn.
+                        Cảm ơn bạn đã dành thời gian phản hồi.
+                      </div>
+                      <div className="ladi-paragraph font-lora">
+                        Chúng mình vô cùng trân quý sự quan tâm của bạn.
                       </div>
                     </div>
                     <div id="PARAGRAPH2" className="absolute">
@@ -138,6 +143,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                           disabled={flagGuest}
                           maxLength={40}
                           onChange={(e) => setGuestName(e.target.value)}
+                          required
                         ></input>
                       </div>
                     </div>
@@ -157,6 +163,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                               : "0" // false => "0"
                           }
                           onChange={(e) => setStatus(e.target.value === "1")}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <option value="">Bạn sẽ đến chứ?</option>
                           <option value="1">Mình chắc chắn sẽ đến</option>
@@ -173,6 +180,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                           className="ladi-form-control font-lora ladi-form-control-select"
                           defaultValue={guest?.partner}
                           onChange={(e) => setPartner(Number(e.target.value))}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <option value="">Bạn tham dự cùng ai?</option>
                           <option value="0">Tham dự một mình</option>
@@ -188,7 +196,10 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                   <div
                     id="BUTTON5"
                     className="absolute cursor-pointer"
-                    onClick={confirm}
+                    onClick={(e) => {
+                      confirm();
+                      e.stopPropagation();
+                    }}
                   >
                     <div className="ladi-button">
                       <div className="ladi-button-background absolute"></div>

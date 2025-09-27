@@ -11,7 +11,9 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
       {/* Overlay mờ */}
       <div
         className="absolute inset-0 bg-black/50"
-        onClick={onClose} // bấm ra ngoài sẽ đóng
+        onClick={(e) => {
+          onClose(); 
+          e.stopPropagation()}} // bấm ra ngoài sẽ đóng
       ></div>
 
       {/* Nội dung Gift */}

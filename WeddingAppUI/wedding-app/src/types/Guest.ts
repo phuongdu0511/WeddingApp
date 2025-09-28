@@ -1,10 +1,10 @@
 export interface Guest {
   guestName: string;
   guestPath: string;
-  status: boolean;
+  status: boolean | null;
   vow: boolean;
   type: number;
-  partner: number;
+  partner: number | null;
   donate: number;
   rowVersion: string;
 }

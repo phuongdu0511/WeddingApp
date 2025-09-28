@@ -21,10 +21,24 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
     flagGuest = true;
   }
   const [guestName, setGuestName] = useState("");
-  const [status, setStatus] = useState<boolean>(false);
-  const [partner, setPartner] = useState<number>(0);
+  const [status, setStatus] = useState<boolean | null>(guest?.status ?? null);
+  const [partner, setPartner] = useState<number | null>(guest?.partner ?? null);
   const [thankYou, setThankYou] = useState<boolean>(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [errorInput, setErrorInput] = useState<boolean>(false);
+  const [errorStatus, setErrorStatus] = useState<boolean>(false);
+  const [errorPartner, setErrorPartner] = useState<boolean>(false);
+
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const v = e.target.value;
+    // v === "" => null, v === "1" => true, v === "0" => false
+    setStatus(v === "" ? null : v === "1");
+  };
+
+  const handlePartnerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const v = e.target.value;
+    setPartner(v === "" ? null : Number(v));
+  };
 
   const payload = {
     guestName: guest?.guestName ?? guestName,
@@ -34,6 +48,18 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
   };
 
   const confirm = async () => {
+    const nameErr = !payload.guestName.trim();
+    const statusErr = payload.status == null;
+    const partnerErr =
+      payload.partner == null &&
+      (payload.status || payload.status == null);
+
+    setErrorInput(nameErr);
+    setErrorStatus(statusErr);
+    setErrorPartner(partnerErr);
+
+    if (nameErr || statusErr || partnerErr) return;
+
     try {
       setLoading(true);
       await api.post(`/api/Guest/addOrUpdate`, payload);
@@ -134,7 +160,12 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                 </div>
                 <div id="FORM2" className="flex justify-center">
                   <div id="FORM_ITEM3" className="absolute">
-                    <div className="ladi-form-item-container">
+                    <div
+                      className="ladi-form-item-container"
+                      style={{
+                        borderColor: errorInput ? "red" : "rgb(146, 131, 98)",
+                      }}
+                    >
                       <div className="ladi-form-item">
                         <input
                           className="ladi-form-control-select"
@@ -149,7 +180,12 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                     </div>
                   </div>
                   <div id="FORM_ITEM4" className="absolute">
-                    <div className="ladi-form-item-container">
+                    <div
+                      className="ladi-form-item-container"
+                      style={{
+                        borderColor: errorStatus ? "red" : "rgb(146, 131, 98)",
+                      }}
+                    >
                       <div className="ladi-form-item">
                         <select
                           name="form_item7"
@@ -162,7 +198,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                               ? "1" // true  => "1"
                               : "0" // false => "0"
                           }
-                          onChange={(e) => setStatus(e.target.value === "1")}
+                          onChange={handleStatusChange}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <option value="">Bạn sẽ đến chứ?</option>
@@ -173,13 +209,18 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                     </div>
                   </div>
                   <div id="FORM_ITEM5" className="absolute">
-                    <div className="ladi-form-item-container">
+                    <div
+                      className="ladi-form-item-container"
+                      style={{
+                        borderColor: errorPartner ? "red" : "rgb(146, 131, 98)",
+                      }}
+                    >
                       <div className="ladi-form-item">
                         <select
                           name="form_item8"
                           className="ladi-form-control font-lora ladi-form-control-select"
-                          defaultValue={guest?.partner}
-                          onChange={(e) => setPartner(Number(e.target.value))}
+                          defaultValue={guest?.partner ?? ""}
+                          onChange={handlePartnerChange}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <option value="">Bạn tham dự cùng ai?</option>

@@ -3,12 +3,14 @@ import "../assets/css/HomeContent.css";
 import "../assets/css/Animation.css";
 import home1 from "../assets/images/cover/home_1.jpg";
 import home2 from "../assets/images/cover/home_2.jpg";
+import home3 from "../assets/images/cover/home_3.jpg";
 import home4 from "../assets/images/cover/home_4.jpg";
 import home5 from "../assets/images/cover/home_5.jpg";
 import home6 from "../assets/images/cover/home_6.jpg";
 import home8 from "../assets/images/cover/home_8.jpg";
 import home9 from "../assets/images/cover/home_9.png";
 import home10 from "../assets/images/cover/home_10.png";
+import home12 from "../assets/images/cover/home_12.jpg";
 import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.png";
 import navigation from "../assets/images/cover/navigation.png";
@@ -192,15 +194,21 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           />
           <img
             loading="lazy"
-            src={home2}
-            alt="Ảnh home2"
-            className="absolute mt-24"
+            src={home12}
+            alt="Ảnh home12"
+            className="absolute mt-23"
+          />
+          <img
+            loading="lazy"
+            src={home3}
+            alt="Ảnh home3"
+            className="absolute mt-12"
           />
           <img
             loading="lazy"
             src={home8}
             alt="Ảnh home8"
-            className="absolute mt-47 z-5"
+            className="absolute mt-47 z-[-1]"
           />
           <div className="absolute flex items-start justify-center gap-4 border border-transparent w-full mt-48">
             <div
@@ -312,15 +320,15 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
         <div className="relative">
           <img
             loading="lazy"
-            src={home2}
-            alt="Ảnh home2"
+            src={home4}
+            alt="Ảnh home4"
             className="absolute mt-8"
           />
           <img
             loading="lazy"
-            src={home2}
-            alt="Ảnh home2"
-            className="absolute mt-30"
+            src={home12}
+            alt="Ảnh home12"
+            className="absolute mt-27"
           />
           <div
             className="absolute top-40 z-20 w-full flex gap-3 justify-center animate-on-scroll"

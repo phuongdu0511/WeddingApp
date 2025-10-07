@@ -15,7 +15,7 @@ import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.png";
 import navigation from "../assets/images/cover/navigation.png";
 import BONN9907 from "../assets/images/wedding/BONN9907.jpg";
-import bgVideo from "../assets/video/v1.mp4";
+import bgVideo from "/videos/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
@@ -170,7 +170,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             alt="Ảnh BONN9907"
             className="absolute scale-100"
           />
-          <div className="absolute left-16 top-36 z-20 w-full text-white">
+          <div className="absolute left-17 top-36 z-20 w-full text-white">
             <p
               className="font-highSpirited font-bold text-7xl animate-on-scroll"
               data-animate="fadeInLeft"
@@ -354,16 +354,16 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 data-animate="fadeInRight"
               >
                 <p className="font-highSpirited text-5xl">Cô dâu</p>
-                <p className="font-lora text-1xl">NGỌC DIỆP</p>
+                <p className="font-lora text-2xl">NGỌC DIỆP</p>
               </div>
             </div>
             <div className="flex">
               <div
-                className="absolute text-center z-20 duy animate-on-scroll"
+                className="absolute text-center z-20 duy animate-on-scroll left-1-5"
                 data-animate="fadeInLeft"
               >
                 <p className="font-highSpirited text-5xl">Chú rê</p>
-                <p className="font-lora text-1xl">PHƯƠNG DUY</p>
+                <p className="font-lora text-2xl">PHƯƠNG DUY</p>
               </div>
               <img
                 loading="lazy"

@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import '@fontsource/lora';
-import '@fontsource/great-vibes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

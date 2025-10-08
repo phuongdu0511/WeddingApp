@@ -18,7 +18,8 @@ html, body, #root {
 
 @font-face {
   font-family: 'High Spirited';
-  src: url('/fonts/High\ Spirited.ttf') format('truetype');
+  src: url('/fonts/HighSpirited.ttf') format('truetype');
+  font-display: swap;
   font-weight: normal;
   font-style: normal;
 }

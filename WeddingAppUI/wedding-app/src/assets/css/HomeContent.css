@@ -432,10 +432,10 @@
   left: 0px;
 }
 
-#BOX1 > .ladi-box:hover {
+/* #BOX1 > .ladi-box:hover {
   transform: rotate(0deg);
   opacity: 1;
-}
+} */
 
 #BOX2 {
   width: 213px;
@@ -481,7 +481,7 @@
 }
 
 #BOX17 > .ladi-box {
-  background-image: url(../images/wedding/BONN0052.jpg);
+  background-image: url(../images/wedding/BONN0050.jpg);
   background-size: cover;
   background-origin: content-box;
   background-position: 50% 0%;
@@ -610,7 +610,7 @@
   height: 100%;
 }
 
-#BOX8 > .ladi-box:hover,
+/* #BOX8 > .ladi-box:hover,
 #BOX9 > .ladi-box:hover,
 #BOX20 > .ladi-box:hover,
 #BOX21 > .ladi-box:hover,
@@ -618,18 +618,7 @@
 #BOX19 > .ladi-box:hover {
   transform: rotate(0deg);
   opacity: 1;
-}
-#BOX20 > .ladi-box,
-#BOX18 > .ladi-box,
-#BOX24 > .ladi-box,
-#BOX29 > .ladi-box,
-#BOX30 > .ladi-box,
-#BOX31 > .ladi-box,
-#BOX32 > .ladi-box,
-#POPUP1 > .ladi-popup > .ladi-popup-background,
-#POPUP2 > .ladi-popup > .ladi-popup-background {
-  background-color: rgb(255, 255, 255);
-}
+} */
 .SECTION5 {
   width: 100%;
   height: 3900px;
@@ -1577,7 +1566,7 @@
   transform: rotate(10deg);
 }
 
-#BOX46 > .ladi-box:hover,
+/* #BOX46 > .ladi-box:hover,
 #BOX47 > .ladi-box:hover,
 #BOX20 > .ladi-box:hover,
 #BOX21 > .ladi-box:hover,
@@ -1585,7 +1574,7 @@
 #BOX19 > .ladi-box:hover {
   transform: rotate(0deg);
   opacity: 1;
-}
+} */
 
 #GROUP48,
 #IMAGE65,
@@ -1643,4 +1632,8 @@
 
 .left-1-5 {
   left:-1.5rem;
+}
+
+.mt-9 {
+  margin-top: 9rem;
 }

@@ -14,19 +14,72 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(false); // fetch API loading
   const [showWelcome, setShowWelcome] = useState(true);
   const [guest, setGuest] = useState<Guest | null>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false); // preload video
+  const [assetsLoaded, setAssetsLoaded] = useState(false); // preload video, image, music
 
   const query = window.location.pathname.replace(/^\/+/, "");
   const api = axios.create({ baseURL: API_BASE_URL });
 
   // Ref cho CSSTransition
   const nodeRef = useRef<HTMLDivElement>(null);
-
-  // Preload video
   useEffect(() => {
-    const video = document.createElement("video");
-    video.src = "/videos/v1.mp4"; // đường dẫn video của bạn
-    video.oncanplaythrough = () => setVideoLoaded(true);
+    // Lấy ảnh từ thư mục cover
+    const coverImages = import.meta.glob(
+      "../assets/images/cover/*.{JPG,jpg,jpeg,png,gif,webp}",
+      { eager: true }
+    );
+
+    // Lấy ảnh từ thư mục wedding
+    const weddingImages = import.meta.glob(
+      "../assets/images/wedding/*.{JPG,jpg,jpeg,png,gif,webp}",
+      { eager: true }
+    );
+
+    // Gộp 2 object lại
+    const allImages = { ...coverImages, ...weddingImages };
+
+    // Preload tất cả ảnh
+    const imagePromises = Object.values(allImages).map(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (mod: any) =>
+        new Promise<void>((resolve, reject) => {
+          const img = new Image();
+          img.src = mod.default;
+          img.onload = () => resolve();
+          img.onerror = () => reject();
+        })
+    );
+
+    // Preload nhạc
+    const musicFiles = import.meta.glob("../assets/music/*.mp3", {
+      eager: true,
+      import: "default",
+    });
+
+    const audioPromises = Object.values(musicFiles).map(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (src: any) =>
+        new Promise<void>((resolve, reject) => {
+          const audio = new Audio();
+          audio.src = src;
+          audio.oncanplaythrough = () => resolve();
+          audio.onerror = () => reject();
+          audio.load();
+        })
+    );
+
+    const videoPromise = new Promise<void>((resolve, reject) => {
+      const video = document.createElement("video");
+      video.src = "/videos/v1.mp4"; // đường dẫn video trong public
+      video.preload = "auto";
+      video.onerror = () => reject();
+      video.onloadedmetadata = () => resolve();
+    });
+
+    Promise.allSettled([
+      ...imagePromises,
+      ...audioPromises,
+      videoPromise,
+    ]).then(() => setAssetsLoaded(true));
   }, []);
 
   // Fetch guest data
@@ -41,7 +94,7 @@ const Home: React.FC = () => {
   }, [query]);
 
   // Hiển thị loading nếu video hoặc data chưa sẵn sàng
-  if (!videoLoaded || loading) {
+  if (!assetsLoaded || loading) {
     return (
       <div className="absolute z-40 w-full h-full flex justify-center items-center">
         <div style={{ width: 400 }}>
@@ -52,7 +105,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="wedding-app relative">
+    <div className="wedding-app">
       <SwitchTransition mode="out-in">
         <CSSTransition
           key={showWelcome ? "welcome" : "home"}
@@ -60,7 +113,7 @@ const Home: React.FC = () => {
           classNames="fade"
           nodeRef={nodeRef}
         >
-          <div ref={nodeRef}>
+          <div className="wedding-app" ref={nodeRef}>
             {showWelcome ? (
               <Welcome onClick={() => setShowWelcome(false)} />
             ) : (

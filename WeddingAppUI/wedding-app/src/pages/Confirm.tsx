@@ -51,8 +51,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
     const nameErr = !payload.guestName.trim();
     const statusErr = payload.status == null;
     const partnerErr =
-      payload.partner == null &&
-      (payload.status || payload.status == null);
+      payload.partner == null && (payload.status || payload.status == null);
 
     setErrorInput(nameErr);
     setErrorStatus(statusErr);
@@ -110,6 +109,12 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                 <div id="GROUP31" className="absolute">
                   <div className="ladi-group">
                     <div id="IMAGE32" className="absolute">
+                      <button
+                        onClick={onClose}
+                        className="absolute z-40 w-12 right-[4%] top-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
+                      >
+                        ×
+                      </button>
                       <div className="ladi-image">
                         <div className="ladi-image-background"></div>
                       </div>
@@ -151,6 +156,12 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
               <div className="ladi-popup">
                 <div className="ladi-popup-background"></div>
                 <div id="IMAGE58" className="absolute">
+                  <button
+                    onClick={onClose}
+                    className="absolute z-40 w-12 right-[4%] top-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
+                  >
+                    ×
+                  </button>
                   <div className="ladi-image">
                     <div className="ladi-image-background"></div>
                   </div>

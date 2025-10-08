@@ -3,8 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="images/love.png" />
+    <meta property="og:description" content="Trân trọng kính mời bạn đến chung vui cùng chúng tôi 💖" />
+    <meta property="og:image" content="https://duydiep.love/images/love.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://duydiep.love" />
+    <link
+      rel="preload"
+      href="/fonts/HighSpirited.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phương Duy & Ngọc Diệp</title>
+    <title>Phương Duy 💕 Ngọc Diệp</title>
+    <script>
+    // Mảng các biểu tượng trái tim xoay vòng
+    const hearts = ["💕", "💖", "💘", "💝", "💞"];
+    let i = 0;
+    const baseTitle = " Trang web của tôi";
+
+    // Hàm đổi trái tim trong title mỗi 1 giây
+    setInterval(() => {
+      document.title = "Phương Duy " + hearts[i % hearts.length] + " Ngọc Diệp";
+      i++;
+    }, 1000);
+  </script>
   </head>
   <body>
     <div id="root"></div>

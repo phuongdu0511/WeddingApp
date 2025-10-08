@@ -5,7 +5,6 @@ import home1 from "../assets/images/cover/home_1.jpg";
 import home2 from "../assets/images/cover/home_2.jpg";
 import home3 from "../assets/images/cover/home_3.jpg";
 import home4 from "../assets/images/cover/home_4.jpg";
-import home5 from "../assets/images/cover/home_5.jpg";
 import home6 from "../assets/images/cover/home_6.jpg";
 import home8 from "../assets/images/cover/home_8.jpg";
 import home9 from "../assets/images/cover/home_9.png";
@@ -146,14 +145,14 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
         <div className="relative h-[660px]">
           <img
             loading="lazy"
-            src={home5}
-            alt="Ảnh home5"
+            src={home2}
+            alt="Ảnh home2"
             className="absolute w-full"
           />
           <img
             loading="lazy"
-            src={home5}
-            alt="Ảnh home5"
+            src={home2}
+            alt="Ảnh home2"
             className="absolute w-full mt-22"
           />
           <img
@@ -168,7 +167,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             loading="lazy"
             src={BONN9907}
             alt="Ảnh BONN9907"
-            className="absolute scale-100"
+            className="absolute z-20"
           />
           <div className="absolute left-17 top-36 z-20 w-full text-white">
             <p
@@ -210,23 +209,23 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             alt="Ảnh home8"
             className="absolute mt-47 z-[-1]"
           />
-          <div className="absolute flex items-start justify-center gap-4 border border-transparent w-full mt-48">
+          <div className="absolute flex items-start justify-center gap-2 border border-transparent w-full mt-40">
             <div
-              className="text-center animate-on-scroll"
+              className="text-center animate-on-scroll grid gap-[6px]"
               data-animate="fadeInLeft"
             >
               <p className="font-lora font-bold text-lg">NHÀ GÁI</p>
-              <p className="font-lora">Ông Nguyễn Văn Long</p>
-              <p className="font-lora">Bà Hứa Hồng Vân</p>
+              <p className="font-lora text-lg">Ông Nguyễn Văn Long</p>
+              <p className="font-lora text-lg">Bà Hứa Hồng Vân</p>
             </div>
             <div className="line-1"></div>
             <div
-              className="text-center animate-on-scroll"
+              className="text-center animate-on-scroll grid gap-[6px]"
               data-animate="fadeInRight"
             >
               <p className="font-lora font-bold text-lg">NHÀ TRAI</p>
-              <p className="font-lora">Ông Dương Lê Phương</p>
-              <p className="font-lora">Bà Bùi Hương Giang</p>
+              <p className="font-lora text-lg">Ông Dương Lê Phương</p>
+              <p className="font-lora text-lg">Bà Bùi Hương Giang</p>
             </div>
           </div>
           <div
@@ -257,7 +256,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             className="absolute w-full mt-33 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-center">Được tổ chức vào lúc</p>
+            <p className="font-lora text-center text-lg">Được tổ chức vào lúc</p>
           </div>
           <div
             className="w-full absolute flex items-start justify-center mt-36 animate-on-scroll"
@@ -289,7 +288,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             className="absolute w-full mt-43 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-center">Địa điểm:</p>
+            <p className="font-lora text-center text-lg">Địa điểm:</p>
           </div>
           <div
             className="absolute w-full mt-45 animate-on-scroll"
@@ -298,7 +297,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             <p className="font-lora text-2xl font-bold text-center">
               SOFTWATER
             </p>
-            <i className="block font-lora text-1xl text-center">
+            <i className="block font-lora text-1xl text-center text-lg">
               42 đường 9, F361 An Dương, Tây Hồ, Hà Nội
             </i>
           </div>
@@ -425,7 +424,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               className="absolute mt-222"
               style={{ marginTop: invite ? `219rem` : `206rem` }}
             />
-            <div id="GROUP38" className="absolute mt-16">
+            <div id="GROUP38" className="absolute mt-28">
               <div className="ladi-group">
                 <div id="IMAGE50" className="absolute">
                   <div className="ladi-image">
@@ -456,19 +455,18 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">2022 – Gặp gỡ định mệnh</p>
+                  <p className="ladi-headline font-lora">2017 – Gặp gỡ định mệnh</p>
                 </div>
                 <div
                   id="HEADLINE38"
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">
-                    Phương Nga – cô hoa hậu tài sắc vẹn toàn, gặp gỡ Bình An –
-                    một nam diễn viên trẻ đầy triển vọng tại một sự kiện giải
-                    trí. Ngay từ ánh nhìn đầu tiên, họ đã có ấn tượng đặc biệt
-                    về nhau. Những lần gặp gỡ sau đó, những cuộc trò chuyện kéo
-                    dài khiến họ dần nhận ra sự đồng điệu trong tâm hồn.
+                  <p className="ladi-headline font-lora">
+                    Năm thứ ba đại học, giữa những ngày giảng đường đầy ắp tiếng
+                    cười và nhiệt huyết tuổi trẻ, Phương Duy và Ngọc Diệp tình
+                    cờ gặp nhau. Ánh mắt, nụ cười và những quan tâm nhỏ bé ngày ấy
+                    đã trở thành khởi đầu cho một hành trình yêu thương dài lâu.
                   </p>
                 </div>
                 <div
@@ -476,22 +474,21 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">2023 – Thử Thách Và Gắn Kết</p>
+                  <p className="ladi-headline font-lora">2019 – Thử Thách Và Gắn Kết</p>
                 </div>
                 <div
                   id="HEADLINE40"
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">
-                    Bận rộn với công việc trong showbiz, họ nhiều lần xa cách
-                    nhưng vẫn luôn hướng về nhau. Dư luận, tin đồn đôi lúc khiến
-                    tình yêu gặp sóng gió, nhưng sự tin tưởng và thấu hiểu giúp
-                    họ vượt qua. Trong suốt hai năm, Bình An luôn âm thầm ủng hộ
-                    Phương Nga trong các sự kiện lớn, còn cô cũng lặng lẽ dõi
-                    theo từng bước tiến của anh. Cuối năm 2024, Bình An bất ngờ
-                    cầu hôn Phương Nga trong một không gian lãng mạn, và cô xúc
-                    động gật đầu.
+                  <p className="ladi-headline font-lora">
+                    Năm 2019, Ngọc Diệp lên đường du học Đức, mở ra quãng thời
+                    gian yêu xa đầy thử thách. Những đêm lệch múi giờ, những
+                    cuộc gọi video, và những dòng tin nhắn gửi vội trở thành cầu
+                    nối giữa hai con tim. Dù cách nhau nửa vòng trái đất, niềm
+                    tin và tình yêu họ dành cho nhau vẫn lớn dần theo năm tháng.
+                    Chính khoảng cách ấy đã khiến họ càng trân trọng và thấu
+                    hiểu nhau hơn.
                   </p>
                 </div>
                 <div
@@ -499,20 +496,19 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">2025 – Hạnh Phúc Viên Mãn</p>
+                  <p className="ladi-headline font-lora">2025 – Hạnh Phúc Viên Mãn</p>
                 </div>
                 <div
                   id="HEADLINE42"
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline">
-                    Năm 2025, họ tổ chức một đám cưới cổ tích trước sự chứng
-                    kiến của gia đình, bạn bè và người hâm mộ. Phương Nga rạng
-                    rỡ trong chiếc váy cưới lộng lẫy, Bình An nắm chặt tay cô,
-                    hứa hẹn một cuộc đời hạnh phúc. Họ chính thức trở thành vợ
-                    chồng, bắt đầu một hành trình mới, tràn đầy yêu thương và
-                    gắn bó mãi mãi.
+                  <p className="ladi-headline font-lora">
+                    Sau bao năm chờ đợi và vun đắp, năm 2025, họ chính thức nên
+                    duyên vợ chồng. Trong sự chúc phúc của gia đình và bạn bè,
+                    Ngọc Diệp và Phương Duy nắm tay nhau bước vào một hành trình
+                    mới — hành trình của hạnh phúc viên mãn và tình yêu bền
+                    vững, bắt đầu từ những ngày thanh xuân tươi đẹp.
                   </p>
                 </div>
               </div>

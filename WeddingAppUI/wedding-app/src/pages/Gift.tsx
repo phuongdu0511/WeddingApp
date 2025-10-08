@@ -12,8 +12,9 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
       <div
         className="absolute inset-0 bg-black/50"
         onClick={(e) => {
-          onClose(); 
-          e.stopPropagation()}} // bấm ra ngoài sẽ đóng
+          onClose();
+          e.stopPropagation();
+        }} // bấm ra ngoài sẽ đóng
       ></div>
 
       {/* Nội dung Gift */}
@@ -24,6 +25,12 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
             <div className="ladi-popup">
               <div className="ladi-popup-background"></div>
               <div id="IMAGE58" className="absolute">
+                <button
+                  onClick={onClose}
+                  className="absolute z-40 w-12 right-[4%] top-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
+                >
+                  ×
+                </button>
                 <div className="ladi-image">
                   <div className="ladi-image-background"></div>
                 </div>
@@ -32,8 +39,8 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
                 <div className="ladi-box ladi-transition"></div>
               </div>
               <div id="GROUP58" className="absolute">
-                <div className="ladi-group">
-                  <div id="GROUP59" className="absolute">
+                <div className="ladi-group flex justify-center gap-4">
+                  <div id="GROUP59">
                     <div className="ladi-group">
                       <div id="BOX35" className="absolute">
                         <div className="ladi-box ladi-transition"></div>
@@ -54,7 +61,7 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
                       </div>
                     </div>
                   </div>
-                  <div id="GROUP40" className="absolute">
+                  <div id="GROUP40">
                     <div className="ladi-group">
                       <div id="BOX36" className="absolute">
                         <div className="ladi-box ladi-transition"></div>

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import "../assets/css/Welcome.css";
 import home1 from "../assets/images/cover/home_1.jpg";
 import home2 from "../assets/images/cover/home_2.jpg";
@@ -11,58 +10,6 @@ interface WelcomeProps {
 }
 
 const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
-  useEffect(() => {
-    // Lấy ảnh từ thư mục cover
-    const coverImages = import.meta.glob(
-      "../assets/images/cover/*.{JPG,jpg,jpeg,png,gif,webp}",
-      { eager: true }
-    );
-
-    // Lấy ảnh từ thư mục wedding
-    const weddingImages = import.meta.glob(
-      "../assets/images/wedding/*.{JPG,jpg,jpeg,png,gif,webp}",
-      { eager: true }
-    );
-
-    // Gộp 2 object lại
-    const allImages = { ...coverImages, ...weddingImages };
-
-    // Preload tất cả ảnh
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Object.values(allImages).forEach((mod: any) => {
-      const img = new Image();
-      img.src = mod.default;
-    });
-
-    // Preload nhạc
-    const musicFiles = import.meta.glob("../assets/music/*.mp3", {
-      eager: true,
-      import: "default",
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Object.values(musicFiles).forEach((src: any) => {
-      const audio = new Audio();
-      audio.src = src;
-      // gọi load() để browser tải metadata và cache
-      audio.load();
-    });
-
-    // --- Preload video ---
-    const videoFiles = import.meta.glob("../assets/video/*.mp4", {
-      eager: true,
-      import: "default",
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Object.values(videoFiles).forEach((src: any) => {
-      const video = document.createElement("video");
-      video.src = src;
-      video.preload = "auto"; // yêu cầu preload
-      video.load();
-    });
-  }, []);
-
   return (
     <div
       className="relative min-h-screen items-center main-wr overflow-y-hidden"

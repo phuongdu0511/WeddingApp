@@ -142,7 +142,6 @@ input::placeholder {
   background-attachment: scroll;
 }
 
-#POPUP1,
 #GROUP31,
 #IMAGE32,
 #IMAGE32 > .ladi-image > .ladi-image-background {
@@ -151,10 +150,12 @@ input::placeholder {
 }
 
 #POPUP1 {
+  max-width: 435px;
+  height: 439px;
   right: 0px;
   bottom: 0px;
   top: 0px;
-  left: -15px;
+  left: 0px;
   margin: auto;
 }
 

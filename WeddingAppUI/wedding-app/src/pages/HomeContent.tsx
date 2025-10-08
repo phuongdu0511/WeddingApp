@@ -60,7 +60,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           loop
           muted
           playsInline
-          preload="none"
+          preload="auto"
           className="w-full h-full"
         >
           <source src={bgVideo} type="video/mp4" />

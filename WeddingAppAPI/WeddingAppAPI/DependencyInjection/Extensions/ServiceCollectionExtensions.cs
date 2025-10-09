@@ -24,6 +24,7 @@ namespace WeddingAppAPI.DependencyInjection.Extensions
 
             services.AddTransient<IGuestService, GuestService>();
             services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<IReportService, ReportService>();
 
             // Configuration Telegram
             var botToken = "8096236457:AAFGjf4QjwYlm_scCyxuKqsz173r3iLGIu0";

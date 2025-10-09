@@ -29,8 +29,8 @@ namespace WeddingAppAPI.Applications.Implements
         public Guest? GetGuestByPath(string path)
         {
             Guest? guest = null;
-            if (!string.IsNullOrEmpty(path)) 
-            { 
+            if (!string.IsNullOrEmpty(path))
+            {
                 var result = _guestRepository.FindAll(g => g.GuestPath.Equals(path)).FirstOrDefault();
                 if (result != null)
                 {
@@ -104,8 +104,9 @@ namespace WeddingAppAPI.Applications.Implements
             try
             {
                 // Trường hợp khách tự update
-                if (model.IsGuest == true) {
-                    var guest = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath)).FirstOrDefault();
+                if (model.IsGuest == true)
+                {
+                    var guest = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath) && x.Type == model.Type).FirstOrDefault();
                     if (guest != null)
                     {
                         var type = CodeConst.FriendTypes.FirstOrDefault(x => x.Key == guest.Type).Value;
@@ -130,7 +131,8 @@ namespace WeddingAppAPI.Applications.Implements
                 else
                 {
                     var guest = FindByIdAsync(Guid.Parse(model.Id)).Result;
-                    if (guest != null) {
+                    if (guest != null)
+                    {
                         guest.GuestName = model.GuestName;
                         guest.Partner = model.Partner;
                         guest.Status = model.Status;
@@ -164,48 +166,64 @@ namespace WeddingAppAPI.Applications.Implements
         {
             try
             {
-                var guest = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath)).FirstOrDefault();
-                if (guest != null)
+                List<string> listParent = new List<string>() { CodeConst.BAN_BO_PHUONG, CodeConst.BAN_ME_GIANG, CodeConst.BAN_BO_LONG, CodeConst.BAN_ME_VAN };
+                // Trường hợp khách submit từ link bạn bố mẹ
+                if (!string.IsNullOrEmpty(model.GuestPath) && listParent.Contains(model.GuestPath))
                 {
-                    // Update nếu tìm thấy pathName
+                    string pathName = RemoveVietnameseDiacritics(model.GuestName);
+                    int parentType = 0;
+                    switch (model.GuestPath)
+                    {
+                        case CodeConst.BAN_BO_PHUONG:
+                            parentType = 1;
+                            break;
+                        case CodeConst.BAN_ME_GIANG:
+                            parentType = 2;
+                            break;
+                        case CodeConst.BAN_BO_LONG:
+                            parentType = 3;
+                            break;
+                        case CodeConst.BAN_ME_VAN:
+                            parentType = 4;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    var guestParent = _guestRepository.FindAll(x => x.GuestPath.Equals(pathName) && x.Type == parentType).FirstOrDefault();
+                    if (guestParent != null)
+                    {
+                        // Update nếu tìm thấy bạn bố mẹ đã từng add
+                        UpdateGuestViewModel updateModel = new UpdateGuestViewModel();
+                        updateModel.IsGuest = true;
+                        updateModel.Status = model.Status;
+                        updateModel.Partner = model.Partner;
+                        updateModel.GuestPath = model.GuestPath;
+                        await UpdateGuest(updateModel);
+                    } else
+                    {
+                        AddGuestViewModel addModel = new AddGuestViewModel();
+                        addModel.GuestName = model.GuestName;
+                        addModel.GuestPath = pathName;
+                        addModel.Status = model.Status;
+                        addModel.IsGuest = true;
+                        if (model.Status)
+                        {
+                            addModel.Partner = model.Partner;
+                        }
+                        addModel.Type = parentType;
+                        await AddGuest(addModel);
+                    }
+                }
+                // Trường hợp khách submit là khách đã được tạo trước đó
+                else
+                {
                     UpdateGuestViewModel updateModel = new UpdateGuestViewModel();
                     updateModel.IsGuest = true;
                     updateModel.Status = model.Status;
                     updateModel.Partner = model.Partner;
                     updateModel.GuestPath = model.GuestPath;
                     await UpdateGuest(updateModel);
-                }
-                else {
-                    // Trường hợp là bạn bố mẹ sẽ add thêm khách
-                    string pathName = RemoveVietnameseDiacritics(model.GuestName);
-
-                    AddGuestViewModel addModel = new AddGuestViewModel();
-                    addModel.GuestName = model.GuestName;
-                    addModel.GuestPath = pathName;
-                    addModel.Status = model.Status;
-                    addModel.IsGuest = true;
-                    if (model.Status)
-                    {
-                        addModel.Partner = model.Partner;
-                    }
-                    switch (model.GuestPath)
-                    {
-                        case CodeConst.BAN_BO_PHUONG:
-                            addModel.Type = 1;
-                            break;
-                        case CodeConst.BAN_ME_GIANG:
-                            addModel.Type = 2;
-                            break;
-                        case CodeConst.BAN_BO_LONG:
-                            addModel.Type = 3;
-                            break;
-                        case CodeConst.BAN_ME_VAN:
-                            addModel.Type = 4;
-                            break;
-                        default:
-                            break;
-                    }
-                    await AddGuest(addModel);
                 }
             }
             catch (Exception ex)

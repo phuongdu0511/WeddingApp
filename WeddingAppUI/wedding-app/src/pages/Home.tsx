@@ -7,7 +7,8 @@ import { API_BASE_URL } from "../config/api";
 import "../assets/css/Home.css";
 import "../assets/css/transition.css"; // file CSS animation
 import Lottie from "lottie-react";
-import loadingAnimation from "../assets/gif/LoadingDot.json";
+// import loadingAnimation from "../assets/gif/LoadingDot.json";
+import loadingHeart from "../assets/gif/LoadingHeart.json";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 const Home: React.FC = () => {
@@ -92,13 +93,14 @@ const Home: React.FC = () => {
       .catch(() => setGuest(null))
       .finally(() => setLoading(false));
   }, [query]);
+  
 
   // Hiển thị loading nếu video hoặc data chưa sẵn sàng
   if (!assetsLoaded || loading) {
     return (
       <div className="absolute z-40 w-full h-full flex justify-center items-center">
         <div style={{ width: 400 }}>
-          <Lottie animationData={loadingAnimation} loop={true} />
+          <Lottie animationData={loadingHeart} loop={true} />
         </div>
       </div>
     );

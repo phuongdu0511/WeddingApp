@@ -110,7 +110,10 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                   <div className="ladi-group">
                     <div id="IMAGE32" className="absolute">
                       <button
-                        onClick={onClose}
+                        onClick={(e) => {
+                          onClose();
+                          e.stopPropagation();
+                        }}
                         className="absolute z-40 w-12 right-[4%] top-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
                       >
                         ×
@@ -141,7 +144,7 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                       </div>
                     </div>
                     <div id="PARAGRAPH2" className="absolute">
-                      <div className="ladi-paragraph font-highSpirited">
+                      <div className="ladi-paragraph font-snellRoundhand">
                         Thank you!
                       </div>
                     </div>
@@ -157,7 +160,10 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
                 <div className="ladi-popup-background"></div>
                 <div id="IMAGE58" className="absolute">
                   <button
-                    onClick={onClose}
+                    onClick={(e) => {
+                      onClose();
+                      e.stopPropagation();
+                    }}
                     className="absolute z-40 w-12 right-[4%] top-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
                   >
                     ×

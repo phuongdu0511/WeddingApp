@@ -150,7 +150,7 @@ input::placeholder {
 }
 
 #POPUP1 {
-  max-width: 420px;
+  max-width: 435px;
   height: 439px;
   right: 0px;
   bottom: 0px;
@@ -216,14 +216,13 @@ input::placeholder {
 }
 
 #PARAGRAPH2 {
-  width: 118px;
+  width: 100%;
   top: 370.5px;
-  left: 151px;
 }
 
 #PARAGRAPH2 > .ladi-paragraph {
-  font-size: 33.23px;
-  line-height: 1.6;
+  font-size: 2rem;
+  line-height: 1.7;
   color: rgb(146, 131, 98);
   text-align: center;
 }

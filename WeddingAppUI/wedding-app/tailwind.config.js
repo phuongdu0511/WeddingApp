@@ -10,6 +10,7 @@ export default {
         lora: ['"Lora"', 'serif'],
         vibes: ['"Great Vibes"'],
         highSpirited: ['"High Spirited"', 'cursive'],
+        snellRoundhand: ['"Snell Roundhand"', 'cursive'],
         ergisa: ['"Ergisa-Regular"'],
         cursive: ['cursive'],
         math: ['math'],

@@ -23,3 +23,11 @@ html, body, #root {
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Snell Roundhand';
+  src: url('/fonts/SnellRoundhand.ttf') format('truetype');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}

@@ -8,19 +8,19 @@ const WeddingCountdown: React.FC = () => {
     return (
         <div className="flex justify-center items-center gap-2 text-center font-lora mt-4">
             <div>
-                <span className="block text-7xl font-highSpirited">{days}</span>
+                <span className="block text-5xl font-bold font-snellRoundhand">{days}</span>
             </div>
-            <span className="block text-7xl font-highSpirited">:</span>
+            <span className="block text-5xl font-bold font-snellRoundhand">:</span>
             <div>
-                <span className="block text-7xl font-highSpirited">{hours}</span>
+                <span className="block text-5xl font-bold font-snellRoundhand">{hours}</span>
             </div>
-            <span className="block text-7xl font-highSpirited">:</span>
+            <span className="block text-5xl font-bold font-snellRoundhand">:</span>
             <div>
-                <span className="block text-7xl font-highSpirited">{minutes}</span>
+                <span className="block text-5xl font-bold font-snellRoundhand">{minutes}</span>
             </div>
-            <span className="block text-7xl font-highSpirited">:</span>
+            <span className="block text-5xl font-bold font-snellRoundhand">:</span>
             <div>
-                <span className="block text-7xl font-highSpirited">{seconds}</span>
+                <span className="block text-5xl font-bold font-snellRoundhand">{seconds}</span>
             </div>
         </div>
     );

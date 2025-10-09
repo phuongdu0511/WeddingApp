@@ -18,7 +18,7 @@ import bgVideo from "/videos/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
-// import Music from "./Music";
+import Music from "./Music";
 import Gift from "./Gift";
 import { Link } from "react-router-dom";
 import Confirm from "./Confirm";
@@ -66,11 +66,11 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           Trình duyệt của bạn không hỗ trợ video.
         </video>
         <div
-          className="absolute top-9 -translate-x-1/2 w-full h-full animate-on-scroll"
+          className="absolute top-20 -translate-x-1/2 w-full h-full animate-on-scroll"
           data-animate="zoomIn"
         >
-          <p className="font-highSpirited text-7xl text-center text-white">
-            We get married
+          <p className="font-snellRoundhand font-bold text-4xl text-center text-white">
+            We are getting married!
           </p>
         </div>
       </div>
@@ -90,10 +90,10 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             className="absolute top-72 z-20 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-highSpirited text-6xl text-center">
+            <p className="font-snellRoundhand font-275 text-center">
               We will become
             </p>
-            <p className="font-highSpirited text-6xl text-center">
+            <p className="font-snellRoundhand font-275 text-center">
               husband and wife in
             </p>
             <WeddingCountdown />
@@ -169,9 +169,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             alt="Ảnh BONN9907"
             className="absolute z-20"
           />
-          <div className="absolute left-17 top-36 z-20 w-full text-white">
+          <div className="absolute left-17 top-40 z-20 w-full text-white">
             <p
-              className="font-highSpirited font-bold text-7xl animate-on-scroll"
+              className="font-snellRoundhand text-6xl animate-on-scroll"
               data-animate="fadeInLeft"
             >
               Save
@@ -180,7 +180,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               className="flex gap-2 animate-on-scroll"
               data-animate="fadeInRight"
             >
-              <p className="font-highSpirited text-5xl font-bold">the Date</p>
+              <p className="font-snellRoundhand text-4xl">the Date</p>
             </div>
           </div>
         </div>
@@ -249,7 +249,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           </div>
           <div className="absolute w-full mt-23">
             <p className="font-lora text-4xl  text-center">PHƯƠNG DUY</p>
-            <p className="font-highSpirited text-6xl text-center">and</p>
+            <p className="font-snellRoundhand text-6xl text-center">&</p>
             <p className="font-lora text-4xl  text-center">NGỌC DIỆP</p>
           </div>
           <div
@@ -334,7 +334,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             data-animate="fadeInUp"
           >
             <p className="font-lora text-3xl  text-center">THE STORY</p>
-            <p className="font-highSpirited text-6xl text-center">of</p>
+            <p className="font-snellRoundhand text-2xl text-center">of</p>
             <p className="font-lora text-3xl text-center">LOVE</p>
           </div>
           <div id="GROUP1" className="absolute">
@@ -352,7 +352,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 className="absolute text-center z-30 dip animate-on-scroll"
                 data-animate="fadeInRight"
               >
-                <p className="font-highSpirited text-5xl">Cô dâu</p>
+                <p className="font-snellRoundhand text-4xl">Cô dâu</p>
                 <p className="font-lora text-2xl">NGỌC DIỆP</p>
               </div>
             </div>
@@ -361,7 +361,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 className="absolute text-center z-20 duy animate-on-scroll left-1-5"
                 data-animate="fadeInLeft"
               >
-                <p className="font-highSpirited text-5xl">Chú rê</p>
+                <p className="font-snellRoundhand text-4xl">Chú rể</p>
                 <p className="font-lora text-2xl">PHƯƠNG DUY</p>
               </div>
               <img
@@ -554,7 +554,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             >
               <div className="ladi-group">
                 <div id="HEADLINE43" className="absolute">
-                  <p className="ladi-headline font-highSpirited">The</p>
+                  <p className="ladi-headline font-snellRoundhand">The</p>
                 </div>
                 <div id="HEADLINE44" className="absolute">
                   <p className="ladi-headline font-lora">ALBUM</p>
@@ -582,10 +582,11 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             </div>
             <div
               id="HEADLINE45"
-              className="absolute mt-54 ladi-animation z-30 animate-on-scroll"
+              className="absolute mt-54 ladi-animation z-30 animate-on-scroll flex gap-4"
               data-animate="fadeInRight"
             >
-              <p className="ladi-headline font-highSpirited text-6xl">ofLove</p>
+              <p className="ladi-headline font-snellRoundhand">of</p>
+              <p className="ladi-headline font-bold font-snellRoundhand">Love</p>
             </div>
             <div id="GALLERY1" className="absolute mt-89">
               <Gallery />
@@ -615,12 +616,12 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="zoomIn"
                 >
-                  <p className="ladi-headline font-highSpirited text-7xl">
+                  <p className="ladi-headline font-snellRoundhand">
                     Dress code
                   </p>
                 </div>
                 <div id="HEADLINE47" className="absolute">
-                  <p className="ladi-headline font-highSpirited text-7xl">
+                  <p className="ladi-headline font-snellRoundhand">
                     Timeline
                   </p>
                 </div>
@@ -883,9 +884,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               style={{ top: invite ? 600 : 395 }}
               data-animate="zoomIn"
             >
-              <p className="ladi-headline font-highSpirited">Thank you!</p>
+              <p className="ladi-headline font-snellRoundhand">Thank you!</p>
             </div>
-            {/* <Music /> */}
+            <Music />
           </div>
         </div>
       </div>

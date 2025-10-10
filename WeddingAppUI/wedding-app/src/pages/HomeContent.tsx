@@ -24,6 +24,8 @@ import { Link } from "react-router-dom";
 import Confirm from "./Confirm";
 import type { Guest } from "../types/Guest";
 import { PARENT_FRIEND } from "../common/CodeConst";
+import Lottie from "lottie-react";
+import swipeDown from "../assets/gif/swipeUp.json";
 
 interface HomeContentProps {
   guest: Guest | null;
@@ -51,6 +53,25 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
     setShowVow(guest.vow);
   }, []);
 
+  const [isSwipeDown, setIsSwipeDown] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (window.scrollY < 50) {
+        setIsSwipeDown(true);
+      }
+    }, 3000);
+    const handleScroll = () => {
+      // Nếu scroll xuống hơn 50px thì ẩn
+      if (window.scrollY > 50) {
+        setIsSwipeDown(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="relative min-h-screen items-center main-wr">
       <div className="relative">
@@ -73,6 +94,13 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             We are getting married!
           </p>
         </div>
+        {isSwipeDown && (
+          <div className="absolute bottom-[-35px] z-40 w-full flex justify-center">
+            <div style={{ width: 200 }}>
+              <Lottie animationData={swipeDown} loop={true} />
+            </div>
+          </div>
+        )}
       </div>
       <div className="min-h-screen">
         <div className="relative">
@@ -256,7 +284,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             className="absolute w-full mt-33 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-center text-lg">Được tổ chức vào lúc</p>
+            <p className="font-lora text-center text-lg">
+              Được tổ chức vào lúc
+            </p>
           </div>
           <div
             className="w-full absolute flex items-start justify-center mt-36 animate-on-scroll"
@@ -455,7 +485,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline font-lora">2017 – Gặp gỡ định mệnh</p>
+                  <p className="ladi-headline font-lora">
+                    2017 – Gặp gỡ định mệnh
+                  </p>
                 </div>
                 <div
                   id="HEADLINE38"
@@ -465,8 +497,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   <p className="ladi-headline font-lora">
                     Năm thứ ba đại học, giữa những ngày giảng đường đầy ắp tiếng
                     cười và nhiệt huyết tuổi trẻ, Phương Duy và Ngọc Diệp tình
-                    cờ gặp nhau. Ánh mắt, nụ cười và những quan tâm nhỏ bé ngày ấy
-                    đã trở thành khởi đầu cho một hành trình yêu thương dài lâu.
+                    cờ gặp nhau. Ánh mắt, nụ cười và những quan tâm nhỏ bé ngày
+                    ấy đã trở thành khởi đầu cho một hành trình yêu thương dài
+                    lâu.
                   </p>
                 </div>
                 <div
@@ -474,7 +507,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline font-lora">2019 – Thử Thách Và Gắn Kết</p>
+                  <p className="ladi-headline font-lora">
+                    2019 – Thử Thách Và Gắn Kết
+                  </p>
                 </div>
                 <div
                   id="HEADLINE40"
@@ -496,7 +531,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline font-lora">2025 – Hạnh Phúc Viên Mãn</p>
+                  <p className="ladi-headline font-lora">
+                    2025 – Hạnh Phúc Viên Mãn
+                  </p>
                 </div>
                 <div
                   id="HEADLINE42"
@@ -586,7 +623,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               data-animate="fadeInRight"
             >
               <p className="ladi-headline font-snellRoundhand">of</p>
-              <p className="ladi-headline font-bold font-snellRoundhand">Love</p>
+              <p className="ladi-headline font-bold font-snellRoundhand">
+                Love
+              </p>
             </div>
             <div id="GALLERY1" className="absolute mt-89">
               <Gallery />
@@ -621,9 +660,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   </p>
                 </div>
                 <div id="HEADLINE47" className="absolute">
-                  <p className="ladi-headline font-snellRoundhand">
-                    Timeline
-                  </p>
+                  <p className="ladi-headline font-snellRoundhand">Timeline</p>
                 </div>
                 <div className="w-full absolute flex items-start justify-center time-line-1">
                   <div className="time-line"></div>

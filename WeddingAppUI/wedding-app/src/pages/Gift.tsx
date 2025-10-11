@@ -7,14 +7,14 @@ interface GiftProps {
 
 const Gift: React.FC<GiftProps> = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-[9999]">
+    <div
+      className="fixed inset-0 flex items-center justify-center z-[9999]"
+      onClick={(e) => e.stopPropagation()}
+    >
       {/* Overlay mờ */}
       <div
         className="absolute inset-0 bg-black/50"
-        onClick={(e) => {
-          onClose();
-          e.stopPropagation();
-        }} // bấm ra ngoài sẽ đóng
+        onClick={onClose} // bấm ra ngoài sẽ đóng
       ></div>
 
       {/* Nội dung Gift */}
@@ -26,10 +26,7 @@ const Gift: React.FC<GiftProps> = ({ onClose }) => {
               <div className="ladi-popup-background"></div>
               <div id="IMAGE58" className="absolute">
                 <button
-                  onClick={(e) => {
-                    onClose();
-                    e.stopPropagation();
-                  }}
+                  onClick={onClose}
                   className="absolute z-40 w-12 right-[4%] top-3 text-gray-500 hover:text-gray-800 text-xl font-bold"
                 >
                   ×

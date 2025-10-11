@@ -6,7 +6,8 @@ namespace WeddingAppAPI.ViewModel
     {
         [Required]
         public string GuestName { get; set; }
-        public string? GuestPath { get; set; }
+        public string GuestPath { get; set; }
+        public int Type { get; set; }
         public bool Status { get; set; }
         public int? Partner { get; set; }
     }

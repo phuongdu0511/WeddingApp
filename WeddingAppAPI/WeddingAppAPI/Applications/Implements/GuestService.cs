@@ -28,16 +28,7 @@ namespace WeddingAppAPI.Applications.Implements
 
         public Guest? GetGuestByPath(string path)
         {
-            Guest? guest = null;
-            if (!string.IsNullOrEmpty(path))
-            {
-                var result = _guestRepository.FindAll(g => g.GuestPath.Equals(path)).FirstOrDefault();
-                if (result != null)
-                {
-                    guest = result;
-                }
-            }
-            return guest;
+            return _guestRepository.FindAll(g => g.GuestPath.Equals(path)).FirstOrDefault(); ;
         }
 
         public List<Guest> GetGuests()
@@ -55,9 +46,17 @@ namespace WeddingAppAPI.Applications.Implements
             return await _guestRepository.FindByIdAsync(Id, cancellationToken);
         }
 
-
         public async Task<Guest> AddGuest(AddGuestViewModel model)
         {
+            // Trường hợp là mình thêm mới => cần kiểm tra Link đã tồn tại chưa
+            if (model.IsGuest == null)
+            {
+                var guestPathExist = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath)).FirstOrDefault();
+                if (guestPathExist != null)
+                {
+                    throw new Exception("Link đã tồn tại, vui lòng đổi sang link khác");
+                }
+            }
             try
             {
                 Guest guest = new Guest();
@@ -77,7 +76,7 @@ namespace WeddingAppAPI.Applications.Implements
                 {
                     var type = CodeConst.FriendTypes.FirstOrDefault(x => x.Key == guest.Type).Value;
                     var acceptStatus = CodeConst.AcceptStatus.FirstOrDefault(x => x.Key == model.Status).Value;
-                    string partner = "";
+                    string partner = string.Empty;
                     if (model.Status == true)
                     {
                         partner = model.Partner == 0 ? "đi một mình" : $"cùng {model.Partner} người";
@@ -99,57 +98,41 @@ namespace WeddingAppAPI.Applications.Implements
             _unitOfWork.Commit();
         }
 
+        /// <summary>
+        /// Hàm mình tự update thông tin khách
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<Guest?> UpdateGuest(UpdateGuestViewModel model)
         {
+            var guestPathExist = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath)).FirstOrDefault();
+            if (guestPathExist != null && guestPathExist.Id.ToString() != model.Id)
+            {
+                throw new Exception("Link đã tồn tại, vui lòng đổi sang link khác");
+            }
             try
             {
-                // Trường hợp khách tự update
-                if (model.IsGuest == true)
-                {
-                    var guest = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath) && x.Type == model.Type).FirstOrDefault();
-                    if (guest != null)
-                    {
-                        var type = CodeConst.FriendTypes.FirstOrDefault(x => x.Key == guest.Type).Value;
-                        var acceptStatus = CodeConst.AcceptStatus.FirstOrDefault(x => x.Key == model.Status).Value;
-                        string partner = "";
-                        if (model.Status == true)
-                        {
-                            partner = model.Partner == 0 ? "đi một mình" : $"cùng {model.Partner} người";
-                        }
-                        guest.Status = model.Status;
-                        guest.Partner = model.Partner;
-                        guest.UpdatedAt = DateTime.Now;
-
-                        _guestRepository.Update(guest, guest.RowVersion);
-                        _unitOfWork.Commit();
-
-                        await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
-                    }
-                    return guest;
-                }
                 // Trường hợp mình update
-                else
+                var guest = FindByIdAsync(Guid.Parse(model.Id)).Result;
+                if (guest != null)
                 {
-                    var guest = FindByIdAsync(Guid.Parse(model.Id)).Result;
-                    if (guest != null)
-                    {
-                        guest.GuestName = model.GuestName;
-                        guest.Partner = model.Partner;
-                        guest.Status = model.Status;
-                        guest.GuestPath = model.GuestPath;
-                        guest.Vow = model.Vow;
-                        guest.Comment = model.Comment;
-                        guest.Type = model.Type;
-                        guest.Donate = model.Donate;
-                        guest.UpdatedAt = DateTime.Now;
+                    guest.GuestName = model.GuestName;
+                    guest.Partner = model.Partner;
+                    guest.Status = model.Status;
+                    guest.GuestPath = model.GuestPath;
+                    guest.Vow = model.Vow;
+                    guest.Comment = model.Comment;
+                    guest.Type = model.Type;
+                    guest.Donate = model.Donate;
+                    guest.UpdatedAt = DateTime.Now;
 
-                        var originalRowVersion = Convert.FromBase64String(model.RowVersion);
+                    var originalRowVersion = Convert.FromBase64String(model.RowVersion);
 
-                        _guestRepository.Update(guest, originalRowVersion);
-                        _unitOfWork.Commit();
-                    }
-                    return guest;
+                    _guestRepository.Update(guest, originalRowVersion);
+                    _unitOfWork.Commit();
                 }
+                return guest;
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -162,15 +145,61 @@ namespace WeddingAppAPI.Applications.Implements
             }
         }
 
+        /// <summary>
+        /// Hàm update bởi khách
+        /// </summary>
+        /// <param name="guest"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<Guest?> UpdateByGuest(Guest guest)
+        {
+            try
+            {
+                // Trường hợp khách tự update
+                var type = CodeConst.FriendTypes.FirstOrDefault(x => x.Key == guest.Type).Value;
+                var acceptStatus = CodeConst.AcceptStatus.FirstOrDefault(x => x.Key == guest.Status).Value;
+                string partner = string.Empty;
+                if (guest.Status == true)
+                {
+                    partner = guest.Partner == 0 ? "đi một mình" : $"cùng {guest.Partner} người";
+                }
+                guest.Status = guest.Status;
+                guest.Partner = guest.Partner;
+                guest.UpdatedAt = DateTime.Now;
+
+                _guestRepository.Update(guest, guest.RowVersion);
+                _unitOfWork.Commit();
+
+                await _telegramService.SendMessageAsync($"{type}: {guest.GuestName} {acceptStatus} {partner}");
+                return guest;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new Exception("Thông tin đã được cập nhật trước đó, vui lòng tải lại.");
+            }
+            catch (Exception ex)
+            {
+                await _telegramService.SendMessageAsync($"Lỗi ở UpdateByGuest: {ex.Message}, {DateTime.Now}");
+                throw new Exception("Có lỗi xảy ra vui lòng thử lại.");
+            }
+        }
+
+        /// <summary>
+        /// Chỉ được gọi khi khách mở được popup xác nhận
+        /// Các trường hợp: khách đã được tạo, bạn bố mẹ
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task AddOrUpdateGuest(AddOrUpdateGuestViewModel model)
         {
             try
             {
                 List<string> listParent = new List<string>() { CodeConst.BAN_BO_PHUONG, CodeConst.BAN_ME_GIANG, CodeConst.BAN_BO_LONG, CodeConst.BAN_ME_VAN };
                 // Trường hợp khách submit từ link bạn bố mẹ
-                if (!string.IsNullOrEmpty(model.GuestPath) && listParent.Contains(model.GuestPath))
+                if (listParent.Contains(model.GuestPath))
                 {
-                    string pathName = RemoveVietnameseDiacritics(model.GuestName);
+                    string pathName = RemoveVietnameseDiacritics(model.GuestName) + model.GuestPath;
                     int parentType = 0;
                     switch (model.GuestPath)
                     {
@@ -190,16 +219,14 @@ namespace WeddingAppAPI.Applications.Implements
                             break;
                     }
 
+                    // Xét cả type vì bạn bố mẹ có thể cùng tên
                     var guestParent = _guestRepository.FindAll(x => x.GuestPath.Equals(pathName) && x.Type == parentType).FirstOrDefault();
                     if (guestParent != null)
                     {
                         // Update nếu tìm thấy bạn bố mẹ đã từng add
-                        UpdateGuestViewModel updateModel = new UpdateGuestViewModel();
-                        updateModel.IsGuest = true;
-                        updateModel.Status = model.Status;
-                        updateModel.Partner = model.Partner;
-                        updateModel.GuestPath = model.GuestPath;
-                        await UpdateGuest(updateModel);
+                        guestParent.Status = model.Status;
+                        guestParent.Partner = model.Partner;
+                        await UpdateByGuest(guestParent);
                     } else
                     {
                         AddGuestViewModel addModel = new AddGuestViewModel();
@@ -218,12 +245,14 @@ namespace WeddingAppAPI.Applications.Implements
                 // Trường hợp khách submit là khách đã được tạo trước đó
                 else
                 {
-                    UpdateGuestViewModel updateModel = new UpdateGuestViewModel();
-                    updateModel.IsGuest = true;
-                    updateModel.Status = model.Status;
-                    updateModel.Partner = model.Partner;
-                    updateModel.GuestPath = model.GuestPath;
-                    await UpdateGuest(updateModel);
+                    // Xét cả type vì bạn cô dâu và chú rể có thể cùng tên
+                    var guest = _guestRepository.FindAll(x => x.GuestPath.Equals(model.GuestPath) && x.Type == model.Type).FirstOrDefault();
+                    if (guest != null)
+                    {
+                        guest.Status = model.Status;
+                        guest.Partner = model.Partner;
+                        await UpdateByGuest(guest);
+                    }
                 }
             }
             catch (Exception ex)

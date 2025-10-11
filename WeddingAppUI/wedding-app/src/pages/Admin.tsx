@@ -40,10 +40,29 @@ const Admin: React.FC = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const errorMessage = (err: any) => {
+    let msg = "Đã xảy ra lỗi";
+
+    // Nếu backend trả về lỗi validate
+    if (err?.response?.data?.errors) {
+      const errors = err.response.data.errors;
+
+      // Gộp các message lại thành 1 chuỗi
+      const messages = Object.values(errors)
+        .flat() // flatten các mảng con
+        .join("<br/>"); // mỗi lỗi 1 dòng
+
+      msg = messages;
+    }
+
+    // Nếu backend trả về message thông thường
+    else if (err?.response?.data?.message) {
+      msg = err.response.data.message;
+    }
+
     Swal.fire({
       icon: "error",
       title: "Lỗi",
-      text: err.response.data.message,
+      html: msg,
       confirmButtonText: "Đóng",
       width: "300px",
     });
@@ -146,9 +165,21 @@ const Admin: React.FC = () => {
 
   const closeModal = () => setIsModalOpen(false);
 
-  const handleSave = async () => {
-    if (!tempGuest.guestName.trim()) return;
+  const reload = async () => {
+    await api
+      .get(`/api/Guest/list`)
+      .then((res) => {
+        setGuests(res.data);
+        successMessage();
+        closeModal();
+      })
+      .catch((err) => {
+        closeLoading();
+        errorMessage(err);
+      });
+  };
 
+  const handleSave = async () => {
     loading();
 
     if (editingGuest) {
@@ -161,10 +192,7 @@ const Admin: React.FC = () => {
         });
 
       if (res?.data != null) {
-        await api.get(`/api/Guest/list`).then((res) => {
-          setGuests(res.data);
-          successMessage();
-        });
+        await reload();
       }
     } else {
       // Thêm mới
@@ -175,18 +203,9 @@ const Admin: React.FC = () => {
           errorMessage(err);
         });
       if (res?.data != null) {
-        await api
-          .get(`/api/Guest/list`)
-          .then((res) => {
-            setGuests(res.data);
-            successMessage();
-          })
-          .catch((err) => {
-            errorMessage(err);
-          });
+        await reload();
       }
     }
-    closeModal();
   };
 
   const handleDelete = async (guest: Guest) => {
@@ -528,15 +547,43 @@ const Admin: React.FC = () => {
                       type="text"
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       value={(tempGuest as any)[key] ?? ""}
-                      onChange={(e) =>
-                        setTempGuest({
-                          ...tempGuest,
-                          [key]:
-                            key === "partner" || key === "donate"
-                              ? Number(e.target.value)
-                              : e.target.value,
-                        })
-                      }
+                      onChange={(e) => {
+                        const value = e.target.value;
+
+                        // Nếu đang nhập vào ô "partner"
+                        if (key === "partner") {
+                          setTempGuest({
+                            ...tempGuest,
+                            partner:
+                              value.trim() === ""
+                                ? null // trống -> null
+                                : /^\d+$/.test(value) // chỉ chấp nhận ký tự số
+                                ? Number(value)
+                                : tempGuest.partner, // bỏ qua ký tự đặc biệt / chữ
+                          });
+                        }
+
+                        // Nếu đang nhập vào ô "donate"
+                        else if (key === "donate") {
+                          setTempGuest({
+                            ...tempGuest,
+                            donate:
+                              value.trim() === ""
+                                ? 0
+                                : /^\d+$/.test(value)
+                                ? Number(value)
+                                : tempGuest.donate,
+                          });
+                        }
+
+                        // Các field khác
+                        else {
+                          setTempGuest({
+                            ...tempGuest,
+                            [key]: value,
+                          });
+                        }
+                      }}
                     />
                   </div>
                 ))}

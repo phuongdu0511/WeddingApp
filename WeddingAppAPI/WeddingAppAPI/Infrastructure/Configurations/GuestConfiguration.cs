@@ -21,6 +21,9 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             .IsRequired()
             .HasMaxLength(40);
 
+            builder.HasIndex(g => g.GuestPath)
+            .IsUnique();
+
             builder.Property(g => g.Comment)
             .IsRequired(false)
             .HasColumnType("nvarchar(max)");

@@ -45,9 +45,16 @@ namespace WeddingAppAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddGuest([FromBody] AddGuestViewModel model) {
-            var result = _guestService.AddGuest(model);
-            return Ok(result);
+        public async Task<IActionResult> AddGuest([FromBody] AddGuestViewModel model) {
+            try
+            {
+                var result = await _guestService.AddGuest(model);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPost("delete")]

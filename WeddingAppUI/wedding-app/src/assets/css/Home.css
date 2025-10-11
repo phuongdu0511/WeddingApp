@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   color: rgb(146, 131, 98);
-  overflow-x: hidden;
+  overflow-x: clip;
   height: 100%;
   margin: 0;
   padding: 0;

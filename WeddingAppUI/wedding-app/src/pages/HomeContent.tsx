@@ -18,12 +18,14 @@ import bgVideo from "/videos/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";
 import Gallery from "./Gallery";
-// import Music from "./Music";
+import Music from "./Music";
 import Gift from "./Gift";
 import { Link } from "react-router-dom";
 import Confirm from "./Confirm";
 import type { Guest } from "../types/Guest";
 import { PARENT_FRIEND } from "../common/CodeConst";
+import Lottie from "lottie-react";
+import scrollDown from "../assets/gif/Scrolldown.json";
 
 interface HomeContentProps {
   guest: Guest | null;
@@ -51,6 +53,25 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
     setShowVow(guest.vow);
   }, []);
 
+  const [isScrollDown, setIsScrollDown] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (window.scrollY < 50) {
+        setIsScrollDown(true);
+      }
+    }, 3000);
+    const handleScroll = () => {
+      // Nếu scroll xuống hơn 50px thì ẩn
+      if (window.scrollY > 50) {
+        setIsScrollDown(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="relative min-h-screen items-center main-wr">
       <div className="relative">
@@ -66,13 +87,20 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           Trình duyệt của bạn không hỗ trợ video.
         </video>
         <div
-          className="absolute top-9 -translate-x-1/2 w-full h-full animate-on-scroll"
+          className="absolute top-20 -translate-x-1/2 w-full h-full animate-on-scroll"
           data-animate="zoomIn"
         >
-          <p className="font-highSpirited text-7xl text-center text-white">
-            We get married
+          <p className="font-snellRoundhand font-bold text-4xl text-center text-white">
+            We are getting married!
           </p>
         </div>
+        {isScrollDown && (
+          <div className="absolute bottom-8 z-40 w-full flex justify-center">
+            <div style={{ width: 100 }}>
+              <Lottie animationData={scrollDown} loop={true} />
+            </div>
+          </div>
+        )}
       </div>
       <div className="min-h-screen">
         <div className="relative">
@@ -90,10 +118,10 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             className="absolute top-72 z-20 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-highSpirited text-6xl text-center">
+            <p className="font-snellRoundhand font-275 text-center">
               We will become
             </p>
-            <p className="font-highSpirited text-6xl text-center">
+            <p className="font-snellRoundhand font-275 text-center">
               husband and wife in
             </p>
             <WeddingCountdown />
@@ -169,9 +197,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             alt="Ảnh BONN9907"
             className="absolute z-20"
           />
-          <div className="absolute left-17 top-36 z-20 w-full text-white">
+          <div className="absolute left-17 top-40 z-20 w-full text-white">
             <p
-              className="font-highSpirited font-bold text-7xl animate-on-scroll"
+              className="font-snellRoundhand text-6xl animate-on-scroll"
               data-animate="fadeInLeft"
             >
               Save
@@ -180,7 +208,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               className="flex gap-2 animate-on-scroll"
               data-animate="fadeInRight"
             >
-              <p className="font-highSpirited text-5xl font-bold">the Date</p>
+              <p className="font-snellRoundhand text-4xl">the Date</p>
             </div>
           </div>
         </div>
@@ -249,14 +277,16 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           </div>
           <div className="absolute w-full mt-23">
             <p className="font-lora text-4xl  text-center">PHƯƠNG DUY</p>
-            <p className="font-highSpirited text-6xl text-center">and</p>
+            <p className="font-snellRoundhand text-6xl text-center">&</p>
             <p className="font-lora text-4xl  text-center">NGỌC DIỆP</p>
           </div>
           <div
             className="absolute w-full mt-33 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-center text-lg">Được tổ chức vào lúc</p>
+            <p className="font-lora text-center text-lg">
+              Được tổ chức vào lúc
+            </p>
           </div>
           <div
             className="w-full absolute flex items-start justify-center mt-36 animate-on-scroll"
@@ -334,7 +364,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             data-animate="fadeInUp"
           >
             <p className="font-lora text-3xl  text-center">THE STORY</p>
-            <p className="font-highSpirited text-6xl text-center">of</p>
+            <p className="font-snellRoundhand text-2xl text-center">of</p>
             <p className="font-lora text-3xl text-center">LOVE</p>
           </div>
           <div id="GROUP1" className="absolute">
@@ -352,7 +382,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 className="absolute text-center z-30 dip animate-on-scroll"
                 data-animate="fadeInRight"
               >
-                <p className="font-highSpirited text-5xl">Cô dâu</p>
+                <p className="font-snellRoundhand text-4xl">Cô dâu</p>
                 <p className="font-lora text-2xl">NGỌC DIỆP</p>
               </div>
             </div>
@@ -361,7 +391,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 className="absolute text-center z-20 duy animate-on-scroll left-1-5"
                 data-animate="fadeInLeft"
               >
-                <p className="font-highSpirited text-5xl">Chú rê</p>
+                <p className="font-snellRoundhand text-4xl">Chú rể</p>
                 <p className="font-lora text-2xl">PHƯƠNG DUY</p>
               </div>
               <img
@@ -455,7 +485,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline font-lora">2017 – Gặp gỡ định mệnh</p>
+                  <p className="ladi-headline font-lora">
+                    2017 – Gặp gỡ định mệnh
+                  </p>
                 </div>
                 <div
                   id="HEADLINE38"
@@ -463,10 +495,13 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Năm thứ ba đại học, giữa những ngày giảng đường đầy ắp tiếng
-                    cười và nhiệt huyết tuổi trẻ, Phương Duy và Ngọc Diệp tình
-                    cờ gặp nhau. Ánh mắt, nụ cười và những quan tâm nhỏ bé ngày ấy
-                    đã trở thành khởi đầu cho một hành trình yêu thương dài lâu.
+                    Bằng một sự sắp xếp đặc biệt đầy ưu ái nào đó của số phận,
+                    Diệp được học cùng lớp với Duy - sinh viên khóa dưới khác
+                    ngành. Và cũng không phải ngẫu nhiên mà họ là hai người đồng
+                    hương gần nhà duy nhất giữa cả trăm ngàn bạn học. Nhờ thế mà
+                    họ có nhiều thời gian để tìm hiểu nhau hơn. Và cứ như thế họ
+                    phải lòng nhau lúc nào không hay. Đến tận bây giờ, họ luôn
+                    coi đó là một cuộc gặp gỡ định mệnh.
                   </p>
                 </div>
                 <div
@@ -474,7 +509,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline font-lora">2019 – Thử Thách Và Gắn Kết</p>
+                  <p className="ladi-headline font-lora">
+                    2019 – Thử Thách Và Gắn Kết
+                  </p>
                 </div>
                 <div
                   id="HEADLINE40"
@@ -482,13 +519,12 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Năm 2019, Ngọc Diệp lên đường du học Đức, mở ra quãng thời
-                    gian yêu xa đầy thử thách. Những đêm lệch múi giờ, những
-                    cuộc gọi video, và những dòng tin nhắn gửi vội trở thành cầu
-                    nối giữa hai con tim. Dù cách nhau nửa vòng trái đất, niềm
-                    tin và tình yêu họ dành cho nhau vẫn lớn dần theo năm tháng.
-                    Chính khoảng cách ấy đã khiến họ càng trân trọng và thấu
-                    hiểu nhau hơn.
+                    Sau khi tốt nghiệp ĐH, Diệp lên đường đi du học Đức, mở ra
+                    quãng thời gian yêu xa đầy thử thách. Tất cả những yêu
+                    thương, quan tâm hay lo lắng đều phải gửi trao qua nửa vòng
+                    trái đất. Nhưng những khó khăn ấy chưa từng một lần cản trở
+                    được tình yêu của họ, chính khoảng cách địa lý này lại khiến
+                    họ càng trân trọng và tin tưởng nhau hơn.
                   </p>
                 </div>
                 <div
@@ -496,7 +532,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="fadeInUp"
                 >
-                  <p className="ladi-headline font-lora">2025 – Hạnh Phúc Viên Mãn</p>
+                  <p className="ladi-headline font-lora">
+                    2025 – Hạnh Phúc Viên Mãn
+                  </p>
                 </div>
                 <div
                   id="HEADLINE42"
@@ -504,11 +542,19 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Sau bao năm chờ đợi và vun đắp, năm 2025, họ chính thức nên
-                    duyên vợ chồng. Trong sự chúc phúc của gia đình và bạn bè,
-                    Ngọc Diệp và Phương Duy nắm tay nhau bước vào một hành trình
-                    mới — hành trình của hạnh phúc viên mãn và tình yêu bền
-                    vững, bắt đầu từ những ngày thanh xuân tươi đẹp.
+                    Sau gần 7 năm chờ đợi và vun đắp, dưới sự chấp thuận và chúc
+                    phúc của gia đình, bạn bè, họ chính thức nên duyên vợ chồng.
+                    Từ nay, họ sẽ nắm tay nhau bước vào một hành trình mới —
+                    hành trình của hạnh phúc viên mãn và bên nhau trọn đời!
+                  </p>
+                </div>
+                <div
+                  id="HEADLINE64"
+                  className="absolute animate-on-scroll"
+                  data-animate="zoomIn"
+                >
+                  <p className="ladi-headline font-bold font-lora">
+                    FINALLY, TOGETHER ! – AFTER ALL THE WAITING
                   </p>
                 </div>
               </div>
@@ -554,7 +600,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             >
               <div className="ladi-group">
                 <div id="HEADLINE43" className="absolute">
-                  <p className="ladi-headline font-highSpirited">The</p>
+                  <p className="ladi-headline font-snellRoundhand">The</p>
                 </div>
                 <div id="HEADLINE44" className="absolute">
                   <p className="ladi-headline font-lora">ALBUM</p>
@@ -582,10 +628,13 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             </div>
             <div
               id="HEADLINE45"
-              className="absolute mt-54 ladi-animation z-30 animate-on-scroll"
+              className="absolute mt-54 ladi-animation z-30 animate-on-scroll flex gap-4"
               data-animate="fadeInRight"
             >
-              <p className="ladi-headline font-highSpirited text-6xl">ofLove</p>
+              <p className="ladi-headline font-snellRoundhand">of</p>
+              <p className="ladi-headline font-bold font-snellRoundhand">
+                Love
+              </p>
             </div>
             <div id="GALLERY1" className="absolute mt-89">
               <Gallery />
@@ -615,14 +664,12 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="zoomIn"
                 >
-                  <p className="ladi-headline font-highSpirited text-7xl">
+                  <p className="ladi-headline font-snellRoundhand">
                     Dress code
                   </p>
                 </div>
                 <div id="HEADLINE47" className="absolute">
-                  <p className="ladi-headline font-highSpirited text-7xl">
-                    Timeline
-                  </p>
+                  <p className="ladi-headline font-snellRoundhand">Timeline</p>
                 </div>
                 <div className="w-full absolute flex items-start justify-center time-line-1">
                   <div className="time-line"></div>
@@ -883,9 +930,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               style={{ top: invite ? 600 : 395 }}
               data-animate="zoomIn"
             >
-              <p className="ladi-headline font-highSpirited">Thank you!</p>
+              <p className="ladi-headline font-snellRoundhand">Thank you!</p>
             </div>
-            {/* <Music /> */}
+            <Music />
           </div>
         </div>
       </div>

@@ -637,8 +637,7 @@
 
 #HEADLINE43 > .ladi-headline,
 #HEADLINE63 > .ladi-headline {
-  font-size: 80.15px;
-  line-height: 1.6;
+  font-size: 4rem;
   color: rgb(146, 131, 98);
   letter-spacing: 0px;
   text-align: center;
@@ -735,7 +734,8 @@
 }
 
 #HEADLINE45 > .ladi-headline {
-  line-height: 1.1;
+  font-size: 2.5rem;
+  line-height: 1.7;
   color: rgb(146, 131, 98);
   letter-spacing: 0px;
   text-align: left;
@@ -782,8 +782,7 @@
 }
 
 #HEADLINE63 {
-  width: 320px;
-  left: 50px;
+  width: 100%;
 }
 
 .mt-181 {
@@ -814,7 +813,7 @@
 }
 
 #LINE4 {
-  height: 639px;
+  height: 584px;
   top: 75.468px;
   left: 17.19px;
 }
@@ -868,12 +867,12 @@
 }
 
 #BOX11 {
-  top: 270.768px;
+  top: 307px;
   left: 20.69px;
 }
 
 #BOX12 {
-  top: 534.768px;
+  top: 522px;
   left: 20.69px;
 }
 
@@ -920,23 +919,36 @@
 }
 
 #HEADLINE39 {
-  top: 259.268px;
+  top: 295px;
   left: 44.69px;
 }
 
 #HEADLINE40 {
-  top: 295.268px;
+  top: 332px;
   left: 44.69px;
 }
 
 #HEADLINE41 {
-  top: 524.268px;
+  top: 510px;
   left: 44.69px;
 }
 
 #HEADLINE42 {
-  top: 560.268px;
+  top: 548px;
   left: 44.69px;
+}
+
+#HEADLINE64 {
+  top: 685px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#HEADLINE64 > .ladi-headline {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgb(146, 131, 98);
 }
 
 #SECTION6 {
@@ -992,7 +1004,8 @@
 }
 
 #HEADLINE46 > .ladi-headline {
-  line-height: 1.1;
+  font-size: 3.25rem;
+  line-height: 1.4;
   color: rgb(146, 131, 98);
   letter-spacing: 0px;
   text-align: center;
@@ -1004,7 +1017,8 @@
 }
 
 #HEADLINE47 > .ladi-headline {
-  line-height: 1.1;
+  font-size: 3.25rem;
+  line-height: 1.9;
   color: rgb(255, 255, 255);
   letter-spacing: 0px;
   text-align: center;
@@ -1371,6 +1385,7 @@
 }
 
 #HEADLINE56 .ladi-headline {
+  font-size: 1rem;
   width: 381px;
   text-align: center;
 }
@@ -1636,4 +1651,9 @@
 
 .mt-9 {
   margin-top: 9rem;
+}
+
+.font-275 {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
 }

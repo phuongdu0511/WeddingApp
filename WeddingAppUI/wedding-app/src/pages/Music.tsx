@@ -8,21 +8,25 @@ const songs: string[] = Object.values(
 
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [, setCurrentIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // xử lý toggle khi click bất kỳ đâu
+  // Xử lý click bật/tắt nhạc
   useEffect(() => {
     const handleClick = () => {
       if (!isPlaying) {
-        // Bật nhạc random
-        const randomIndex = Math.floor(Math.random() * songs.length);
-        if (audioRef.current) {
-          audioRef.current.src = songs[randomIndex];
-          audioRef.current.play();
-        }
+        // Khi bật lại thì chuyển sang bài tiếp theo
+        setCurrentIndex((prev) => {
+          const next = (prev + 1) % songs.length;
+          if (audioRef.current) {
+            audioRef.current.src = songs[next];
+            audioRef.current.play();
+          }
+          return next;
+        });
         setIsPlaying(true);
       } else {
-        // Tắt nhạc
+        // Khi đang phát thì tắt nhạc
         if (audioRef.current) {
           audioRef.current.pause();
         }
@@ -33,6 +37,26 @@ export default function MusicPlayer() {
     document.body.addEventListener("click", handleClick);
     return () => document.body.removeEventListener("click", handleClick);
   }, [isPlaying]);
+
+  // Khi bài hát kết thúc -> tự động sang bài tiếp theo
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleEnded = () => {
+      setCurrentIndex((prev) => {
+        const next = (prev + 1) % songs.length;
+        if (audioRef.current) {
+          audioRef.current.src = songs[next];
+          audioRef.current.play();
+        }
+        return next;
+      });
+    };
+
+    audio.addEventListener("ended", handleEnded);
+    return () => audio.removeEventListener("ended", handleEnded);
+  }, []);
 
   return (
     <>
@@ -50,16 +74,6 @@ export default function MusicPlayer() {
             }`}
           />
         </div>
-
-        {/* <button
-          onClick={(e) => {
-            e.stopPropagation(); // tránh trigger body click
-            setShowList(!showList);
-          }}
-          className="bg-icon-menu text-white p-3 rounded-full shadow-lg pointer-events-auto"
-        >
-          <Menu size={17} />
-        </button> */}
       </div>
     </>
   );

@@ -813,7 +813,7 @@
 }
 
 #LINE4 {
-  height: 639px;
+  height: 584px;
   top: 75.468px;
   left: 17.19px;
 }
@@ -867,12 +867,12 @@
 }
 
 #BOX11 {
-  top: 270.768px;
+  top: 307px;
   left: 20.69px;
 }
 
 #BOX12 {
-  top: 534.768px;
+  top: 522px;
   left: 20.69px;
 }
 
@@ -919,23 +919,36 @@
 }
 
 #HEADLINE39 {
-  top: 259.268px;
+  top: 295px;
   left: 44.69px;
 }
 
 #HEADLINE40 {
-  top: 295.268px;
+  top: 332px;
   left: 44.69px;
 }
 
 #HEADLINE41 {
-  top: 524.268px;
+  top: 510px;
   left: 44.69px;
 }
 
 #HEADLINE42 {
-  top: 560.268px;
+  top: 548px;
   left: 44.69px;
+}
+
+#HEADLINE64 {
+  top: 685px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#HEADLINE64 > .ladi-headline {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgb(146, 131, 98);
 }
 
 #SECTION6 {

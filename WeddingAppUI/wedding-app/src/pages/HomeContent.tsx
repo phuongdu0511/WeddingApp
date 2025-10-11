@@ -25,7 +25,7 @@ import Confirm from "./Confirm";
 import type { Guest } from "../types/Guest";
 import { PARENT_FRIEND } from "../common/CodeConst";
 import Lottie from "lottie-react";
-import swipeDown from "../assets/gif/swipeUp.json";
+import scrollDown from "../assets/gif/Scrolldown.json";
 
 interface HomeContentProps {
   guest: Guest | null;
@@ -53,18 +53,18 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
     setShowVow(guest.vow);
   }, []);
 
-  const [isSwipeDown, setIsSwipeDown] = useState(false);
+  const [isScrollDown, setIsScrollDown] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       if (window.scrollY < 50) {
-        setIsSwipeDown(true);
+        setIsScrollDown(true);
       }
     }, 3000);
     const handleScroll = () => {
       // Nếu scroll xuống hơn 50px thì ẩn
       if (window.scrollY > 50) {
-        setIsSwipeDown(false);
+        setIsScrollDown(false);
       }
     };
 
@@ -94,10 +94,10 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             We are getting married!
           </p>
         </div>
-        {isSwipeDown && (
-          <div className="absolute bottom-[-35px] z-40 w-full flex justify-center">
-            <div style={{ width: 200 }}>
-              <Lottie animationData={swipeDown} loop={true} />
+        {isScrollDown && (
+          <div className="absolute bottom-8 z-40 w-full flex justify-center">
+            <div style={{ width: 100 }}>
+              <Lottie animationData={scrollDown} loop={true} />
             </div>
           </div>
         )}
@@ -495,11 +495,13 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Năm thứ ba đại học, giữa những ngày giảng đường đầy ắp tiếng
-                    cười và nhiệt huyết tuổi trẻ, Phương Duy và Ngọc Diệp tình
-                    cờ gặp nhau. Ánh mắt, nụ cười và những quan tâm nhỏ bé ngày
-                    ấy đã trở thành khởi đầu cho một hành trình yêu thương dài
-                    lâu.
+                    Bằng một sự sắp xếp đặc biệt đầy ưu ái nào đó của số phận,
+                    Diệp được học cùng lớp với Duy - sinh viên khóa dưới khác
+                    ngành. Và cũng không phải ngẫu nhiên mà họ là hai người đồng
+                    hương gần nhà duy nhất giữa cả trăm ngàn bạn học. Nhờ thế mà
+                    họ có nhiều thời gian để tìm hiểu nhau hơn. Và cứ như thế họ
+                    phải lòng nhau lúc nào không hay. Đến tận bây giờ, họ luôn
+                    coi đó là một cuộc gặp gỡ định mệnh.
                   </p>
                 </div>
                 <div
@@ -517,13 +519,12 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Năm 2019, Ngọc Diệp lên đường du học Đức, mở ra quãng thời
-                    gian yêu xa đầy thử thách. Những đêm lệch múi giờ, những
-                    cuộc gọi video, và những dòng tin nhắn gửi vội trở thành cầu
-                    nối giữa hai con tim. Dù cách nhau nửa vòng trái đất, niềm
-                    tin và tình yêu họ dành cho nhau vẫn lớn dần theo năm tháng.
-                    Chính khoảng cách ấy đã khiến họ càng trân trọng và thấu
-                    hiểu nhau hơn.
+                    Sau khi tốt nghiệp ĐH, Diệp lên đường đi du học Đức, mở ra
+                    quãng thời gian yêu xa đầy thử thách. Tất cả những yêu
+                    thương, quan tâm hay lo lắng đều phải gửi trao qua nửa vòng
+                    trái đất. Nhưng những khó khăn ấy chưa từng một lần cản trở
+                    được tình yêu của họ, chính khoảng cách địa lý này lại khiến
+                    họ càng trân trọng và tin tưởng nhau hơn.
                   </p>
                 </div>
                 <div
@@ -541,11 +542,19 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Sau bao năm chờ đợi và vun đắp, năm 2025, họ chính thức nên
-                    duyên vợ chồng. Trong sự chúc phúc của gia đình và bạn bè,
-                    Ngọc Diệp và Phương Duy nắm tay nhau bước vào một hành trình
-                    mới — hành trình của hạnh phúc viên mãn và tình yêu bền
-                    vững, bắt đầu từ những ngày thanh xuân tươi đẹp.
+                    Sau gần 7 năm chờ đợi và vun đắp, dưới sự chấp thuận và chúc
+                    phúc của gia đình, bạn bè, họ chính thức nên duyên vợ chồng.
+                    Từ nay, họ sẽ nắm tay nhau bước vào một hành trình mới —
+                    hành trình của hạnh phúc viên mãn và bên nhau trọn đời!
+                  </p>
+                </div>
+                <div
+                  id="HEADLINE64"
+                  className="absolute animate-on-scroll"
+                  data-animate="zoomIn"
+                >
+                  <p className="ladi-headline font-bold font-lora">
+                    FINALLY, TOGETHER ! – AFTER ALL THE WAITING
                   </p>
                 </div>
               </div>

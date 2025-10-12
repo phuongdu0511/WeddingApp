@@ -14,9 +14,11 @@ namespace WeddingAppAPI.Infrastructure
         {
             modelBuilder.ApplyConfiguration(new GuestConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
+            modelBuilder.ApplyConfiguration(new LogViewConfiguration());
         }
 
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<LogView> LogViews { get; set; }
     }
 }

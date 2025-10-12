@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WeddingAppAPI.Applications.Implements;
 using WeddingAppAPI.Applications.Interfaces;
+using WeddingAppAPI.ViewModel;
 
 namespace WeddingAppAPI.Controllers
 {
@@ -12,6 +14,27 @@ namespace WeddingAppAPI.Controllers
         public ReportController(IReportService reportService)
         {
             _reportService = reportService;
+        }
+
+        [HttpPost("enter")]
+        public IActionResult JustViewed([FromBody] LogViewViewModel model)
+        {
+            var result = _reportService.JustViewed(model);
+            return Ok(result);
+        }
+
+        [HttpPost("complete")]
+        public IActionResult FullyViewed(string id)
+        {
+            _reportService.FullyViewed(id);
+            return Ok();
+        }
+
+        [HttpGet("report")]
+        public IActionResult ReportView()
+        {
+            var result = _reportService.ReportView();
+            return Ok(result);
         }
     }
 }

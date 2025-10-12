@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../assets/css/HomeContent.css";
 import "../assets/css/Animation.css";
 import home1 from "../assets/images/cover/home_1.jpg";
@@ -26,6 +26,9 @@ import type { Guest } from "../types/Guest";
 import { PARENT_FRIEND } from "../common/CodeConst";
 import Lottie from "lottie-react";
 import scrollDown from "../assets/gif/Scrolldown.json";
+import axios from "axios";
+import { API_BASE_URL } from "../config/api";
+import { v4 as uuidv4 } from "uuid";
 
 interface HomeContentProps {
   guest: Guest | null;
@@ -33,6 +36,7 @@ interface HomeContentProps {
 }
 
 const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
+  const api = axios.create({ baseURL: API_BASE_URL });
   const [showGift, setShowGift] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [invite, setInvite] = useState(false);
@@ -53,8 +57,44 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
     setShowVow(guest.vow);
   }, []);
 
-  const [isScrollDown, setIsScrollDown] = useState(false);
+  // Tạo log khi vừa mở vào xem
+  const query = window.location.pathname.replace(/^\/+/, "");
+  const viewIdRef = useRef<string>("");
+  const payload = {
+    id: uuidv4(),
+    guestName: guest?.guestName,
+    guestPath: guest?.guestPath,
+    type: guest?.type,
+  };
+  useEffect(() => {
+    if (query != "duydiep") {
+      api
+        .post(`/api/Report/enter`, payload)
+        .then((res) => (viewIdRef.current = res?.data?.id));
+    }
+  }, []);
 
+  // Cập nhật đã xem hết
+  useEffect(() => {
+    if (query != "duydiep") {
+      let hasReported = false;
+
+      const handleScroll = () => {
+        const scrollPosition = window.innerHeight + window.scrollY; // vị trí hiện tại của viewport
+        const documentHeight = document.body.offsetHeight; // chiều cao tổng của trang
+
+        if (!hasReported && scrollPosition >= documentHeight * 0.9) {
+          hasReported = true;
+          api.post(`/api/Report/complete?id=${viewIdRef.current}`);
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  const [isScrollDown, setIsScrollDown] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       if (window.scrollY < 50) {

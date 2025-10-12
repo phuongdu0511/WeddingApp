@@ -9,10 +9,10 @@ namespace WeddingAppAPI.Domain
         [Column("ViewId")]
         public override Guid Id { get; set; }
         public string? GuestName { get; set; }
+        public string? GuestPath { get; set; }
         public int? Type { get; set; }
-        public int JustViewd { get; set; }
-        public int FullyViewd { get; set; }
+        public int JustViewed { get; set; }
+        public int FullyViewed { get; set; }
         public DateTime UpdatedAt { get; set; }
-
     }
 }

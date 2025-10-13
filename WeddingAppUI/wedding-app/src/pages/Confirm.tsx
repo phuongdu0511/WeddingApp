@@ -5,14 +5,16 @@ import { API_BASE_URL } from "../config/api";
 import axios from "axios";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/gif/LoadingDot.json";
+import { PARENT_FRIEND } from "../common/CodeConst";
 
 interface ConfirmProps {
   onClose: () => void;
   guest: Guest | null;
   setGuest: React.Dispatch<React.SetStateAction<Guest | null>>;
+  viewId: string | null;
 }
 
-const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
+const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest, viewId }) => {
   const api = axios.create({
     baseURL: API_BASE_URL,
   });
@@ -45,8 +47,10 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
     guestPath: guest?.guestPath,
     status: status,
     partner: partner,
+    type: guest?.type,
   };
 
+  const [updateViewed, setUpdateViewed] = useState<boolean>(false);
   const confirm = async () => {
     const nameErr = !payload.guestName.trim();
     const statusErr = payload.status == null;
@@ -68,6 +72,12 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest }) => {
       }
       setLoading(false);
       setThankYou(true);
+
+      // chỉ cập nhật 1 lần với 1 viewId của bố mẹ (1 lần mở trang chỉ cập nhật 1 lần)
+      if (PARENT_FRIEND.includes(guest?.guestPath ?? "") && !updateViewed) {
+        await api.post(`/api/Report/update?id=${viewId}&&name=${payload.guestName}`);
+        setUpdateViewed(true);
+      }
     } catch (error) {
       console.log(error);
     }

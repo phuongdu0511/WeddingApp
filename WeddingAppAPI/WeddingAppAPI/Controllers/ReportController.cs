@@ -30,6 +30,13 @@ namespace WeddingAppAPI.Controllers
             return Ok();
         }
 
+        [HttpPost("update")]
+        public IActionResult UpdateViewer(string id, string name)
+        {
+            _reportService.UpdateViewer(id, name);
+            return Ok();
+        }
+
         [HttpGet("report")]
         public IActionResult ReportView()
         {

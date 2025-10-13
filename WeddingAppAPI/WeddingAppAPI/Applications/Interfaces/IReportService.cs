@@ -6,7 +6,9 @@ namespace WeddingAppAPI.Applications.Interfaces
     public interface IReportService
     {
         LogView JustViewed(LogViewViewModel view);
-        void FullyViewed(string viewId);
+        void FullyViewed(string id);
+
+        void UpdateViewer(string id, string guestName);
         TotalViewViewModel ReportView();
     }
 }

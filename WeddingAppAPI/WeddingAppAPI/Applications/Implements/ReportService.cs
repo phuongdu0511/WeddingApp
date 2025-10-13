@@ -19,30 +19,35 @@ namespace WeddingAppAPI.Applications.Implements
 
         public LogView JustViewed(LogViewViewModel view)
         {
-            int? parentType = 0;
-            switch (view.GuestPath)
+            int? type = 0;
+            if (view.Type == 0) {
+                switch (view.GuestPath)
+                {
+                    case CodeConst.BAN_BO_PHUONG:
+                        type = 1;
+                        break;
+                    case CodeConst.BAN_ME_GIANG:
+                        type = 2;
+                        break;
+                    case CodeConst.BAN_BO_LONG:
+                        type = 3;
+                        break;
+                    case CodeConst.BAN_ME_VAN:
+                        type = 4;
+                        break;
+                    default:
+                        break;
+                }
+            } else
             {
-                case CodeConst.BAN_BO_PHUONG:
-                    parentType = 1;
-                    break;
-                case CodeConst.BAN_ME_GIANG:
-                    parentType = 2;
-                    break;
-                case CodeConst.BAN_BO_LONG:
-                    parentType = 3;
-                    break;
-                case CodeConst.BAN_ME_VAN:
-                    parentType = 4;
-                    break;
-                default:
-                    break;
+                type = view.Type;
             }
 
             LogView logView = new LogView();
             logView.Id = new Guid(view.Id);
             logView.GuestName = view.GuestName;
             logView.GuestPath = view.GuestPath;
-            logView.Type = parentType;
+            logView.Type = type;
             _viewRepository.Add(logView);
             _unitOfWork.Commit();
             return logView;
@@ -53,6 +58,17 @@ namespace WeddingAppAPI.Applications.Implements
             var view = _viewRepository.FindAll(x => x.Id.Equals(new Guid(viewId))).FirstOrDefault();
             if (view != null) {
                 view.FullyViewed = 1;
+                _viewRepository.Update(view);
+                _unitOfWork.Commit();
+            }
+        }
+
+        public void UpdateViewer(string viewId, string guestName)
+        {
+            var view = _viewRepository.FindAll(x => x.Id.Equals(new Guid(viewId))).FirstOrDefault();
+            if (view != null)
+            {
+                view.GuestName = guestName;
                 _viewRepository.Update(view);
                 _unitOfWork.Commit();
             }

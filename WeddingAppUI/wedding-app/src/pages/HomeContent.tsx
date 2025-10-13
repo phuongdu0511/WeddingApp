@@ -80,10 +80,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
       let hasReported = false;
 
       const handleScroll = () => {
-        const scrollPosition = window.innerHeight + window.scrollY; // vị trí hiện tại của viewport
-        const documentHeight = document.body.offsetHeight; // chiều cao tổng của trang
-
-        if (!hasReported && scrollPosition >= documentHeight * 0.9) {
+        if (!hasReported && window.scrollY >= 5500) {
           hasReported = true;
           api.post(`/api/Report/complete?id=${viewIdRef.current}`);
         }
@@ -910,6 +907,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                     onClose={() => setShowConfirm(false)}
                     guest={guest}
                     setGuest={setGuest}
+                    viewId={viewIdRef.current}
                   />
                 )}
 

@@ -5,6 +5,7 @@ import "../assets/css/Admin.css";
 import { DeleteOutlined, EditOutlined, CopyOutlined } from "@ant-design/icons";
 import { GUEST_TYPE } from "../common/CodeConst";
 import Swal from "sweetalert2";
+import type { ReportViewModel } from "../types/ReportViewModel";
 
 interface Guest {
   id: string;
@@ -79,24 +80,12 @@ const Admin: React.FC = () => {
     });
   };
 
-  const [justViewed, setJustViewed] = useState<number>(0);
-  const [fullyViewed, setFullyViewed] = useState<number>(0);
-
   // Init data
   useEffect(() => {
     const init = async () => {
       try {
         loading();
-
-        // chạy 2 API song song
-        const [guestRes, reportRes] = await Promise.all([
-          api.get("/api/Guest/list"),
-          api.get("/api/report/report"),
-        ]);
-
-        setGuests(guestRes.data);
-        setJustViewed(reportRes?.data?.totalJustViewed ?? 0);
-        setFullyViewed(reportRes?.data?.totalFullyViewed ?? 0);
+        await api.get("/api/Guest/list").then((res) => setGuests(res?.data));
       } catch (err) {
         alert(err);
       } finally {
@@ -260,7 +249,7 @@ const Admin: React.FC = () => {
   };
 
   const handleCopy = (guestPath: string) => {
-    const domain = `duydiep.love/${guestPath}`;
+    const domain = `https://duydiep.love/${guestPath}`;
     navigator.clipboard
       .writeText(domain)
       .then(() => alert(`Đã copy: ${domain}`))
@@ -317,6 +306,19 @@ const Admin: React.FC = () => {
 
     return pages;
   }
+
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [report, setReport] = useState<ReportViewModel | null>(null);
+
+  const openReportModal = async () => {
+    loading();
+    const res = await api.get("/api/report/report");
+    setReport(res.data);
+    closeLoading();
+    setIsReportModalOpen(true);
+  };
+
+  const closeReportModal = () => setIsReportModalOpen(false);
 
   return (
     <div className="flex justify-center">
@@ -421,8 +423,9 @@ const Admin: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="">Tổng vào xem: {justViewed}</div>
-          <div className="">Tổng xem hết: {fullyViewed}</div>
+          <button className="btn btn-primary" onClick={() => openReportModal()}>
+            Báo cáo
+          </button>
           <div className="table-responsive">
             <table className="table table-hover e-commerce-table">
               <thead>
@@ -680,6 +683,37 @@ const Admin: React.FC = () => {
                   </button>
                   <button onClick={closeModal} className="modal-cancel">
                     Hủy
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          {isReportModalOpen && (
+            <div className="modal-overlay">
+              <div className="modal-content-report modal-scroll-report">
+                <h2>Báo cáo tổng quan</h2>
+
+                {[
+                  ["Tổng lượt vừa vào xem", report?.totalView?.totalJustViewed],
+                  ["Tổng lượt xem hết", report?.totalView?.totalFullyViewed],
+                  ["Tổng khách đã mời", report?.totalGuestInvited],
+                  ["Khách xác nhận đến và người thân", report?.totalGuestAccepted],
+                  ["Khách nhà trai xác nhận", report?.totalGroomGuest],
+                  ["Khách nhà gái xác nhận", report?.totalBrideGuest],
+                  ["Khách mời lễ Vow", report?.totalVowInvited],
+                  ["Khách xác nhận dự lễ Vow", report?.totalVowAccepted],
+                  ["Khách nhà trai dự Vow", report?.totalGroomVow],
+                  ["Khách nhà gái dự Vow", report?.totalBrideVow],
+                ].map(([label, value]) => (
+                  <div className="modal-field-report" key={label}>
+                    <label>{label}:</label>
+                    <span>{value ?? 0}</span>
+                  </div>
+                ))}
+
+                <div className="modal-actions-report">
+                  <button onClick={closeReportModal} className="modal-cancel-report">
+                    Đóng
                   </button>
                 </div>
               </div>

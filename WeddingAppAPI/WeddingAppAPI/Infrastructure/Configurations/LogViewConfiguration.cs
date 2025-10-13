@@ -14,12 +14,10 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             .ValueGeneratedOnAdd();
 
             builder.Property(g => g.GuestName)
-            .IsRequired(false)
-            .HasMaxLength(40);
+            .IsRequired(false);
 
             builder.Property(g => g.GuestPath)
-            .IsRequired(false)
-            .HasMaxLength(40);
+            .IsRequired(false);
 
             builder.Property(g => g.Type)
             .IsRequired(false)

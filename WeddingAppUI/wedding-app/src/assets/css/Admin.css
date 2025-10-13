@@ -23448,6 +23448,54 @@ div.is-invalid {
   border-radius: 4px; cursor: pointer;
 }
 
+/* Giới hạn chiều cao + thêm thanh cuộn */
+.modal-scroll-report {
+  max-height: 80vh;         /* không cao quá 80% màn hình */
+  overflow-y: auto;         /* thêm thanh cuộn dọc */
+}
+
+.modal-content-report {
+  background: #fff; padding: 20px; border-radius: 6px;
+  width: 400px; max-width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.modal-field-report {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-field-report label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.modal-field-report span {
+  background: #f9f9f9;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.modal-actions-report {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-cancel-report {
+  background: #555;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-cancel-report:hover {
+  background: #333;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

@@ -9,13 +9,19 @@ namespace WeddingAppAPI.Applications.Implements
     public class ReportService : IReportService
     {
         private readonly IRepositoryBase<LogView, Guid> _viewRepository;
+        private readonly IRepositoryBase<Guest, Guid> _guestRepository;
         private readonly IUnitOfWork _unitOfWork;
         public ReportService(IRepositoryBase<LogView, Guid> viewRepository,
+            IRepositoryBase<Guest, Guid> guestRepository,
             IUnitOfWork unitOfWork)
         {
             _viewRepository = viewRepository;
+            _guestRepository = guestRepository;
             _unitOfWork = unitOfWork;
         }
+
+        public List<int> GroomGuestList = new List<int>() { 1, 2, 5 };
+        public List<int> BridgeGuestList = new List<int>() { 3, 4, 6, 7 };
 
         public LogView JustViewed(LogViewViewModel view)
         {
@@ -74,18 +80,40 @@ namespace WeddingAppAPI.Applications.Implements
             }
         }
 
-        public TotalViewViewModel ReportView()
+        public ReportViewModel ReportAdmin()
         {
-            var result = _viewRepository.FindAll()
-                .GroupBy(x => 1)
+            var result = new ReportViewModel();
+
+            // --- Tổng view ---
+            result.TotalView = _viewRepository.FindAll()
+                .GroupBy(_ => 1)
                 .Select(g => new TotalViewViewModel
                 {
                     TotalJustViewed = g.Count(),
                     TotalFullyViewed = g.Sum(x => x.FullyViewed)
                 })
-                .FirstOrDefault();
+                .FirstOrDefault() ?? new TotalViewViewModel();
 
-            return result ?? new TotalViewViewModel();
+            // --- Thống kê khách mời ---
+            var guests = _guestRepository.FindAll()?.ToList() ?? new List<Guest>();
+
+            if (guests.Count == 0) return result;
+
+            var acceptedGuests = guests.Where(x => x.Status == true).ToList();
+            var vowGuests = guests.Where(x => x.Vow == true).ToList();
+
+            result.TotalGuestInvited = guests.Count;
+            result.TotalGuestAccepted = acceptedGuests.Count + acceptedGuests.Sum(x => x.Partner ?? 0);
+
+            result.TotalGroomGuest = acceptedGuests.Count(x => GroomGuestList.Contains(x.Type));
+            result.TotalBrideGuest = acceptedGuests.Count(x => BridgeGuestList.Contains(x.Type));
+
+            result.TotalVowInvited = vowGuests.Count;
+            result.TotalVowAccepted = vowGuests.Count(x => x.Status == true);
+            result.TotalGroomVow = vowGuests.Count(x => x.Status == true && GroomGuestList.Contains(x.Type));
+            result.TotalBrideVow = vowGuests.Count(x => x.Status == true && BridgeGuestList.Contains(x.Type));
+
+            return result;
         }
     }
 }

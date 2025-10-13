@@ -40,7 +40,7 @@ namespace WeddingAppAPI.Controllers
         [HttpGet("report")]
         public IActionResult ReportView()
         {
-            var result = _reportService.ReportView();
+            var result = _reportService.ReportAdmin();
             return Ok(result);
         }
     }

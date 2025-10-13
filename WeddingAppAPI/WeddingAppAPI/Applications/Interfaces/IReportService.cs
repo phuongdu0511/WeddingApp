@@ -9,6 +9,6 @@ namespace WeddingAppAPI.Applications.Interfaces
         void FullyViewed(string id);
 
         void UpdateViewer(string id, string guestName);
-        TotalViewViewModel ReportView();
+        ReportViewModel ReportAdmin();
     }
 }

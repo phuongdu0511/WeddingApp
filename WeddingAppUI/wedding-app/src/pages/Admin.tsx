@@ -79,17 +79,32 @@ const Admin: React.FC = () => {
     });
   };
 
+  const [justViewed, setJustViewed] = useState<number>(0);
+  const [fullyViewed, setFullyViewed] = useState<number>(0);
+
+  // Init data
   useEffect(() => {
-    loading();
-    api
-      .get(`/api/Guest/list`)
-      .then((res) => {
-        closeLoading();
-        setGuests(res.data);
-      })
-      .catch((err) => {
+    const init = async () => {
+      try {
+        loading();
+
+        // chạy 2 API song song
+        const [guestRes, reportRes] = await Promise.all([
+          api.get("/api/Guest/list"),
+          api.get("/api/report/report"),
+        ]);
+
+        setGuests(guestRes.data);
+        setJustViewed(reportRes?.data?.totalJustViewed ?? 0);
+        setFullyViewed(reportRes?.data?.totalFullyViewed ?? 0);
+      } catch (err) {
         alert(err);
-      });
+      } finally {
+        closeLoading(); // chỉ chạy sau khi cả 2 API xong hoặc lỗi
+      }
+    };
+
+    init();
   }, []);
 
   const [guests, setGuests] = useState<Guest[]>([]);
@@ -406,9 +421,8 @@ const Admin: React.FC = () => {
               </div>
             </div>
           </div>
-          {/* <div className="">Tổng số khách</div>
-          <div className="">Tổng số khách</div>
-          <div className="">Tổng số khách</div> */}
+          <div className="">Tổng vào xem: {justViewed}</div>
+          <div className="">Tổng xem hết: {fullyViewed}</div>
           <div className="table-responsive">
             <table className="table table-hover e-commerce-table">
               <thead>

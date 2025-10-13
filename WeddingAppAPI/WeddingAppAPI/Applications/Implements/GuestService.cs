@@ -62,7 +62,7 @@ namespace WeddingAppAPI.Applications.Implements
                 Guest guest = new Guest();
                 guest.Id = new Guid();
                 guest.GuestName = model.GuestName;
-                guest.GuestPath = model.GuestPath;
+                guest.GuestPath = model.GuestPath.Trim();
                 guest.Type = model.Type;
                 guest.Comment = model.Comment;
                 guest.Status = model.Status;

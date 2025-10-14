@@ -939,16 +939,18 @@
 }
 
 #HEADLINE64 {
-  top: 685px;
-  display: flex;
+  top: 668px;
+  display: grid;
   justify-content: center;
   width: 100%;
+  gap: 0.25rem
 }
 
 #HEADLINE64 > .ladi-headline {
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 1.5;
   color: rgb(146, 131, 98);
+  text-align: center;
 }
 
 #SECTION6 {
@@ -1646,7 +1648,7 @@
 }
 
 .left-1-5 {
-  left:-1.5rem;
+  left:-0.25rem;
 }
 
 .mt-9 {
@@ -1656,4 +1658,12 @@
 .font-275 {
   font-size: 2.75rem;
   line-height: 2.75rem;
+}
+
+.text-1 {
+  font-size: 1rem;
+}
+
+.text-2 {
+  font-size: 1.25rem;
 }

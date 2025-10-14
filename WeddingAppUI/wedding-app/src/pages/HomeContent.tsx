@@ -280,8 +280,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               data-animate="fadeInLeft"
             >
               <p className="font-lora font-bold text-lg">NHÀ GÁI</p>
-              <p className="font-lora text-lg">Ông Nguyễn Văn Long</p>
-              <p className="font-lora text-lg">Bà Hứa Hồng Vân</p>
+              <p className="font-lora text-1">Ông Nguyễn Văn Long</p>
+              <p className="font-lora text-1">Bà Hứa Hồng Vân</p>
             </div>
             <div className="line-1"></div>
             <div
@@ -289,8 +289,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               data-animate="fadeInRight"
             >
               <p className="font-lora font-bold text-lg">NHÀ TRAI</p>
-              <p className="font-lora text-lg">Ông Dương Lê Phương</p>
-              <p className="font-lora text-lg">Bà Bùi Hương Giang</p>
+              <p className="font-lora text-1">Ông Dương Lê Phương</p>
+              <p className="font-lora text-1">Bà Bùi Hương Giang</p>
             </div>
           </div>
           <div
@@ -420,7 +420,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 data-animate="fadeInRight"
               >
                 <p className="font-snellRoundhand text-4xl">Cô dâu</p>
-                <p className="font-lora text-2xl">NGỌC DIỆP</p>
+                <p className="font-lora text-2">NGỌC DIỆP</p>
               </div>
             </div>
             <div className="flex">
@@ -429,7 +429,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 data-animate="fadeInLeft"
               >
                 <p className="font-snellRoundhand text-4xl">Chú rể</p>
-                <p className="font-lora text-2xl">PHƯƠNG DUY</p>
+                <p className="font-lora text-2">PHƯƠNG DUY</p>
               </div>
               <img
                 loading="lazy"
@@ -535,7 +535,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                     Bằng một sự sắp xếp đặc biệt đầy ưu ái nào đó của số phận,
                     Diệp được học cùng lớp với Duy - sinh viên khóa dưới khác
                     ngành. Và cũng không phải ngẫu nhiên mà họ là hai người đồng
-                    hương gần nhà duy nhất giữa cả trăm ngàn bạn học. Nhờ thế mà
+                    hương duy nhất gần nhà giữa trăm ngàn bạn học. Nhờ thế mà
                     họ có nhiều thời gian để tìm hiểu nhau hơn. Và cứ như thế họ
                     phải lòng nhau lúc nào không hay. Đến tận bây giờ, họ luôn
                     coi đó là một cuộc gặp gỡ định mệnh.
@@ -591,8 +591,9 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="zoomIn"
                 >
                   <p className="ladi-headline font-bold font-lora">
-                    FINALLY, TOGETHER ! – AFTER ALL THE WAITING
+                    FINALLY, TOGETHER !
                   </p>
+                  <p className="ladi-headline font-bold font-lora">AFTER ALL THE WAITING</p>
                 </div>
               </div>
             </div>

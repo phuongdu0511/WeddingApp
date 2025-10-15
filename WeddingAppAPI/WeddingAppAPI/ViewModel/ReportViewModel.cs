@@ -4,7 +4,7 @@
     {
         public TotalViewViewModel TotalView { get; set; }
         /// <summary>
-        /// Tổng số khách mời
+        /// Tổng số khách mời dự kiến
         /// </summary>
         public int TotalGuestInvited {  get; set; }
         /// <summary>

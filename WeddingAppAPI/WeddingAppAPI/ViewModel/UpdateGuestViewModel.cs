@@ -15,6 +15,7 @@ namespace WeddingAppAPI.ViewModel
         public int Type { get; set; }
         public bool? Vow { get; set; }
         public int? Partner { get; set; }
+        public int? ExpectedPartner { get; set; }
         public bool? Status { get; set; }
         public decimal? Donate { get; set; }
         public string RowVersion { get; set; }

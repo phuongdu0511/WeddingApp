@@ -26,6 +26,8 @@ namespace WeddingAppAPI.Domain
 
         public int? Partner { get; set; }
 
+        public int? ExpectedPartner { get; set; }
+
         public decimal? Donate { get; set; }
 
         public byte[] RowVersion { get; set; }

@@ -15,6 +15,7 @@ interface Guest {
   vow: boolean;
   type: number;
   partner: number | null;
+  expectedPartner: number | null;
   donate: number;
   rowVersion: string;
 }
@@ -86,6 +87,7 @@ const Admin: React.FC = () => {
       try {
         loading();
         await api.get("/api/Guest/list").then((res) => setGuests(res?.data));
+        await api.get("/api/report/report").then((res) => setReport(res?.data));
       } catch (err) {
         alert(err);
       } finally {
@@ -118,6 +120,7 @@ const Admin: React.FC = () => {
     vow: false,
     type: 0,
     partner: null,
+    expectedPartner: null,
     donate: 0,
     rowVersion: "",
   });
@@ -160,6 +163,7 @@ const Admin: React.FC = () => {
         vow: false,
         type: 0,
         partner: null,
+        expectedPartner: null,
         donate: 0,
         rowVersion: "",
       });
@@ -174,13 +178,14 @@ const Admin: React.FC = () => {
       .get(`/api/Guest/list`)
       .then((res) => {
         setGuests(res.data);
-        successMessage();
-        closeModal();
       })
       .catch((err) => {
         closeLoading();
         errorMessage(err);
       });
+    await api.get("/api/report/report").then((res) => setReport(res?.data));
+    closeModal();
+    successMessage();
   };
 
   const handleSave = async () => {
@@ -259,6 +264,7 @@ const Admin: React.FC = () => {
   const fields = [
     { label: "Tên khách", key: "guestName" },
     { label: "Link", key: "guestPath" },
+    { label: "Khách đi cùng dự kiến", key: "expectedPartner" },
     { label: "Khách đi cùng", key: "partner" },
     { label: "Tiền mừng", key: "donate" },
   ] as const;
@@ -426,11 +432,15 @@ const Admin: React.FC = () => {
           <button className="btn btn-primary" onClick={() => openReportModal()}>
             Báo cáo
           </button>
+          <div>
+            <p>Tổng số khách mời: {report?.totalGuestInvited}</p>
+          </div>
           <div className="table-responsive">
             <table className="table table-hover e-commerce-table">
               <thead>
                 <tr>
                   <th className="sticky-col">Tên</th>
+                  <th>Khách đi cùng dự kiến</th>
                   <th>Link</th>
                   <th>Copy</th>
                   <th>Tham dự</th>
@@ -450,6 +460,7 @@ const Admin: React.FC = () => {
                         <h6 className="m-b-0">{g.guestName}</h6>
                       </div>
                     </td>
+                    <td>{g.expectedPartner}</td>
                     <td>{g.guestPath}</td>
                     <td>
                       <button
@@ -691,28 +702,108 @@ const Admin: React.FC = () => {
           {isReportModalOpen && (
             <div className="modal-overlay">
               <div className="modal-content-report modal-scroll-report">
-                <h2>Báo cáo tổng quan</h2>
+                <h2 className="text-xl font-bold mb-4 text-center">
+                  Báo cáo tổng quan
+                </h2>
 
-                {[
-                  ["Tổng lượt vừa vào xem", report?.totalView?.totalJustViewed],
-                  ["Tổng lượt xem hết", report?.totalView?.totalFullyViewed],
-                  ["Tổng khách đã mời", report?.totalGuestInvited],
-                  ["Khách xác nhận đến và người thân", report?.totalGuestAccepted],
-                  ["Khách nhà trai xác nhận", report?.totalGroomGuest],
-                  ["Khách nhà gái xác nhận", report?.totalBrideGuest],
-                  ["Khách mời lễ Vow", report?.totalVowInvited],
-                  ["Khách xác nhận dự lễ Vow", report?.totalVowAccepted],
-                  ["Khách nhà trai dự Vow", report?.totalGroomVow],
-                  ["Khách nhà gái dự Vow", report?.totalBrideVow],
-                ].map(([label, value]) => (
-                  <div className="modal-field-report" key={label}>
-                    <label>{label}:</label>
-                    <span>{value ?? 0}</span>
-                  </div>
-                ))}
+                {/* Bảng lễ chính */}
+                <div className="mb-6">
+                  <h3 className="font-semibold mb-2 text-center">
+                    Khách xác nhận dự lễ chính
+                  </h3>
+                  <table className="w-full border border-gray-300 text-center">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 py-2">Nhà gái</th>
+                        <th className="border border-gray-300 py-2">
+                          Nhà trai
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 py-2">
+                          {report?.totalBrideGuest ?? 0}
+                        </td>
+                        <td className="border border-gray-300 py-2">
+                          {report?.totalGroomGuest ?? 0}
+                        </td>
+                      </tr>
+                      <tr className="font-semibold bg-gray-50">
+                        <td className="border border-gray-300 py-2" colSpan={2}>
+                          Tổng: {report?.totalGuestAccepted ?? 0}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Bảng lễ vow */}
+                <div className="mb-6">
+                  <h3 className="font-semibold mb-2 text-center">
+                    Khách xác nhận dự lễ Vow
+                  </h3>
+                  <table className="w-full border border-gray-300 text-center">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 py-2">Nhà gái</th>
+                        <th className="border border-gray-300 py-2">
+                          Nhà trai
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 py-2">
+                          {report?.totalBrideVow ?? 0}
+                        </td>
+                        <td className="border border-gray-300 py-2">
+                          {report?.totalGroomVow ?? 0}
+                        </td>
+                      </tr>
+                      <tr className="font-semibold bg-gray-50">
+                        <td className="border border-gray-300 py-2" colSpan={2}>
+                          Tổng: {report?.totalVowAccepted ?? 0}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Tổng lượt xem */}
+                <div className="mb-4">
+                  <h3 className="font-semibold mb-2 text-center">
+                    Thống kê lượt xem
+                  </h3>
+                  <table className="w-full border border-gray-300 text-center">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 py-2">
+                          Tổng lượt vừa vào xem
+                        </th>
+                        <th className="border border-gray-300 py-2">
+                          Tổng lượt xem hết
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 py-2">
+                          {report?.totalView?.totalJustViewed ?? 0}
+                        </td>
+                        <td className="border border-gray-300 py-2">
+                          {report?.totalView?.totalFullyViewed ?? 0}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
                 <div className="modal-actions-report">
-                  <button onClick={closeReportModal} className="modal-cancel-report">
+                  <button
+                    onClick={closeReportModal}
+                    className="modal-cancel-report"
+                  >
                     Đóng
                   </button>
                 </div>

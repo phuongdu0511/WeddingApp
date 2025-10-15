@@ -68,6 +68,7 @@ namespace WeddingAppAPI.Applications.Implements
                 guest.Status = model.Status;
                 guest.Vow = model.Vow;
                 guest.Partner = model.Partner;
+                guest.ExpectedPartner = model.ExpectedPartner;
 
                 _guestRepository.Add(guest);
                 _unitOfWork.Commit();
@@ -119,6 +120,7 @@ namespace WeddingAppAPI.Applications.Implements
                 {
                     guest.GuestName = model.GuestName;
                     guest.Partner = model.Partner;
+                    guest.ExpectedPartner = model.ExpectedPartner;
                     guest.Status = model.Status;
                     guest.GuestPath = model.GuestPath;
                     guest.Vow = model.Vow;
@@ -226,19 +228,21 @@ namespace WeddingAppAPI.Applications.Implements
                         // Update nếu tìm thấy bạn bố mẹ đã từng add
                         guestParent.Status = model.Status;
                         guestParent.Partner = model.Partner;
+                        guestParent.ExpectedPartner = model.Partner;
                         await UpdateByGuest(guestParent);
                     } else
                     {
-                        AddGuestViewModel addModel = new AddGuestViewModel();
-                        addModel.GuestName = model.GuestName;
-                        addModel.GuestPath = pathName;
-                        addModel.Status = model.Status;
-                        addModel.IsGuest = true;
-                        if (model.Status)
+                        var addModel = new AddGuestViewModel
                         {
-                            addModel.Partner = model.Partner;
-                        }
-                        addModel.Type = parentType;
+                            GuestName = model.GuestName,
+                            GuestPath = pathName,
+                            Status = model.Status,
+                            IsGuest = true,
+                            Partner = model.Status ? model.Partner : null,
+                            ExpectedPartner = model.Status ? model.Partner : null,
+                            Type = parentType
+                        };
+
                         await AddGuest(addModel);
                     }
                 }
@@ -250,7 +254,8 @@ namespace WeddingAppAPI.Applications.Implements
                     if (guest != null)
                     {
                         guest.Status = model.Status;
-                        guest.Partner = model.Partner;
+                        int? partner = model.Status ? model.Partner : null;
+                        guest.Partner = guest.ExpectedPartner = partner;
                         await UpdateByGuest(guest);
                     }
                 }

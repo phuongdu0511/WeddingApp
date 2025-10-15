@@ -14,6 +14,7 @@ namespace WeddingAppAPI.ViewModel
         public int Type { get; set; }
         public bool? Vow { get; set; }
         public int? Partner { get; set; }
+        public int? ExpectedPartner { get; set; }
         public bool? Status { get; set; }
         // Phân biệt là khách tự add hay mình add
         public bool? IsGuest { get; set; }

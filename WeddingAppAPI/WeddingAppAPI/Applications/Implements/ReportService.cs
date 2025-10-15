@@ -94,24 +94,31 @@ namespace WeddingAppAPI.Applications.Implements
                 })
                 .FirstOrDefault() ?? new TotalViewViewModel();
 
-            // --- Thống kê khách mời ---
+            // --- Lấy toàn bộ khách ---
             var guests = _guestRepository.FindAll()?.ToList() ?? new List<Guest>();
+            if (!guests.Any()) return result;
 
-            if (guests.Count == 0) return result;
+            // --- Phân loại ---
+            var accepted = guests.Where(g => g.Status == true).ToList();
+            var vow = guests.Where(g => g.Vow == true).ToList();
 
-            var acceptedGuests = guests.Where(x => x.Status == true).ToList();
-            var vowGuests = guests.Where(x => x.Vow == true).ToList();
+            // --- Hàm tính tổng (số lượng + người đi kèm) ---
+            int TotalCount(IEnumerable<Guest> list) => list.Count() + list.Sum(g => g.ExpectedPartner ?? 0);
 
-            result.TotalGuestInvited = guests.Count;
-            result.TotalGuestAccepted = acceptedGuests.Count + acceptedGuests.Sum(x => x.Partner ?? 0);
+            // --- Tổng quan ---
+            result.TotalGuestInvited = TotalCount(guests);
+            result.TotalGuestAccepted = TotalCount(accepted);
 
-            result.TotalGroomGuest = acceptedGuests.Count(x => GroomGuestList.Contains(x.Type));
-            result.TotalBrideGuest = acceptedGuests.Count(x => BridgeGuestList.Contains(x.Type));
+            // --- Phân loại nhà trai / nhà gái ---
+            result.TotalGroomGuest = TotalCount(accepted.Where(g => GroomGuestList.Contains(g.Type)));
+            result.TotalBrideGuest = TotalCount(accepted.Where(g => BridgeGuestList.Contains(g.Type)));
 
-            result.TotalVowInvited = vowGuests.Count;
-            result.TotalVowAccepted = vowGuests.Count(x => x.Status == true);
-            result.TotalGroomVow = vowGuests.Count(x => x.Status == true && GroomGuestList.Contains(x.Type));
-            result.TotalBrideVow = vowGuests.Count(x => x.Status == true && BridgeGuestList.Contains(x.Type));
+            // --- Lễ vow ---
+            var vowAccepted = vow.Where(g => g.Status == true);
+            result.TotalVowInvited = vow.Count;
+            result.TotalVowAccepted = TotalCount(vowAccepted);
+            result.TotalGroomVow = TotalCount(vowAccepted.Where(g => GroomGuestList.Contains(g.Type)));
+            result.TotalBrideVow = TotalCount(vowAccepted.Where(g => BridgeGuestList.Contains(g.Type)));
 
             return result;
         }

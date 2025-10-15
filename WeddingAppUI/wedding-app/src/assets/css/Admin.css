@@ -3382,7 +3382,6 @@ input[type="button"].btn-block {
   color: #fff;
 }
 .card {
-  max-width: 1300px;
   position: relative;
   display: flex;
   flex-direction: column;

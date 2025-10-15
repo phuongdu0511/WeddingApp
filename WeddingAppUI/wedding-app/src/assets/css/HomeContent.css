@@ -413,9 +413,9 @@
   width: 100%;
   height: 100%;
   background-image: url(../images/wedding/BONN0582.jpg);
-  background-size: cover;
+  background-size: 170%;
   background-origin: content-box;
-  background-position: 50% 0%;
+  background-position: 35% 10%;
   background-repeat: repeat;
   background-attachment: scroll;
   transform: rotate(-11deg);
@@ -765,6 +765,10 @@
   margin-top: 135rem;
 }
 
+.mt-67 {
+  margin-top: 67rem;
+}
+
 .mt-74 {
   margin-top: 74rem;
 }
@@ -939,16 +943,14 @@
 }
 
 #HEADLINE64 {
-  top: 668px;
+  top: 660px;
   display: grid;
   justify-content: center;
   width: 100%;
-  gap: 0.25rem
 }
 
 #HEADLINE64 > .ladi-headline {
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: 1.5rem;
   color: rgb(146, 131, 98);
   text-align: center;
 }

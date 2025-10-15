@@ -103,7 +103,7 @@ namespace WeddingAppAPI.Applications.Implements
             var vow = guests.Where(g => g.Vow == true).ToList();
 
             // --- Hàm tính tổng (số lượng + người đi kèm) ---
-            int TotalCount(IEnumerable<Guest> list) => list.Count() + list.Sum(g => g.ExpectedPartner ?? 0);
+            int TotalCount(IEnumerable<Guest> list) => list.Sum(g => g.ExpectedPartner ?? 0);
 
             // --- Tổng quan ---
             result.TotalGuestInvited = TotalCount(guests);

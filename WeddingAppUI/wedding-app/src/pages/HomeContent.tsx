@@ -450,7 +450,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
           >
             <img
               loading="lazy"
-              src={home2}
+              src={home4}
               alt="Ảnh home2"
               className="absolute mt-50"
             />
@@ -464,13 +464,13 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               loading="lazy"
               src={home2}
               alt="Ảnh home2"
-              className="absolute mt-74"
+              className="absolute mt-81"
             />
             <img
               loading="lazy"
-              src={home2}
+              src={home12}
               alt="Ảnh home2"
-              className="absolute mt-81"
+              className="absolute mt-67"
             />
             <img
               loading="lazy"
@@ -590,10 +590,10 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   className="absolute animate-on-scroll"
                   data-animate="zoomIn"
                 >
-                  <p className="ladi-headline font-bold font-lora">
-                    FINALLY, TOGETHER !
+                  <p className="ladi-headline font-bold font-snellRoundhand">
+                    Finally, together!
                   </p>
-                  <p className="ladi-headline font-bold font-lora">AFTER ALL THE WAITING</p>
+                  <p className="ladi-headline font-bold font-snellRoundhand">after all the waitting</p>
                 </div>
               </div>
             </div>

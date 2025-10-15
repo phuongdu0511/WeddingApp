@@ -243,12 +243,12 @@ const Confirm: React.FC<ConfirmProps> = ({ onClose, guest, setGuest, viewId }) =
                           onChange={handlePartnerChange}
                         >
                           <option value="">Bạn tham dự cùng ai?</option>
-                          <option value="0">Tham dự một mình</option>
-                          <option value="1">Tham dự cùng 1 người</option>
-                          <option value="2">Tham dự cùng 2 người</option>
-                          <option value="3">Tham dự cùng 3 người</option>
-                          <option value="4">Tham dự cùng 4 người</option>
-                          <option value="5">Tham dự cùng 5 người</option>
+                          <option value="1">Tham dự một mình</option>
+                          <option value="2">Tham dự cùng 1 người</option>
+                          <option value="3">Tham dự cùng 2 người</option>
+                          <option value="4">Tham dự cùng 3 người</option>
+                          <option value="5">Tham dự cùng 4 người</option>
+                          <option value="6">Tham dự cùng 5 người</option>
                         </select>
                       </div>
                     </div>

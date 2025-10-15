@@ -264,8 +264,8 @@ const Admin: React.FC = () => {
   const fields = [
     { label: "Tên khách", key: "guestName" },
     { label: "Link", key: "guestPath" },
-    { label: "Khách đi cùng dự kiến", key: "expectedPartner" },
-    { label: "Khách đi cùng", key: "partner" },
+    { label: "Số khách dự kiến", key: "expectedPartner" },
+    { label: "Số khách thực tế", key: "partner" },
     { label: "Tiền mừng", key: "donate" },
   ] as const;
 
@@ -433,18 +433,19 @@ const Admin: React.FC = () => {
             Báo cáo
           </button>
           <div>
-            <p>Tổng số khách mời: {report?.totalGuestInvited}</p>
+            <p>Tổng số khách: {report?.totalGuestInvited}</p>
+            <p>Tổng số đã lọc: {filteredGuests.reduce((sum, item) => sum + (item.expectedPartner ?? 0), 0)}</p>
           </div>
           <div className="table-responsive">
             <table className="table table-hover e-commerce-table">
               <thead>
                 <tr>
                   <th className="sticky-col">Tên</th>
-                  <th>Khách đi cùng dự kiến</th>
+                  <th>Số khách dự kiến</th>
+                  <th>Số khách thực tế</th>
                   <th>Link</th>
                   <th>Copy</th>
                   <th>Tham dự</th>
-                  <th>Khách đi cùng</th>
                   <th>Vow</th>
                   <th>Loại khách</th>
                   <th>Nhà</th>
@@ -461,6 +462,7 @@ const Admin: React.FC = () => {
                       </div>
                     </td>
                     <td>{g.expectedPartner}</td>
+                    <td>{g.partner}</td>
                     <td>{g.guestPath}</td>
                     <td>
                       <button
@@ -488,7 +490,6 @@ const Admin: React.FC = () => {
                         </div>
                       )}
                     </td>
-                    <td>{g.partner}</td>
                     <td>
                       {g.vow ? (
                         <div className="d-flex align-items-center">

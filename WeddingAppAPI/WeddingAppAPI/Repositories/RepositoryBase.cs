@@ -6,7 +6,7 @@ using WeddingAppAPI.Infrastructure;
 
 namespace WeddingAppAPI.Repositories
 {
-    public class RepositoryBase<TEntity, TKey> : IRepositoryBase<TEntity, TKey>, IDisposable
+    public class RepositoryBase<TEntity, TKey> : IRepositoryBase<TEntity, TKey>
         where TEntity : DomainEntity<TKey>
     {
         private readonly ApplicationDbContext _context;
@@ -14,11 +14,6 @@ namespace WeddingAppAPI.Repositories
         public RepositoryBase(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-        public void Dispose()
-        {
-            _context?.Dispose();
         }
 
         // Haven't reached to DB to fetch data so this is not case IO-Bound

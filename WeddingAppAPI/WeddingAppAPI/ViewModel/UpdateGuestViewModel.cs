@@ -19,5 +19,6 @@ namespace WeddingAppAPI.ViewModel
         public bool? Status { get; set; }
         public decimal? Donate { get; set; }
         public string RowVersion { get; set; }
+        public string? Language { get; set; }
     }
 }

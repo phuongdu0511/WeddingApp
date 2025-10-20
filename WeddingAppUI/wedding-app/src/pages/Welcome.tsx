@@ -4,12 +4,22 @@ import home2 from "../assets/images/cover/home_2.jpg";
 import home3 from "../assets/images/cover/home_3.jpg";
 import letter from "../assets/images/cover/letter.png";
 import cursor from "../assets/images/cover/cursor.png";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 interface WelcomeProps {
   onClick: () => void;
+  language: string | undefined;
 }
 
-const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
+const Welcome: React.FC<WelcomeProps> = ({ onClick, language }) => {
+  // Translate
+  const { t, i18n } = useTranslation();
+  
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, []);
+
   return (
     <div
       className="relative min-h-screen items-center main-wr overflow-y-hidden"
@@ -26,12 +36,14 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick }) => {
         <img src={letter} alt="Letter" className="zoom-in-animate" />
       </div>
       <div className="absolute w-full mt-name zoom-in-animate">
-        <p className="font-lora text-4xl  text-center">PHƯƠNG DUY</p>
+        <p className="font-lora text-4xl  text-center">{t("bride_name")}</p>
         <p className="font-snellRoundhand text-4xl text-center">&</p>
-        <p className="font-lora text-4xl  text-center">NGỌC DIỆP</p>
+        <p className="font-lora text-4xl  text-center">{t("groom_name")}</p>
       </div>
       <div className="absolute w-full mt-date z-20 zoom-in-animate">
-        <p className="font-snellRoundhand font-bold text-3xl  text-center">29.11.2025</p>
+        <p className="font-snellRoundhand font-bold text-3xl  text-center">
+          29.11.2025
+        </p>
       </div>
       <div className="absolute mt-cursor left-1/2 -translate-x-1/8 -translate-y-1/2 w-1/6 z-20 cursor-pointer">
         <img src={cursor} alt="cursor" className="pointer-animate" />

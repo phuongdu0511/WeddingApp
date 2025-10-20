@@ -1,0 +1,38 @@
+{
+  "bride_family": "BRAUTSEITE",
+  "bride_dad": "Herr Nguyen Van Long",
+  "bride_mom": "Frau Hua Hong Van",
+  "groom_family": "BRÄUTIGAMSEITE",
+  "groom_dad": "Herr Duong Le Phuong",
+  "groom_mom": "Frau Bui Huong GIang",
+  "invitation_line": "Wir laden herzlich ein",
+  "event_time_intro": "Die Feier findet statt am",
+  "event_date": "SAMSTAG",
+  "location_label": "Ort:",
+  "location_address": "42 Straße 9, F361 An Duong, Tay Ho, Hanoi",
+  "direction_label": "ANFAHRT",
+  "bride_name": "PHUONG DUY",
+  "groom_name": "NGOC DIEP",
+  "bride": "Bräutigam",
+  "groom": "Braut",
+  "timeline": {
+    "2017": {
+      "title": "BEGEGNUNG",
+      "content": "Durch eine besondere Fügung des Schicksals kam Diep in dieselbe Klasse wie Duy – ein Student aus einem anderen Fach. Zufällig waren sie die einzigen aus derselben Heimatstadt. So verbrachten sie mehr Zeit miteinander und verliebten sich. Bis heute nennen sie es eine schicksalhafte Begegnung. Seit diesem Moment begann ihre gemeinsame Geschichte."
+    },
+    "2019": {
+      "title": "HERAUSFORDERUNG",
+      "content": "Nach dem Abschluss ging Diep zum Studium nach Deutschland – eine Zeit voller Herausforderungen. Trotz der Entfernung blieb ihre Liebe stark. Die Distanz ließ sie einander nur noch mehr schätzen und vertrauen. Ihre Herzen blieben immer eng miteinander verbunden. Jeder Tag brachte sie ihrem gemeinsamen Traum ein Stück näher."
+    },
+    "2025": {
+      "title": "VOLLENDETES GLÜCK",
+      "content": "Nach fast neun Jahren werden sie – mit dem Segen ihrer Familien und Freunde – endlich Ehepartner. Ihre Reise voller Liebe und Vertrauen geht nun als gemeinsames Glück weiter. Und dieses Glück soll sie ein Leben lang begleiten."
+    }
+  },
+  "sections": {
+    "vow": "Trauung",
+    "wedding": "Hochzeitsfeier",
+    "banquet": "Festessen",
+    "after_party": "After Party"
+  }
+}

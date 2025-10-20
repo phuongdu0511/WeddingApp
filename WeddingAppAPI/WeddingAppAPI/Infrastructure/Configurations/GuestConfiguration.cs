@@ -65,6 +65,11 @@ namespace WeddingAppAPI.Infrastructure.Configurations
             builder.Property(g => g.RowVersion)
             .IsRowVersion()
             .IsConcurrencyToken();
+
+            builder.Property(g => g.Language)
+            .IsRequired(false)
+            .HasMaxLength(40)
+            .HasDefaultValueSql("'vi'");
         }
     }
 }

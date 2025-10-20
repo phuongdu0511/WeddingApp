@@ -117,7 +117,7 @@ const Home: React.FC = () => {
         >
           <div className="wedding-app" ref={nodeRef}>
             {showWelcome ? (
-              <Welcome onClick={() => setShowWelcome(false)} />
+              <Welcome language={guest?.language} onClick={() => setShowWelcome(false)} />
             ) : (
               <HomeContent guest={guest} setGuest={setGuest} />
             )}

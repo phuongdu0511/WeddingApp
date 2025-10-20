@@ -29,6 +29,7 @@ import scrollDown from "../assets/gif/Scrolldown.json";
 import axios from "axios";
 import { API_BASE_URL } from "../config/api";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslation } from "react-i18next";
 
 interface HomeContentProps {
   guest: Guest | null;
@@ -51,7 +52,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
     if (guest == null) return;
     if (guest.guestName != null) setGuestName(guest.guestName);
     if (PARENT_FRIEND.includes(guest.guestPath)) setParentFriend(" con ");
-    if (guest.guestName != null || PARENT_FRIEND.includes(guest.guestPath))
+    if ((guest.guestName != null || PARENT_FRIEND.includes(guest.guestPath)) && guest?.language != 'de')
       setInvite(true);
 
     setShowVow(guest.vow);
@@ -107,6 +108,12 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Translate
+  const { t, i18n } = useTranslation();
+  useEffect(() => {
+    i18n.changeLanguage(guest?.language);
   }, []);
 
   return (
@@ -279,50 +286,54 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               className="text-center animate-on-scroll grid gap-[6px]"
               data-animate="fadeInLeft"
             >
-              <p className="font-lora font-bold text-lg">NHÀ GÁI</p>
-              <p className="font-lora text-1">Ông Nguyễn Văn Long</p>
-              <p className="font-lora text-1">Bà Hứa Hồng Vân</p>
+              <p className="font-lora font-bold text-lg">{t("bride_family")}</p>
+              <p className="font-lora text-1">{t("bride_dad")}</p>
+              <p className="font-lora text-1">{t("bride_mom")}</p>
             </div>
             <div className="line-1"></div>
             <div
               className="text-center animate-on-scroll grid gap-[6px]"
               data-animate="fadeInRight"
             >
-              <p className="font-lora font-bold text-lg">NHÀ TRAI</p>
-              <p className="font-lora text-1">Ông Dương Lê Phương</p>
-              <p className="font-lora text-1">Bà Bùi Hương Giang</p>
+              <p className="font-lora font-bold text-lg">{t("groom_family")}</p>
+              <p className="font-lora text-1">{t("groom_dad")}</p>
+              <p className="font-lora text-1">{t("groom_mom")}</p>
             </div>
           </div>
           <div
-            className="absolute flex items-start justify-center mt-19 w-full animate-on-scroll"
+            className="absolute grid items-start justify-center mt-19 w-full animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-lg">Trân trọng kính mời</p>
+            <p className="font-lora text-lg text-center">{t("invitation_line")}</p>
             {guestName ? (
-              <p className="font-lora text-lg font-bold">:&nbsp;{guestName}</p>
+              <p className="font-lora text-lg font-bold text-center">{guestName}</p>
             ) : (
               ""
             )}
           </div>
           <div
-            className="absolute flex items-start justify-center mt-20 w-full animate-on-scroll"
+            className={`absolute flex items-start justify-center ${guest?.guestName == null ? "mt-[308px]" : "mt-[330px]" }  w-full animate-on-scroll`}
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-lg">
+            {guest?.language == 'de' ? 
+            (<p className="font-lora text-lg">
+              zur Feier unserer Hochzeitszeremoni
+            </p>) : 
+            (<p className="font-lora text-lg">
               đến dự Lễ Thành Hôn của{parentFriend}chúng tôi
-            </p>
+            </p>)}
           </div>
           <div className="absolute w-full mt-23">
-            <p className="font-lora text-4xl  text-center">PHƯƠNG DUY</p>
+            <p className="font-lora text-4xl  text-center">{t("bride_name")}</p>
             <p className="font-snellRoundhand text-6xl text-center">&</p>
-            <p className="font-lora text-4xl  text-center">NGỌC DIỆP</p>
+            <p className="font-lora text-4xl  text-center">{t("groom_name")}</p>
           </div>
           <div
             className="absolute w-full mt-33 animate-on-scroll"
             data-animate="fadeInUp"
           >
             <p className="font-lora text-center text-lg">
-              Được tổ chức vào lúc
+              {t("event_time_intro")}
             </p>
           </div>
           <div
@@ -336,7 +347,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               className="font-lora text-3xl text-center animate-on-scroll"
               data-animate="fadeInRight"
             >
-              {showVow ? "16:00" : "17:00"} - THỨ BẢY
+              {showVow ? "16:00" : "17:00"} - {t("event_date")}
             </p>
             <p
               className="font-lora text-3xl text-center animate-on-scroll"
@@ -355,7 +366,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
             className="absolute w-full mt-43 animate-on-scroll"
             data-animate="fadeInUp"
           >
-            <p className="font-lora text-center text-lg">Địa điểm:</p>
+            <p className="font-lora text-center text-lg">{t("location_label")}</p>
           </div>
           <div
             className="absolute w-full mt-45 animate-on-scroll"
@@ -365,7 +376,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               SOFTWATER
             </p>
             <i className="block font-lora text-1xl text-center text-lg">
-              42 đường 9, F361 An Dương, Tây Hồ, Hà Nội
+              {t("location_address")}
             </i>
           </div>
           <div className="absolute mt-50 w-full pointer-animate z-10">
@@ -379,7 +390,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
               }}
             >
               <img loading="lazy" src={navigation} className="nav-image" />
-              <p className="font-lora text-1xl text-center">CHỈ ĐƯỜNG</p>
+              <p className="font-lora text-1xl text-center">{t("direction_label")}</p>
             </Link>
           </div>
         </div>
@@ -419,8 +430,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 className="absolute text-center z-30 dip animate-on-scroll"
                 data-animate="fadeInRight"
               >
-                <p className="font-snellRoundhand text-4xl">Cô dâu</p>
-                <p className="font-lora text-2">NGỌC DIỆP</p>
+                <p className="font-snellRoundhand text-4xl">{t("groom")}</p>
+                <p className="font-lora text-2">{t("groom_name")}</p>
               </div>
             </div>
             <div className="flex">
@@ -428,8 +439,8 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                 className="absolute text-center z-20 duy animate-on-scroll left-1-5"
                 data-animate="fadeInLeft"
               >
-                <p className="font-snellRoundhand text-4xl">Chú rể</p>
-                <p className="font-lora text-2">PHƯƠNG DUY</p>
+                <p className="font-snellRoundhand text-4xl">{t("bride")}</p>
+                <p className="font-lora text-2">{t("bride_name")}</p>
               </div>
               <img
                 loading="lazy"
@@ -523,7 +534,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    2017 – Gặp gỡ định mệnh
+                    2017 – {t("timeline.2017.title")}
                   </p>
                 </div>
                 <div
@@ -532,13 +543,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Bằng một sự sắp xếp đặc biệt đầy ưu ái nào đó của số phận,
-                    Diệp được học cùng lớp với Duy - sinh viên khóa dưới khác
-                    ngành. Và cũng không phải ngẫu nhiên mà họ là hai người đồng
-                    hương duy nhất gần nhà giữa trăm ngàn bạn học. Nhờ thế mà
-                    họ có nhiều thời gian để tìm hiểu nhau hơn. Và cứ như thế họ
-                    phải lòng nhau lúc nào không hay. Đến tận bây giờ, họ luôn
-                    coi đó là một cuộc gặp gỡ định mệnh.
+                    {t("timeline.2017.content")}
                   </p>
                 </div>
                 <div
@@ -547,7 +552,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    2019 – Thử Thách Và Gắn Kết
+                    2019 – {t("timeline.2019.title")}
                   </p>
                 </div>
                 <div
@@ -556,12 +561,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Sau khi tốt nghiệp ĐH, Diệp lên đường đi du học Đức, mở ra
-                    quãng thời gian yêu xa đầy thử thách. Tất cả những yêu
-                    thương, quan tâm hay lo lắng đều phải gửi trao qua nửa vòng
-                    trái đất. Nhưng những khó khăn ấy chưa từng một lần cản trở
-                    được tình yêu của họ, chính khoảng cách địa lý này lại khiến
-                    họ càng trân trọng và tin tưởng nhau hơn.
+                    {t("timeline.2019.content")}
                   </p>
                 </div>
                 <div
@@ -570,7 +570,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    2025 – Hạnh Phúc Viên Mãn
+                    2025 – {t("timeline.2025.title")}
                   </p>
                 </div>
                 <div
@@ -579,10 +579,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   data-animate="fadeInUp"
                 >
                   <p className="ladi-headline font-lora">
-                    Sau gần 7 năm chờ đợi và vun đắp, dưới sự chấp thuận và chúc
-                    phúc của gia đình, bạn bè, họ chính thức nên duyên vợ chồng.
-                    Từ nay, họ sẽ nắm tay nhau bước vào một hành trình mới —
-                    hành trình của hạnh phúc viên mãn và bên nhau trọn đời!
+                    {t("timeline.2025.content")}
                   </p>
                 </div>
                 <div
@@ -732,7 +729,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                           <p className="ladi-headline font-lora">20:00</p>
                         </div>
                         <div id="HEADLINE55" className="absolute">
-                          <p className="ladi-headline font-lora">after party</p>
+                          <p className="ladi-headline font-lora">{t("sections.after_party")}</p>
                         </div>
                       </div>
                     </div>
@@ -767,7 +764,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                           <p className="ladi-headline font-lora">16:00</p>
                         </div>
                         <div id="HEADLINE58" className="absolute">
-                          <p className="ladi-headline font-lora">lễ vow</p>
+                          <p className="ladi-headline font-lora">{t("sections.vow")}</p>
                         </div>
                       </div>
                     </div>
@@ -816,7 +813,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                         <p className="ladi-headline font-lora">17:30</p>
                       </div>
                       <div id="HEADLINE60" className="absolute">
-                        <p className="ladi-headline font-lora">lễ thành hôn</p>
+                        <p className="ladi-headline font-lora">{t("sections.wedding")}</p>
                       </div>
                     </div>
                   </div>
@@ -840,7 +837,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                         <p className="ladi-headline font-lora">18:00</p>
                       </div>
                       <div id="HEADLINE54" className="absolute">
-                        <p className="ladi-headline font-lora">khai tiệc</p>
+                        <p className="ladi-headline font-lora">{t("sections.banquet")}</p>
                       </div>
                     </div>
                   </div>

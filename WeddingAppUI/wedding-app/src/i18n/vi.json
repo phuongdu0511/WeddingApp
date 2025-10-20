@@ -1,0 +1,38 @@
+{
+  "bride_family": "NHÀ GÁI",
+  "bride_dad": "Ông Nguyễn Văn Long",
+  "bride_mom": "Bà Hứa Hồng Vân",
+  "groom_family": "NHÀ TRAI",
+  "groom_dad": "Ông Dương Lê Phương",
+  "groom_mom": "Bà Bùi Hương Giang",
+  "invitation_line": "Trân trọng kính mời",
+  "event_time_intro": "Được tổ chức vào lúc",
+  "event_date": "THỨ BẢY",
+  "location_label": "Địa điểm:",
+  "location_address": "42 đường 9, F361 An Dương, Tây Hồ, Hà Nội",
+  "direction_label": "CHỈ ĐƯỜNG",
+  "bride_name": "PHƯƠNG DUY",
+  "groom_name": "NGỌC DIỆP",
+  "bride": "Chú rể",
+  "groom": "Cô dâu",
+  "timeline": {
+    "2017": {
+      "title": "GẶP GỠ ĐỊNH MỆNH",
+      "content": "Bằng một sự sắp xếp đặc biệt đầy ưu ái nào đó của số phận, Diệp được học cùng lớp với Duy - sinh viên khóa dưới khác ngành. Và cũng không phải ngẫu nhiên mà họ là hai người đồng hương duy nhất gần nhà giữa trăm ngàn bạn học. Nhờ thế mà họ có nhiều thời gian để tìm hiểu nhau hơn. Và cứ như thế họ phải lòng nhau lúc nào không hay. Đến tận bây giờ, họ luôn coi đó là một cuộc gặp gỡ định mệnh."
+    },
+    "2019": {
+      "title": "THỬ THÁCH VÀ GẮN KẾT",
+      "content": "Sau khi tốt nghiệp ĐH, Diệp lên đường đi du học Đức, mở ra quãng thời gian yêu xa đầy thử thách. Tất cả những yêu thương, quan tâm hay lo lắng đều phải gửi trao qua nửa vòng trái đất. Nhưng những khó khăn ấy chưa từng một lần cản trở được tình yêu của họ, chính khoảng cách địa lý này lại khiến họ càng trân trọng và tin tưởng nhau hơn."
+    },
+    "2025": {
+      "title": "HẠNH PHÚC VIÊN MÃN",
+      "content": "Sau gần 9 năm chờ đợi và vun đắp, dưới sự chấp thuận và chúc phúc của gia đình, bạn bè, họ chính thức nên duyên vợ chồng. Từ nay, họ sẽ nắm tay nhau bước vào một hành trình mới — hành trình của hạnh phúc viên mãn và bên nhau trọn đời!"
+    }
+  },
+  "sections": {
+    "vow": "lễ vow",
+    "wedding": "lễ thành hôn",
+    "banquet": "khai tiệc",
+    "after_party": "After Party"
+  }
+}

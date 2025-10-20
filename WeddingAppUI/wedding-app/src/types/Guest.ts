@@ -7,4 +7,5 @@ export interface Guest {
   partner: number | null;
   donate: number;
   rowVersion: string;
+  language: string;
 }

@@ -69,6 +69,7 @@ namespace WeddingAppAPI.Applications.Implements
                 guest.Vow = model.Vow;
                 guest.Partner = model.Partner;
                 guest.ExpectedPartner = model.ExpectedPartner;
+                guest.Language = model.Language;
 
                 _guestRepository.Add(guest);
                 _unitOfWork.Commit();
@@ -128,6 +129,7 @@ namespace WeddingAppAPI.Applications.Implements
                     guest.Type = model.Type;
                     guest.Donate = model.Donate;
                     guest.UpdatedAt = DateTime.Now;
+                    guest.Language = model.Language;
 
                     var originalRowVersion = Convert.FromBase64String(model.RowVersion);
 

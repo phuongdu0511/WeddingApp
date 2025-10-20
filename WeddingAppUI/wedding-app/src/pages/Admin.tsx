@@ -18,6 +18,7 @@ interface Guest {
   expectedPartner: number | null;
   donate: number;
   rowVersion: string;
+  language: string;
 }
 
 const Admin: React.FC = () => {
@@ -123,6 +124,7 @@ const Admin: React.FC = () => {
     expectedPartner: null,
     donate: 0,
     rowVersion: "",
+    language: "vi"
   });
 
   // Hàm tính bên trai/gái từ type
@@ -166,6 +168,7 @@ const Admin: React.FC = () => {
         expectedPartner: null,
         donate: 0,
         rowVersion: "",
+        language: "vi",
       });
     }
     setIsModalOpen(true);
@@ -686,6 +689,23 @@ const Admin: React.FC = () => {
                     <option value="">Chưa phản hồi</option>
                     <option value="true">Sẽ đến</option>
                     <option value="false">Không đến</option>
+                  </select>
+                </div>
+
+                <div className="modal-field">
+                  <label>Ngôn ngữ:</label>
+                  <select
+                    className="custom-select"
+                    value={tempGuest.language}
+                    onChange={(e) =>
+                      setTempGuest({
+                        ...tempGuest,
+                        language: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="de">Tiếng Đức</option>
                   </select>
                 </div>
 

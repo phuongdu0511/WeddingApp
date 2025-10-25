@@ -2,7 +2,7 @@ import "../assets/css/Welcome.css";
 import home1 from "../assets/images/cover/home_1.jpg";
 import home2 from "../assets/images/cover/home_2.jpg";
 import home3 from "../assets/images/cover/home_3.jpg";
-import letter from "../assets/images/cover/letter.png";
+import letter from "../assets/images/cover/letter.webp";
 import cursor from "../assets/images/cover/cursor.png";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";

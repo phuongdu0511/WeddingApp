@@ -174,7 +174,7 @@ input::placeholder {
 #IMAGE34 > .ladi-image > .ladi-image-background {
   width: 240.656px;
   height: 235.938px;
-  background-image: url(../images/cover/thank-you-flower-left.png);
+  background-image: url(../images/cover/thank-you-flower-left.webp);
   background-size: cover;
 }
 
@@ -190,7 +190,7 @@ input::placeholder {
 }
 
 #IMAGE33 > .ladi-image > .ladi-image-background {
-  background-image: url(../images/cover/thank-you-flower-right.png);
+  background-image: url(../images/cover/thank-you-flower-right.webp);
   background-size: cover;
 }
 

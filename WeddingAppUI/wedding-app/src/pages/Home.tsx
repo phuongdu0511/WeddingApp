@@ -5,82 +5,78 @@ import type { Guest } from "../types/Guest";
 import axios from "axios";
 import { API_BASE_URL } from "../config/api";
 import "../assets/css/Home.css";
-import "../assets/css/transition.css"; // file CSS animation
+import "../assets/css/transition.css";
 import Lottie from "lottie-react";
-// import loadingAnimation from "../assets/gif/LoadingDot.json";
 import loadingHeart from "../assets/gif/LoadingHeart.json";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 const Home: React.FC = () => {
-  const [loading, setLoading] = useState(false); // fetch API loading
+  const [loading, setLoading] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [guest, setGuest] = useState<Guest | null>(null);
-  const [assetsLoaded, setAssetsLoaded] = useState(false); // preload video, image, music
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   const query = window.location.pathname.replace(/^\/+/, "");
   const api = axios.create({ baseURL: API_BASE_URL });
-
-  // Ref cho CSSTransition
   const nodeRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Lấy ảnh từ thư mục cover
-    const coverImages = import.meta.glob(
-      "../assets/images/cover/*.{JPG,jpg,jpeg,png,gif,webp}",
-      { eager: true }
-    );
+    const loadVideo = () =>
+      new Promise<void>((resolve, reject) => {
+        const video = document.createElement("video");
+        video.src = "/videos/v1.mp4";
+        video.preload = "auto";
+        video.oncanplaythrough = () => resolve();
+        video.onerror = () => reject();
+        video.load();
+      });
 
-    // Lấy ảnh từ thư mục wedding
-    const weddingImages = import.meta.glob(
-      "../assets/images/wedding/*.{JPG,jpg,jpeg,png,gif,webp}",
-      { eager: true }
-    );
+    const loadMusic = () => {
+      const musicFiles = import.meta.glob("../assets/music/*.mp3", {
+        eager: true,
+        import: "default",
+      });
 
-    // Gộp 2 object lại
-    const allImages = { ...coverImages, ...weddingImages };
+      const audioPromises = Object.values(musicFiles).map(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (src: any) =>
+          new Promise<void>((resolve, reject) => {
+            const audio = new Audio();
+            audio.src = src;
+            audio.oncanplaythrough = () => resolve();
+            audio.onerror = () => reject();
+            audio.load();
+          })
+      );
 
-    // Preload tất cả ảnh
-    const imagePromises = Object.values(allImages).map(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (mod: any) =>
-        new Promise<void>((resolve, reject) => {
-          const img = new Image();
-          img.src = mod.default;
-          img.onload = () => resolve();
-          img.onerror = () => reject();
-        })
-    );
+      return Promise.allSettled(audioPromises);
+    };
 
-    // Preload nhạc
-    const musicFiles = import.meta.glob("../assets/music/*.mp3", {
-      eager: true,
-      import: "default",
-    });
+    const loadImages = () => {
+      const coverImages = import.meta.glob(
+        "../assets/images/cover/*.{JPG,jpg,jpeg,png,gif,webp}",
+        { eager: true }
+      );
 
-    const audioPromises = Object.values(musicFiles).map(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (src: any) =>
-        new Promise<void>((resolve, reject) => {
-          const audio = new Audio();
-          audio.src = src;
-          audio.oncanplaythrough = () => resolve();
-          audio.onerror = () => reject();
-          audio.load();
-        })
-    );
+      const imagePromises = Object.values(coverImages).map(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (mod: any) =>
+          new Promise<void>((resolve, reject) => {
+            const img = new Image();
+            img.src = mod.default;
+            img.onload = () => resolve();
+            img.onerror = () => reject();
+          })
+      );
 
-    const videoPromise = new Promise<void>((resolve, reject) => {
-      const video = document.createElement("video");
-      video.src = "/videos/v1.mp4"; // đường dẫn video trong public
-      video.preload = "auto";
-      video.onerror = () => reject();
-      video.onloadedmetadata = () => resolve();
-    });
+      return Promise.allSettled(imagePromises);
+    };
 
-    Promise.allSettled([
-      ...imagePromises,
-      ...audioPromises,
-      videoPromise,
-    ]).then(() => setAssetsLoaded(true));
+    // Tuần tự: video → nhạc → ảnh
+    loadVideo()
+      .then(() => loadMusic())
+      .then(() => loadImages())
+      .finally(() => setAssetsLoaded(true));
   }, []);
 
   // Fetch guest data
@@ -93,7 +89,6 @@ const Home: React.FC = () => {
       .catch(() => setGuest(null))
       .finally(() => setLoading(false));
   }, [query]);
-  
 
   // Hiển thị loading nếu video hoặc data chưa sẵn sàng
   if (!assetsLoaded || loading) {
@@ -117,7 +112,10 @@ const Home: React.FC = () => {
         >
           <div className="wedding-app" ref={nodeRef}>
             {showWelcome ? (
-              <Welcome language={guest?.language} onClick={() => setShowWelcome(false)} />
+              <Welcome
+                language={guest?.language}
+                onClick={() => setShowWelcome(false)}
+              />
             ) : (
               <HomeContent guest={guest} setGuest={setGuest} />
             )}

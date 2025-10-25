@@ -31,3 +31,11 @@ html, body, #root {
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/LoraRegular.ttf') format('truetype');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}

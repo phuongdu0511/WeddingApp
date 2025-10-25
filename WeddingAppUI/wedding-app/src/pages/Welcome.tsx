@@ -28,10 +28,10 @@ const Welcome: React.FC<WelcomeProps> = ({ onClick, language }) => {
         onClick(); // đóng Welcome, mở HomeContent
       }}
     >
-      <img src={home1} alt="Ảnh 1" className="absolute w-full" />
-      <img src={home2} alt="Ảnh 2" className="absolute w-full mt-img-2" />
-      <img src={home2} alt="Ảnh 2" className="absolute w-full mt-33" />
-      <img src={home3} alt="Ảnh 3" className="absolute w-full mt-img-3" />
+      <img loading="lazy" src={home1} alt="Ảnh 1" className="absolute w-full" />
+      <img loading="lazy" src={home2} alt="Ảnh 2" className="absolute w-full mt-img-2" />
+      <img loading="lazy" src={home2} alt="Ảnh 2" className="absolute w-full mt-33" />
+      <img loading="lazy" src={home3} alt="Ảnh 3" className="absolute w-full mt-img-3" />
       <div className="absolute mt-letter left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 z-10">
         <img src={letter} alt="Letter" className="zoom-in-animate" />
       </div>

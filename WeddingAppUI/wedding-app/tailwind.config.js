@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        lora: ['"Lora"', 'serif'],
+        lora: ['"Lora"', 'cursive'],
         vibes: ['"Great Vibes"'],
         highSpirited: ['"High Spirited"', 'cursive'],
         snellRoundhand: ['"Snell Roundhand"', 'cursive'],

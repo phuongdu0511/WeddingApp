@@ -13,7 +13,7 @@ import home12 from "../assets/images/cover/home_12.jpg";
 import home13 from "../assets/images/cover/home_13.jpg";
 import logo from "../assets/images/cover/logo.webp";
 import navigation from "../assets/images/cover/navigation.webp";
-import BONN9907 from "../assets/images/wedding/BONN9907.jpg";
+import BONN9907 from "../assets/images/wedding/BONN9907.webp";
 import bgVideo from "/videos/v1.mp4";
 import { useAutoScrollAnimation } from "../hooks/useAutoScrollAnimation";
 import WeddingCountdown from "../components/WeddingCountdown";

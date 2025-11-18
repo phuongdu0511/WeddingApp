@@ -590,7 +590,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ guest, setGuest }) => {
                   <p className="ladi-headline font-bold font-snellRoundhand">
                     Finally, together!
                   </p>
-                  <p className="ladi-headline font-bold font-snellRoundhand">after all the waitting</p>
+                  <p className="ladi-headline font-bold font-snellRoundhand">after all the waiting</p>
                 </div>
               </div>
             </div>
